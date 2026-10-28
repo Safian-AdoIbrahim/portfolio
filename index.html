@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10252C">
+<title>Safianu Ado Ibrahim Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Humanitarian data analytics and information management portfolio of Safianu Ado Ibrahim: Power BI dashboards, web tools, GIS and data systems across Nigeria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@300..800&display=swap">
+<style>
+/* Layout: a field-atlas sheet. Map-led hero, a headline-figures strip, a filterable product register with coverage mini-maps, a to-scale career timeline, and the data-to-product toolkit as a five-stage pipeline. */
+:root{
+  --ground:#EDF2F2; --surface:#FFFFFF; --surface-2:#E2EAEA; --grid:#E1E9E9;
+  --ink:#0F2329; --ink-2:#4A5F66; --ink-3:#6E8389; --line:#D1DCDD; --line-strong:#B3C5C7;
+  --accent:#0A7278; --accent-soft:#D3E9E9; --accent-ink:#FFFFFF;
+  --signal:#C98512; --signal-soft:#F6E6C4;
+  --map-field:#0A7278; --map-region:#7EBABC; --map-national:#D4E3E3; --map-stroke:#FFFFFF; --mini-land:#DAE4E5;
+  --shadow:0 1px 2px rgba(15,35,41,.05), 0 0.625rem 1.75rem rgba(15,35,41,.07);
+  --f-display:"Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --r:0.875rem;
+}
+:root[data-theme="dark"]{
+  --ground:#0B161B; --surface:#11212A; --surface-2:#182D36; --grid:#142730;
+  --ink:#E3EDEF; --ink-2:#A0B4BA; --ink-3:#7D959C; --line:#213B45; --line-strong:#305360;
+  --accent:#45C2C7; --accent-soft:#133A40; --accent-ink:#04191C;
+  --signal:#F0B23F; --signal-soft:#3B2F15;
+  --map-field:#45C2C7; --map-region:#1F7A80; --map-national:#1C3640; --map-stroke:#11212A; --mini-land:#22404A;
+  --shadow:0 1px 2px rgba(0,0,0,.35), 0 0.75rem 1.875rem rgba(0,0,0,.28);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.75rem}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ground)}
+img{max-width:100%}
+[hidden]{display:none!important}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3{margin:0;font-family:var(--f-display);text-wrap:balance;color:var(--ink)}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.wrap{max-width:75rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ground) 86%,transparent);-webkit-backdrop-filter:blur(0.75rem);backdrop-filter:blur(0.75rem);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:1.25rem;height:3.75rem}
+.brand{display:flex;align-items:baseline;gap:0.625rem;text-decoration:none;color:var(--ink);white-space:nowrap}
+.brand b{font-family:var(--f-display);font-weight:800;font-stretch:120%;font-size:1.02rem;letter-spacing:.01em}
+.brand span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:.88rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:0.4375rem 0.6875rem;border-radius:0.5rem;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--surface-2)}
+.nav a[aria-current="true"]{color:var(--ink);background:var(--surface-2)}
+.theme-btn{flex:none;display:grid;place-items:center;width:2.375rem;height:2.375rem;border-radius:0.625rem;border:1px solid var(--line-strong);background:var(--surface);cursor:pointer;color:var(--ink)}
+.theme-btn svg{width:1.125rem;height:1.125rem}
+@media (max-width:720px){.brand span{display:none}.nav a{padding:0.4375rem 0.5rem;font-size:.84rem}}
+@media (max-width:520px){.nav a.opt{display:none}}
+@media (max-width:440px){.nav a.opt2{display:none}.brand b{font-size:.95rem}}
+.g-axis .ticks .ys{display:none}
+@media (max-width:680px){.g-axis .ticks .yl{display:none}.g-axis .ticks .ys{display:inline}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:2.75rem 3.25rem}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:3rem;align-items:center}
+.id-row{display:flex;align-items:center;gap:1rem}
+.portrait{width:6.5rem;height:6.5rem;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line-strong),var(--shadow);background:var(--surface-2)}
+.geo{display:flex;flex-direction:column;gap:2px;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.geo b{color:var(--ink);font-weight:600}
+.geo .pin{display:inline-block;width:0.5rem;height:0.5rem;border-radius:50%;background:var(--signal);margin-right:0.4375rem;vertical-align:1px;box-shadow:0 0 0 3px var(--signal-soft)}
+.hero .eyebrow{margin-top:1.75rem}
+.name{margin-top:0.625rem;font-size:clamp(2.5rem,5.4vw,4.1rem);font-weight:800;font-stretch:116%;line-height:.98;letter-spacing:-.015em}
+.role{margin-top:0.875rem;font-family:var(--f-display);font-size:clamp(1.05rem,1.8vw,1.25rem);font-weight:500;font-stretch:104%;color:var(--ink-2);line-height:1.35}
+.lede{margin-top:1.125rem;max-width:58ch;color:var(--ink);font-size:1.02rem}
+.now{margin-top:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;padding:0.75rem 0.875rem;border:1px solid var(--line);border-radius:0.75rem;background:var(--surface);max-width:58ch}
+.now .dot{flex:none;width:0.625rem;height:0.625rem;border-radius:50%;background:var(--accent);margin-top:0.4375rem;box-shadow:0 0 0 4px var(--accent-soft)}
+.now p{font-size:.92rem;color:var(--ink-2)}
+.now p b{color:var(--ink);font-weight:600}
+.cta{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.625rem}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6875rem 1.125rem;border-radius:0.625rem;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--line-strong);color:var(--ink);background:var(--surface);cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.specs{margin-top:1.375rem;display:flex;flex-wrap:wrap;gap:0.375rem 1rem;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.specs li::before{content:"";display:inline-block;width:0.375rem;height:0.375rem;background:var(--accent);margin-right:0.5rem;vertical-align:2px;border-radius:1px}
+
+/* ---------- atlas ---------- */
+.atlas{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:1.125rem;padding:1.125rem;box-shadow:var(--shadow)}
+.atlas-head{display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;flex-wrap:wrap}
+.atlas-head h2{font-size:1.15rem;font-weight:750;font-stretch:110%}
+.atlas-head p{font-size:.85rem;color:var(--ink-2);margin-top:2px}
+.tag{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);border-radius:0.375rem;padding:3px 0.4375rem;white-space:nowrap}
+.atlas-map{margin-top:0.75rem;border-radius:0.75rem;background-color:var(--ground);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:2rem 2rem;background-position:-1px -1px;padding:0.625rem;position:relative}
+.atlas-map svg{display:block;width:100%;height:auto;overflow:visible}
+.st{stroke:var(--map-stroke);stroke-width:1.3;stroke-linejoin:round;cursor:pointer;transition:opacity .15s}
+.st:focus{outline:none}
+.t-field{fill:var(--map-field)}
+.t-region{fill:var(--map-region)}
+.t-national{fill:var(--map-national)}
+.t-base{fill:var(--signal)}
+#map-states:hover .st{opacity:.82}
+#map-states:hover .st:hover{opacity:1}
+.hl{fill:none;stroke:var(--ink);stroke-width:3.2;stroke-linejoin:round;pointer-events:none}
+.lbl{font-family:var(--f-mono);font-size:14px;font-weight:600;letter-spacing:.08em;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4.5px;stroke-linejoin:round;pointer-events:none;text-transform:uppercase}
+.lbl-base{fill:var(--ink)}
+.abuja{fill:var(--ink);stroke:var(--surface);stroke-width:2;pointer-events:none}
+.map-credit{position:absolute;left:0.875rem;bottom:0.625rem;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.03em;color:var(--ink-3)}
+.compass{font-family:var(--f-mono);font-size:13px;fill:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:0.375rem 1rem;margin-top:0.75rem;font-size:.8rem;color:var(--ink-2)}
+.legend li{display:flex;align-items:center;gap:0.4375rem}
+.sw{width:0.75rem;height:0.75rem;border-radius:3px;flex:none;border:1px solid var(--line-strong)}
+.legend .n{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3)}
+.panel{margin-top:0.875rem;padding-top:0.875rem;border-top:1px solid var(--line);min-height:15.5rem}
+.panel-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:0.375rem 0.625rem}
+.panel-head h3{font-size:1.2rem;font-weight:750;font-stretch:108%}
+.pcode{font-family:var(--f-mono);font-size:.75rem;color:var(--ink-2);letter-spacing:.06em}
+.tier{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 0.5rem;border-radius:62.4375rem;margin-left:auto}
+.tier-field{background:var(--accent);color:var(--accent-ink)}
+.tier-region{background:var(--accent-soft);color:var(--ink)}
+.tier-national{background:var(--surface-2);color:var(--ink-2)}
+.tier-base{background:var(--signal-soft);color:var(--ink)}
+.work{margin-top:0.625rem;display:grid;gap:0.375rem}
+.work li{position:relative;padding-left:1.125rem;font-size:.9rem;line-height:1.45}
+.work li::before{content:"";position:absolute;left:2px;top:.52em;width:0.4375rem;height:0.4375rem;border-radius:2px;background:var(--accent)}
+.natl{margin-top:0.75rem;font-size:.8rem;color:var(--ink-2);line-height:1.5}
+.natl b{font-weight:600;color:var(--ink)}
+.hint{font-family:var(--f-mono);font-size:.7rem;color:var(--ink-3);letter-spacing:.04em;margin-top:0.625rem}
+
+/* ---------- figures strip ---------- */
+.figures{background:var(--surface);border-block:1px solid var(--line)}
+.fig-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line)}
+.fig{background:var(--surface);padding:1.375rem 1.125rem 1.25rem;display:flex;flex-direction:column;gap:0.375rem}
+.fig .v{font-family:var(--f-display);font-weight:800;font-stretch:110%;font-size:clamp(1.6rem,2.6vw,2.05rem);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.fig .v small{font-family:var(--f-mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;color:var(--accent);margin-right:4px;vertical-align:.5em}
+.fig .l{font-size:.82rem;color:var(--ink-2);line-height:1.4}
+
+/* ---------- sections ---------- */
+section.block{padding-block:4.75rem}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1rem 2.5rem;align-items:end;margin-bottom:1.875rem}
+.sec-head h2{font-size:clamp(1.75rem,3.2vw,2.4rem);font-weight:800;font-stretch:116%;line-height:1.05;letter-spacing:-.01em;margin-top:0.5rem}
+.sec-head p.sub{color:var(--ink-2);max-width:60ch}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+
+/* ---------- product register ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:0.75rem 0.875rem;align-items:center;padding:0.875rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.chips{display:flex;flex-wrap:wrap;gap:0.375rem;flex:1 1 32.5rem;min-width:0}
+.chip{padding:0.375rem 0.6875rem;border-radius:62.4375rem;border:1px solid var(--line-strong);background:var(--surface);font-size:.84rem;font-weight:500;cursor:pointer;white-space:nowrap;display:inline-flex;gap:0.375rem;align-items:baseline}
+.chip .c{font-family:var(--f-mono);font-size:.7rem;color:var(--ink-3)}
+.chip:hover{border-color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+.chip[aria-pressed="true"] .c{color:var(--ground);opacity:.75}
+.ctl-right{display:flex;flex-wrap:wrap;gap:0.625rem;align-items:center}
+.seg{display:inline-flex;padding:3px;border-radius:0.625rem;border:1px solid var(--line-strong);background:var(--ground)}
+.seg button{border:0;background:transparent;padding:0.375rem 0.6875rem;border-radius:0.4375rem;font-size:.82rem;font-weight:500;cursor:pointer;color:var(--ink-2);white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--line-strong)}
+.search{position:relative}
+.search svg{position:absolute;left:0.625rem;top:50%;width:0.9375rem;height:0.9375rem;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+.search input{width:12.5rem;max-width:100%;padding:0.5rem 0.625rem 0.5rem 2rem;border-radius:0.625rem;border:1px solid var(--line-strong);background:var(--ground);color:var(--ink);font:inherit;font-size:.88rem}
+.search input::placeholder{color:var(--ink-3)}
+.result-line{margin-top:0.875rem;font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2);letter-spacing:.04em}
+.group-head{display:flex;align-items:center;gap:0.75rem;margin:1.625rem 0 0.875rem}
+.group-head .eyebrow{color:var(--ink)}
+.group-head .rule{flex:1;height:1px;background:var(--line)}
+.group-head .n{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-3);white-space:nowrap}
+.grid-recent{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.grid-earlier{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.card{position:relative;display:flex;flex-direction:column;gap:0.75rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.125rem;transition:border-color .15s,transform .15s,box-shadow .15s;min-width:0}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.card:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.card-top{display:grid;grid-template-columns:5.25rem minmax(0,1fr);gap:0.875rem;align-items:start}
+.feat .card-top{grid-template-columns:7.375rem minmax(0,1fr)}
+.mini{display:block;width:100%;height:auto;background:var(--ground);border-radius:0.625rem;padding:0.375rem}
+.mini use{fill:var(--mini-land);stroke:var(--surface);stroke-width:2.5}
+.mini use.on{fill:var(--accent)}
+.pills{display:flex;flex-wrap:wrap;gap:0.3125rem;margin-bottom:0.5rem}
+.pill{font-family:var(--f-mono);font-size:.64rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:3px 0.4375rem;border-radius:0.375rem;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.pill-web{background:var(--accent-soft);color:var(--ink)}
+.pill-org{background:var(--signal-soft);color:var(--ink)}
+.card h3{font-size:1.04rem;font-weight:750;font-stretch:106%;line-height:1.25}
+.feat h3{font-size:1.18rem}
+.card-link{color:var(--ink);text-decoration:none}
+.card-link::after{content:"";position:absolute;inset:0;border-radius:var(--r)}
+.card-link:focus-visible{outline:none}
+.client{margin-top:0.3125rem;font-size:.84rem;color:var(--ink-2);line-height:1.4}
+.desc{font-size:.9rem;color:var(--ink-2);line-height:1.55;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:0.75rem;padding-top:0.6875rem;border-top:1px dashed var(--line);font-family:var(--f-mono);font-size:.72rem}
+.cov{color:var(--ink-2);letter-spacing:.02em;min-width:0}
+.open{color:var(--accent);font-weight:600;white-space:nowrap}
+.empty{padding:2.5rem 1.25rem;text-align:center;border:1px dashed var(--line-strong);border-radius:var(--r);color:var(--ink-2);margin-top:1.25rem}
+.empty button{margin-top:0.75rem}
+.res-head{margin-top:3.25rem;margin-bottom:0.875rem;display:flex;justify-content:space-between;align-items:baseline;gap:0.75rem;flex-wrap:wrap}
+.res-head h3{font-size:1.2rem;font-weight:750;font-stretch:110%}
+.res-head p{font-size:.88rem;color:var(--ink-2)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.8125rem,1fr));gap:0.75rem}
+.res{display:flex;flex-direction:column;gap:0.375rem;padding:1rem;border:1px solid var(--line);border-radius:0.75rem;background:var(--surface);text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.res:hover{border-color:var(--accent);transform:translateY(-2px)}
+.res svg{width:1.375rem;height:1.375rem;color:var(--accent)}
+.res b{font-weight:650;font-size:.95rem;line-height:1.3}
+.res span{font-size:.82rem;color:var(--ink-2);line-height:1.45;flex:1}
+.res em{font-style:normal;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* ---------- experience ---------- */
+.gantt{background:var(--ground);border:1px solid var(--line);border-radius:var(--r);padding:0.875rem 1rem 0.625rem;--lab:12.5rem}
+.g-axis,.g-row{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);gap:0.875rem;align-items:center}
+.g-axis{padding-bottom:0.375rem;border-bottom:1px solid var(--line);margin-bottom:0.375rem}
+.g-axis .ticks{position:relative;height:1.125rem}
+.g-axis .ticks span{position:absolute;top:0;transform:translateX(-50%);font-family:var(--f-mono);font-size:.7rem;color:var(--ink-2);white-space:nowrap}
+.g-axis .ticks span.first{transform:none}
+.g-row{width:100%;border:0;background:transparent;padding:0.4375rem 0.5rem;margin-inline:-0.5rem;width:calc(100% + 1rem);border-radius:0.5625rem;cursor:pointer;text-align:left}
+.g-row:hover{background:var(--surface)}
+.g-row[aria-selected="true"]{background:var(--surface);box-shadow:0 0 0 1px var(--line-strong)}
+.g-lab{min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.g-lab b{font-size:.9rem;font-weight:650;color:var(--ink)}
+.g-lab small{font-size:.74rem;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{position:relative;height:1.625rem;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100% / var(--years,7)) 100%}
+.bar{position:absolute;top:0.3125rem;bottom:0.3125rem;border-radius:0.3125rem;background:var(--map-region);min-width:0.375rem;transition:background .15s}
+.g-row[aria-selected="true"] .bar{background:var(--accent)}
+.bar.ongoing{border-top-right-radius:0;border-bottom-right-radius:0}
+.now-line{position:absolute;top:-2px;bottom:-2px;width:0;border-left:2px dashed var(--signal)}
+.g-note{display:flex;justify-content:space-between;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;font-family:var(--f-mono);font-size:.68rem;color:var(--ink-3);letter-spacing:.04em}
+.g-note i{display:inline-block;width:0.875rem;border-top:2px dashed var(--signal);vertical-align:3px;margin-right:0.375rem}
+.detail{margin-top:1.125rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem 1.625rem}
+.d-head{display:flex;flex-wrap:wrap;gap:0.5rem 1.25rem;justify-content:space-between;align-items:flex-start}
+.d-head h3{font-size:1.35rem;font-weight:780;font-stretch:110%;line-height:1.2}
+.d-org{margin-top:4px;color:var(--ink-2);font-size:.95rem}
+.d-meta{display:flex;flex-wrap:wrap;gap:0.375rem}
+.d-meta span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;padding:4px 0.5625rem;border-radius:0.4375rem;background:var(--surface-2);color:var(--ink)}
+.d-meta span.live{background:var(--accent);color:var(--accent-ink)}
+.d-list{margin-top:1.125rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem 1.75rem}
+.d-list li{position:relative;padding-left:1.125rem;font-size:.92rem;line-height:1.55;color:var(--ink)}
+.d-list li::before{content:"";position:absolute;left:0;top:.62em;width:0.5rem;height:2px;background:var(--accent)}
+.more{margin-top:1rem}
+
+/* ---------- toolkit ---------- */
+.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0.875rem}
+.stage{position:relative;display:flex;flex-direction:column;gap:0.625rem;padding:1.125rem 1rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-width:0}
+.stage:not(:last-child)::after{content:"";position:absolute;right:-0.6875rem;top:1.625rem;width:0.5rem;height:0.5rem;border-top:2px solid var(--ink-3);border-right:2px solid var(--ink-3);transform:rotate(45deg);z-index:1}
+.step{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--accent)}
+.stage h3{font-size:1.05rem;font-weight:750;font-stretch:108%}
+.stage p{font-size:.84rem;color:var(--ink-2);line-height:1.45}
+.tools{display:flex;flex-wrap:wrap;gap:0.3125rem;margin-top:2px}
+.tools li{font-family:var(--f-mono);font-size:.7rem;padding:3px 0.4375rem;border-radius:0.3125rem;background:var(--surface-2);color:var(--ink)}
+.comp{margin-top:2.125rem;display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:1rem;align-items:start}
+.comp-list{display:flex;flex-wrap:wrap;gap:0.5rem}
+.comp-list li{padding:0.4375rem 0.75rem;border:1px solid var(--line-strong);border-radius:62.4375rem;font-size:.86rem;background:var(--surface)}
+
+/* ---------- education ---------- */
+.edu{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:2.5rem}
+.edu h3{font-size:1.1rem;font-weight:750;font-stretch:110%;margin-bottom:0.375rem}
+.e-row{display:grid;grid-template-columns:6rem minmax(0,1fr);gap:1rem;padding:0.875rem 0;border-top:1px solid var(--line)}
+.e-row:last-child{border-bottom:1px solid var(--line)}
+.e-yr{font-family:var(--f-mono);font-size:.8rem;color:var(--accent);font-weight:600;padding-top:2px}
+.e-row b{display:block;font-weight:650;line-height:1.35}
+.e-row span{font-size:.88rem;color:var(--ink-2)}
+.e-row .prog{display:inline-block;margin-top:0.375rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 0.4375rem;border-radius:0.3125rem;background:var(--accent-soft);color:var(--ink)}
+.c-row{display:flex;gap:0.75rem;padding:0.75rem 0;border-top:1px solid var(--line);font-size:.92rem}
+.c-row:last-child{border-bottom:1px solid var(--line)}
+.c-row svg{flex:none;width:1.125rem;height:1.125rem;color:var(--accent);margin-top:3px}
+
+/* ---------- contact ---------- */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:2rem;align-items:center;background:var(--ink);color:var(--ground);border-radius:1.25rem;padding:2.5rem}
+.contact h2{color:var(--ground);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;font-stretch:118%;line-height:1.05}
+.contact p{margin-top:0.75rem;color:var(--ground);opacity:.78;max-width:46ch}
+.c-lines{display:grid;gap:0.625rem}
+.c-line{display:grid;grid-template-columns:5.375rem minmax(0,1fr) auto;gap:0.75rem;align-items:center;padding:0.75rem 0.875rem;border-radius:0.75rem;background:color-mix(in srgb,var(--ground) 8%,transparent);border:1px solid color-mix(in srgb,var(--ground) 16%,transparent)}
+.c-line .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.c-line .val{font-weight:600;font-size:1rem;color:var(--ground);text-decoration:none;overflow-wrap:anywhere;user-select:all}
+.copy{border:1px solid color-mix(in srgb,var(--ground) 30%,transparent);background:transparent;color:var(--ground);border-radius:0.5rem;padding:0.375rem 0.625rem;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.copy:hover{background:color-mix(in srgb,var(--ground) 14%,transparent)}
+footer{padding-block:1.75rem 2.5rem;font-size:.78rem;color:var(--ink-3)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.5rem 1.5rem}
+footer a{color:var(--ink-2)}
+.toast{position:fixed;left:50%;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));transform:translate(-50%,1.25rem);background:var(--ink);color:var(--ground);padding:0.5625rem 1rem;border-radius:0.625rem;font-size:.86rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .fig-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stage:not(:last-child)::after{display:none}
+  .stage:last-child{grid-column:1 / -1}
+  .grid-earlier{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:2.25rem}
+  .sec-head{grid-template-columns:minmax(0,1fr)}
+  .edu,.contact{grid-template-columns:minmax(0,1fr)}
+  .d-list{grid-template-columns:minmax(0,1fr)}
+  .comp{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:680px){
+  .grid-recent,.grid-earlier{grid-template-columns:minmax(0,1fr)}
+  .gantt{--lab:6.5rem}
+  .g-lab small{display:none}
+  .contact{padding:1.625rem 1.25rem}
+  .c-line{grid-template-columns:minmax(0,1fr) auto}
+  .c-line .k{grid-column:1 / -1}
+  section.block{padding-block:3.5rem}
+  .detail{padding:1.25rem 1.125rem}
+  .search input{width:100%}
+  .search,.ctl-right{flex:1 1 100%}
+}
+@media (max-width:560px){
+  .fig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pipe{grid-template-columns:minmax(0,1fr)}
+  .stage:last-child{grid-column:auto}
+  .portrait{width:5.25rem;height:5.25rem}
+  .feat .card-top{grid-template-columns:6rem minmax(0,1fr)}
+  .tier{margin-left:0}
+}
+
+/* ---------- large monitors: scale type and spacing together, widen the sheet ---------- */
+@media (min-width:1600px){html{font-size:106.25%}.wrap{max-width:80rem}}
+@media (min-width:1920px){html{font-size:112.5%}.wrap{max-width:84rem}}
+@media (min-width:2400px){html{font-size:125%}.wrap{max-width:90rem}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+
+
+/* ================= Modern portfolio redesign ================= */
+:root{
+  --ground:#F3F7F7;--surface:#FFFFFF;--surface-2:#E8F0F0;--grid:#E3ECEC;
+  --ink:#10252C;--ink-2:#50666D;--ink-3:#74878D;--line:#D7E2E3;--line-strong:#B8CBCD;
+  --accent:#087F83;--accent-soft:#D8F0EF;--accent-ink:#FFFFFF;
+  --signal:#D49A32;--signal-soft:#F8EBCF;--r:1rem;
+  --shadow:0 2px 5px rgba(16,37,44,.035),0 14px 38px rgba(16,37,44,.075);
+}
+:root[data-theme="dark"]{
+  --ground:#0B171C;--surface:#11242B;--surface-2:#1A3038;--grid:#1B3037;
+  --ink:#EAF2F3;--ink-2:#B1C3C7;--ink-3:#829BA1;--line:#29434A;--line-strong:#3A5C63;
+  --accent:#54C9C5;--accent-soft:#173C40;--accent-ink:#082124;--signal:#F0BC58;--signal-soft:#3B301B;
+  --shadow:0 2px 5px rgba(0,0,0,.18),0 16px 40px rgba(0,0,0,.2);
+}
+html{scroll-padding-top:5.5rem}
+body{font-size:16px;line-height:1.65}
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:1000;background:var(--accent);color:white;padding:.7rem 1rem;border-radius:.5rem;font-weight:700}
+.skip-link:focus{top:1rem}
+.reading-progress{position:fixed;inset:0 0 auto;height:3px;z-index:1000;background:transparent;pointer-events:none}
+.reading-progress span{display:block;height:100%;width:0;background:#55C7C0;transition:width .08s linear}
+.topbar{background:color-mix(in srgb,var(--surface) 92%,transparent);border-bottom:1px solid var(--line);box-shadow:0 3px 18px rgba(16,37,44,.035)}
+.topbar .wrap{height:4.25rem;gap:1.4rem}
+.brand b{font-size:1.04rem;letter-spacing:-.025em}
+.brand span{letter-spacing:.14em}
+.nav{gap:.25rem}
+.nav a{padding:.55rem .8rem;font-size:.85rem;border-radius:.65rem;transition:background .18s,color .18s}
+.theme-btn{border-radius:.75rem;width:2.6rem;height:2.6rem}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-block:4rem 4.5rem;background:radial-gradient(ellipse at 80% 10%,rgba(28,125,130,.36),transparent 40%),linear-gradient(135deg,#10252C 0%,#12343B 56%,#0D5558 125%);color:#F4FAFA}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(90deg,transparent,black)}
+.hero-grid{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2rem,4vw,4.5rem)}
+.hero h1,.hero h2,.hero h3{color:#F6FBFB}
+.hero .eyebrow{color:#9AD9D6;letter-spacing:.15em}
+.hero .name{font-size:clamp(2.7rem,5.5vw,4.65rem);line-height:.98;letter-spacing:-.055em;margin-top:.8rem}
+.hero .role{font-size:clamp(1.1rem,1.8vw,1.35rem);color:#C5E0E1;line-height:1.4;margin-top:1.1rem}
+.hero .lede{font-size:1rem;line-height:1.8;color:#E0ECEE;max-width:60ch}
+.id-row{gap:1.15rem}
+.portrait{width:7rem;height:7rem;border:3px solid rgba(255,255,255,.8);box-shadow:0 0 0 1px rgba(255,255,255,.25),0 10px 28px rgba(0,0,0,.2)}
+.geo{color:#B6D1D3;font-size:.7rem;letter-spacing:.07em}
+.geo b{color:#F7FCFC}
+.hero .now{max-width:60ch;background:rgba(255,255,255,.075);border-color:rgba(210,240,240,.2);backdrop-filter:blur(8px);padding:1rem 1.1rem;border-radius:.85rem}
+.hero .now p{color:#D5E6E7;font-size:.9rem}
+.hero .now p b{color:#FFFFFF}
+.hero .now .dot{background:#62D1C9;box-shadow:0 0 0 4px rgba(98,209,201,.15)}
+.hero .btn{border-color:rgba(228,246,246,.35);background:rgba(255,255,255,.07);color:#F4FAFA;padding:.8rem 1.15rem;border-radius:.75rem}
+.hero .btn-primary{background:#5AD0C8;border-color:#5AD0C8;color:#0D292D;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.hero .btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.hero .specs{color:#C1D9DA;gap:.5rem 1rem}
+.hero .specs li:before{background:#64D0C8}
+.atlas{border:1px solid rgba(255,255,255,.7);padding:1.25rem;border-radius:1.25rem;box-shadow:0 24px 65px rgba(0,0,0,.2)}
+.atlas-head h2{font-size:1.22rem;letter-spacing:-.02em}
+.atlas-map{border-radius:.9rem}
+.panel{min-height:13rem}
+.figures{border-block:1px solid var(--line);background:var(--surface)}
+.fig-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:0;background:transparent}
+.fig{padding:1.55rem 1rem 1.4rem;border-right:1px solid var(--line);gap:.55rem;transition:background .2s}
+.fig:last-child{border-right:0}
+.fig:hover{background:var(--ground)}
+.fig .v{font-size:clamp(1.65rem,2.5vw,2.15rem);letter-spacing:-.04em;color:var(--accent)}
+.fig .v small{color:var(--ink-2)}
+.fig .l{font-size:.78rem;line-height:1.5}
+section.block{padding-block:5rem}
+.sec-head{gap:1.5rem 3rem;margin-bottom:2rem}
+.sec-head h2{letter-spacing:-.045em;font-size:clamp(1.9rem,3.5vw,2.65rem);line-height:1.08}
+.sec-head .eyebrow{color:var(--accent);letter-spacing:.15em}
+.sec-head p.sub{font-size:.95rem;line-height:1.75;max-width:58ch}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+#products .sec-head{align-items:end}
+.controls{padding:1rem;border-radius:1rem;box-shadow:0 4px 18px rgba(16,37,44,.035);gap:1rem}
+.chip{padding:.48rem .8rem;border-radius:999px;font-size:.8rem;transition:all .16s}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.search input{width:15rem;border-radius:.7rem;padding:.65rem .7rem .65rem 2.1rem;background:var(--ground)}
+.seg{border-radius:.75rem}
+.seg button{padding:.48rem .8rem;border-radius:.55rem}
+.result-line{margin-top:1rem;font-size:.72rem}
+.group-head{margin:2rem 0 1rem}
+.group-head .eyebrow{font-size:.68rem;letter-spacing:.1em}
+.grid-recent,.grid-earlier{gap:1.15rem}
+.card{padding:1.25rem;border-radius:1rem;gap:.9rem;box-shadow:0 2px 8px rgba(16,37,44,.025);transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(16,37,44,.1);border-color:var(--accent)}
+.card-top{grid-template-columns:5.6rem minmax(0,1fr);gap:1rem}
+.feat .card-top{grid-template-columns:8rem minmax(0,1fr)}
+.mini{border-radius:.75rem;padding:.45rem}
+.pill{border-radius:.45rem;font-size:.62rem;letter-spacing:.055em;padding:.25rem .45rem}
+.card h3{font-size:1.08rem;letter-spacing:-.02em;line-height:1.3}
+.feat h3{font-size:1.22rem}
+.client{font-size:.8rem;line-height:1.5}
+.desc{font-size:.88rem;line-height:1.7}
+.card-foot{padding-top:.85rem;font-size:.69rem}
+.open{font-weight:700}
+.res-grid{gap:.9rem}
+.res{padding:1.1rem;border-radius:.85rem;transition:transform .2s,box-shadow .2s,border-color .2s}
+.res:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.gantt{border-radius:1rem;padding:1rem 1.1rem .75rem}
+.g-row{padding:.55rem .5rem;border-radius:.65rem}
+.bar{border-radius:.45rem}
+.detail{border-radius:1rem;padding:1.75rem;box-shadow:0 4px 18px rgba(16,37,44,.035)}
+.d-head h3{letter-spacing:-.025em}
+.d-list{gap:.85rem 2rem}
+.d-list li{line-height:1.7}
+.pipe{gap:1rem}
+.stage{padding:1.25rem;border-radius:1rem;transition:transform .2s,border-color .2s,box-shadow .2s}
+.stage:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.stage h3{letter-spacing:-.02em}
+.tools li{border-radius:.4rem;padding:.28rem .45rem}
+.comp-list li{border-radius:999px;background:var(--surface);font-size:.82rem;padding:.48rem .8rem}
+.edu{gap:3rem}
+.edu h3{margin-bottom:.75rem;letter-spacing:-.02em}
+.e-row{grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;padding:1rem 0}
+.e-row b{line-height:1.5}
+.c-row{padding:.85rem 0;line-height:1.55}
+.contact{position:relative;overflow:hidden;background:linear-gradient(135deg,#10252C,#12474C);border-radius:1.35rem;padding:clamp(1.5rem,4vw,3.25rem);box-shadow:0 20px 50px rgba(16,37,44,.13)}
+.contact:after{content:"";position:absolute;right:-5rem;top:-7rem;width:20rem;height:20rem;border:1px solid rgba(135,222,215,.17);border-radius:50%;box-shadow:0 0 0 35px rgba(135,222,215,.04),0 0 0 70px rgba(135,222,215,.03);pointer-events:none}
+.contact h2{letter-spacing:-.045em}
+.c-line{border-radius:.85rem;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15);position:relative;z-index:1}
+.copy{border-radius:.6rem;padding:.5rem .7rem}
+footer{padding-block:2rem 2.5rem}
+footer .wrap{align-items:center}
+:where(a,button,input):focus-visible{outline:3px solid #E6AE47;outline-offset:3px}
+@media(max-width:1080px){.fig-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fig:nth-child(3){border-right:0}.fig:nth-child(n+4){border-top:1px solid var(--line)}.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem}}
+@media(max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr)}.hero{padding-block:3.25rem}.atlas{max-width:760px}.sec-head{grid-template-columns:minmax(0,1fr)}.edu,.contact{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:680px){.topbar .wrap{height:auto;min-height:3.8rem;flex-wrap:wrap;gap:.5rem;padding-block:.55rem}.brand{margin-right:auto}.nav{order:3;flex:1 1 100%;margin:0;padding-bottom:.1rem}.nav a{font-size:.8rem;padding:.45rem .65rem}.theme-btn{width:2.35rem;height:2.35rem}.hero{padding-block:2.6rem 3rem}.hero .name{font-size:clamp(2.6rem,12vw,3.5rem)}.fig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fig{padding:1.15rem .85rem;border-top:1px solid var(--line);border-right:1px solid var(--line)}.fig:nth-child(2n){border-right:0}.fig:nth-child(3){border-right:1px solid var(--line)}.fig:nth-child(-n+2){border-top:0}.fig:nth-child(4){border-right:0}section.block{padding-block:3.5rem}.controls{align-items:stretch}.chips{flex-basis:100%}.ctl-right{gap:.6rem}.search,.ctl-right{flex:1 1 100%}.search input{width:100%}.feat .card-top,.card-top{grid-template-columns:5.25rem minmax(0,1fr)}.card{padding:1rem}.contact{padding:1.5rem 1.1rem}.c-line{grid-template-columns:minmax(0,1fr) auto}.c-line .k{grid-column:1/-1}.gantt{--lab:6rem;padding:.8rem .7rem}.g-row{gap:.5rem}.g-lab b{font-size:.8rem}.detail{padding:1.15rem}.d-meta span{font-size:.65rem}}
+@media(max-width:420px){.id-row{align-items:flex-start}.portrait{width:4.6rem;height:4.6rem}.geo{font-size:.63rem}.hero .cta .btn{flex:1 1 100%;justify-content:center}.atlas{padding:.8rem}.atlas-map{padding:.35rem}.fig .v{font-size:1.55rem}.c-line .val{font-size:.9rem}.brand b{font-size:.94rem}}
+@media(prefers-reduced-motion:reduce){.reading-progress span{transition:none}html{scroll-behavior:auto}}
+
+
+/* User refinement: neutral profile hero and stronger competency panel */
+.hero{
+  background:linear-gradient(135deg,#FFFFFF 0%,#F3F7F8 100%) !important;
+  color:var(--ink) !important;
+  border-bottom:1px solid var(--line);
+}
+.hero:before{opacity:.045 !important;background-image:linear-gradient(rgba(16,37,44,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(16,37,44,.08) 1px,transparent 1px) !important}
+.hero h1,.hero h2,.hero h3{color:#10252C !important}
+.hero .eyebrow{color:#087F83 !important}
+.hero .role{color:#36545B !important}
+.hero .lede{color:#405A61 !important}
+.geo{color:#50666D !important}.geo b{color:#10252C !important}
+.hero .now{background:#FFFFFF !important;border-color:#C9DADC !important;box-shadow:0 8px 28px rgba(16,37,44,.07);backdrop-filter:none}
+.hero .now p{color:#405A61 !important}.hero .now p b{color:#10252C !important}
+.hero .now .dot{background:#087F83 !important;box-shadow:0 0 0 4px rgba(8,127,131,.12) !important}
+.hero .btn{border-color:#B8CBCD !important;background:#FFFFFF !important;color:#10252C !important}
+.hero .btn-primary{background:#087F83 !important;border-color:#087F83 !important;color:#FFFFFF !important;box-shadow:0 8px 20px rgba(8,127,131,.18)}
+.hero .specs{color:#405A61 !important}.hero .specs li:before{background:#087F83 !important}
+.atlas{border-color:#D7E2E3 !important;box-shadow:0 18px 45px rgba(16,37,44,.09) !important}
+.comp{background:#FFFFFF;border:1px solid #C7DADC;border-left:4px solid #087F83;border-radius:1rem;padding:1.35rem 1.4rem;gap:1.25rem;box-shadow:0 8px 24px rgba(16,37,44,.055)}
+.comp > .eyebrow{color:#087F83;font-size:.76rem;font-weight:800;letter-spacing:.14em;line-height:1.5;margin:0;padding-top:.55rem}
+.comp-list{gap:.6rem}
+.comp-list li{background:#F2F8F8;border:1px solid #B6D0D2;color:#173A42;font-size:.9rem;font-weight:500;padding:.62rem .95rem;box-shadow:0 2px 5px rgba(16,37,44,.025);transition:background .18s,border-color .18s,transform .18s}
+.comp-list li:hover{background:#E1F1F0;border-color:#087F83;transform:translateY(-1px)}
+:root[data-theme="dark"] .hero{background:linear-gradient(135deg,#14242A 0%,#182D34 100%) !important;color:#EAF2F3 !important}
+:root[data-theme="dark"] .hero h1,:root[data-theme="dark"] .hero h2,:root[data-theme="dark"] .hero h3{color:#F2F7F8 !important}
+:root[data-theme="dark"] .hero .eyebrow{color:#78D0CB !important}
+:root[data-theme="dark"] .hero .role,:root[data-theme="dark"] .hero .lede,:root[data-theme="dark"] .hero .specs,:root[data-theme="dark"] .geo{color:#C1D3D6 !important}
+:root[data-theme="dark"] .geo b{color:#F2F7F8 !important}
+:root[data-theme="dark"] .hero .now{background:#1A3038 !important;border-color:#3A5C63 !important}
+:root[data-theme="dark"] .hero .now p{color:#C1D3D6 !important}:root[data-theme="dark"] .hero .now p b{color:#F2F7F8 !important}
+:root[data-theme="dark"] .hero .btn{background:#1A3038 !important;border-color:#3A5C63 !important;color:#F2F7F8 !important}
+:root[data-theme="dark"] .hero .btn-primary{background:#54C9C5 !important;border-color:#54C9C5 !important;color:#082124 !important}
+:root[data-theme="dark"] .atlas{border-color:#3A5C63 !important}
+:root[data-theme="dark"] .comp{background:#11242B;border-color:#29434A;border-left-color:#54C9C5}
+:root[data-theme="dark"] .comp > .eyebrow{color:#78D0CB}
+:root[data-theme="dark"] .comp-list li{background:#1A3038;border-color:#3A5C63;color:#EAF2F3}
+:root[data-theme="dark"] .comp-list li:hover{background:#23464B;border-color:#54C9C5}
+@media(max-width:700px){.comp{padding:1rem;gap:.75rem}.comp > .eyebrow{padding-top:0}.comp-list li{font-size:.85rem;padding:.55rem .8rem}}
+
+</style>
+
+<style id="hero-top-alignment-fix">
+/* Align the profile/photo column and the map column to the same top edge. */
+.hero-grid { align-items: start !important; }
+.hero-text, .atlas { align-self: start !important; }
+</style>
+
+<style id="single-row-project-filters">
+/* Keep category chips on one row on wide screens, but let them wrap naturally
+   on smaller screens so users do not need to scroll horizontally. */
+.controls { flex-wrap: nowrap; gap: .65rem; }
+.chips { flex: 1 1 auto; flex-wrap: nowrap; min-width: 0; overflow: visible; padding: 2px 1px 6px; }
+.chips .chip { flex: 0 0 auto; }
+.ctl-right { flex: 0 0 auto; }
+@media (max-width: 1100px) {
+  .controls { flex-wrap: wrap; }
+  .chips { flex: 1 1 100%; flex-wrap: wrap; overflow: visible; }
+  .chips .chip { flex: 0 1 auto; }
+  .ctl-right { margin-left: auto; }
+}
+@media (max-width: 680px) {
+  .controls { align-items: stretch; }
+  .chips { flex-basis: 100%; flex-wrap: wrap; }
+  .ctl-right { flex: 1 1 100%; margin-left: 0; }
+}
+
+/* Compact contact section: intro row, then three action links */
+.contact.contact-compact{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;padding:1.4rem 1.6rem;border-radius:1rem}
+.contact-compact .contact-intro{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:.5rem 1.5rem}
+.contact-compact .contact-intro h2{margin:0;font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.1}
+.contact-compact .contact-intro p{margin:0;max-width:60ch;font-size:.92rem;line-height:1.5}
+.contact-compact .contact-meta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.35rem 1.25rem;margin:.2rem 0 0;color:rgba(247,251,250,.76);font-size:.75rem;line-height:1.4;position:relative;z-index:1}
+.contact-compact .contact-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:0;position:relative;z-index:1}
+.contact-compact .contact-option{display:flex;align-items:center;justify-content:space-between;gap:.7rem;min-width:0;padding:.75rem .9rem;background:rgba(255,255,255,.07);border:1px solid rgba(185,231,226,.25);border-radius:.75rem;color:#f7fbfa;text-decoration:none;transition:background .18s ease,border-color .18s ease}
+.contact-compact .contact-option:hover{background:rgba(255,255,255,.13);border-color:rgba(143,224,215,.8)}
+.contact-compact .contact-option:focus-visible{outline:3px solid #8fe0d7;outline-offset:3px}
+.contact-compact .contact-option strong,.contact-compact .contact-option small{display:block}
+.contact-compact .contact-option strong{font-size:.9rem;line-height:1.3}
+.contact-compact .contact-option small{margin-top:.2rem;color:rgba(247,251,250,.72);font-size:.74rem;line-height:1.35}
+.contact-compact .option-arrow{flex:0 0 auto;color:#8fe0d7;font-size:1.1rem}
+@media(max-width:920px){.contact-compact .contact-intro{grid-template-columns:1fr;gap:.55rem}.contact-compact .contact-options{grid-template-columns:1fr}.contact-compact .contact-meta{display:flex}}
+@media(max-width:680px){.contact.contact-compact{padding:1.2rem 1rem;gap:.85rem}.contact-compact .contact-option{padding:.7rem .8rem}.contact-compact .contact-meta{display:grid;gap:.35rem}}
+
+
+</style>
+
+
+<style>
+/* Friendlier direct-contact card */
+.contact-compact .contact-links-row{align-items:stretch;gap:.75rem 1rem}
+.contact-compact .email-contact-card{display:flex;align-items:center;gap:.8rem;flex:1 1 28rem;min-width:0;padding:.8rem 1rem;border:1px solid rgba(185,231,226,.28);border-radius:.9rem;background:rgba(255,255,255,.07)}
+.contact-compact .email-card-icon{display:grid;place-items:center;flex:0 0 2.35rem;width:2.35rem;height:2.35rem;border-radius:.7rem;background:rgba(143,224,215,.13);color:#8fe0d7;font-size:1.1rem}
+.contact-compact .email-card-copy{display:grid;gap:.18rem;min-width:0;flex:1}
+.contact-compact .email-card-label{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,251,250,.68)}
+.contact-compact .email-card-copy a{font-size:clamp(.78rem,1.4vw,.94rem);font-weight:650;overflow-wrap:anywhere;color:#fff;text-decoration:none}
+.contact-compact .email-card-copy a:hover{text-decoration:underline;text-underline-offset:3px}
+.contact-compact .email-copy-btn{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;flex-shrink:0;border:1px solid rgba(255,255,255,.3);border-radius:.65rem;padding:.55rem .7rem;background:transparent;color:#fff;font:600 .75rem/1.2 inherit;cursor:pointer;white-space:nowrap}
+.contact-compact .email-copy-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(143,224,215,.7)}
+.contact-compact .catalogue-link{display:inline-flex;align-items:center;gap:.4rem;align-self:center;padding:.7rem .9rem;border:1px solid rgba(143,224,215,.38);border-radius:.7rem;color:#b9f0e9;text-decoration:none;font-size:.84rem;font-weight:600}
+.contact-compact .catalogue-link:hover{background:rgba(143,224,215,.1);text-decoration:none}
+@media(max-width:520px){.contact-compact .email-contact-card{flex-wrap:wrap}.contact-compact .email-card-copy{flex-basis:calc(100% - 3.2rem)}.contact-compact .email-copy-btn{margin-left:3.15rem}.contact-compact .catalogue-link{width:100%;justify-content:center}}
+</style>
+
+<style>
+/* Match the email and catalogue cards in size and alignment */
+.contact-compact .contact-links-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: .75rem;
+}
+.contact-compact .email-contact-card,
+.contact-compact .catalogue-link {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 76px;
+  height: 100%;
+  margin: 0;
+  padding: .8rem 1rem;
+  border-radius: .9rem;
+}
+.contact-compact .catalogue-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .8rem;
+  border: 1px solid rgba(185,231,226,.28);
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+.contact-compact .catalogue-link > span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 2.35rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  margin: 0;
+  border-radius: .7rem;
+  background: rgba(143,224,215,.13);
+  color: #8fe0d7;
+  font-size: 1.1rem;
+}
+.contact-compact .catalogue-link:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(143,224,215,.55);
+  text-decoration: none;
+}
+@media (max-width: 600px) {
+  .contact-compact .contact-links-row { grid-template-columns: minmax(0, 1fr); }
+  .contact-compact .email-contact-card,
+  .contact-compact .catalogue-link { min-height: 76px; }
+}
+</style>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><path id="g-abia" d="m 291.01165,491.65874 0.6,0.77 4.83,-0.89 2.71,0.27 2.05,1.34 0.33,1.46 0,0 0.07,4.36 -0.55,2.86 0.05,0.73 0.94,1.03 14.09,0.86 1.24,1.86 0.22,2.19 0.7,1.04 3.21,2.33 1.34,0.21 0,0 1.08,1.29 -0.59,3.72 0.15,3.78 1.37,4.63 0.73,1.68 1.71,2 0.76,2.55 -0.6,1.21 -3.42,-0.76 0,0 -2.69,-2.61 -2.54,-0.84 -2.76,-2.14 -0.58,-2.11 -1.19,-1.47 -3.4,-0.91 -2.42,0.14 -0.28,0.91 0.53,3.51 -1.84,5.1 0.32,0.45 2.23,-0.16 -0.7,2.44 -0.73,0.9 -6.08,-0.16 -1.1,0.98 -0.07,0.75 1.07,1.94 -1.21,5.81 -0.03,2.4 0.66,2.49 -1.17,2.89 -2.52,1.94 0.09,0.77 -0.47,0.64 0.22,1.47 0.59,0.67 0.02,1.17 -0.67,1.62 1.79,3.37 0.13,1.85 0,0 -2.36,-1.79 -2.94,-1.41 -1.8,0.43 -3.28,-1.22 -2.79,0.12 -1.11,0.64 -3.13,0.58 -1.8,-0.27 -1.45,-1.41 -0.59,-1.1 0.16,-1.1 1.37,-3.7 3.42,-4.33 2.39,-4.19 -0.05,-2.78 -0.66,-1.72 -0.54,-0.05 0,0 3.09,-10.25 2.1,-3.87 1.82,-1.68 1.18,-3.04 0.89,-0.9 0.43,-2.01 -0.36,-3.45 0.28,-2.05 -1.51,-2.44 1.23,-0.77 -0.38,-8.47 -0.47,-1.35 -1.04,-1.45 -5.34,-1.78 -2.01,-1.69 0,0 1.27,-2.22 1.36,-1.3 z"/><path id="g-adamawa" d="m 682.64165,187.16874 -0.13,1.83 -0.82,1.76 -1.02,1.57 -1.1,0.83 -1.77,2.9 -1.36,4.89 -2.66,2.45 -0.48,1.1 -0.61,3.01 0.72,3.61 0.77,1.06 0,1.7 -1.61,1.66 -0.26,4.61 -0.97,1.67 0.13,3.45 -0.78,1.94 -2.05,2.57 -0.26,3.02 -1.61,1.04 -1.44,2.61 -5.87,1.16 -4.18,5.88 0.15,0.98 1.54,1.62 0.04,0.64 -1.15,2.74 -1.85,1.39 -0.03,1.77 0.69,1.6 2.69,1.33 1.01,1.59 -2.16,3.09 -0.13,2.25 -0.54,1.29 0.27,1.11 -1.08,1.47 0.33,0.78 -0.22,1.41 0.43,0.63 -0.74,2.2 -1.02,1.64 -0.97,-0.13 -1.7,1.32 -8.01,0.82 -2.75,2.16 -1.62,0.29 -3.76,3.39 -3.76,1.98 0.09,1.34 2.37,0.27 0.49,0.42 0.09,7.48 -0.73,0.69 -0.83,4.41 0.84,2.07 -1.16,4.03 0.3,1.32 -2.81,4.8 -2.64,2.3 -0.01,1 0.71,0.99 -0.82,2.05 1.27,3.92 -1.13,1.85 -1.09,0.38 -1.67,-0.23 -1.46,0.54 -0.57,1.1 -0.16,2.73 -0.98,0.74 -0.99,1.85 -2.18,0.19 -3.4,2.76 -0.83,0.12 -5.88,-1.64 -0.66,0.66 -0.24,1.71 -1.18,1.16 -0.81,3.05 -1.77,2.34 -2.33,0.14 -1.12,0.89 -2.47,-0.28 -1.85,1.21 -1.91,0.33 -0.72,0.82 -0.68,4.04 1.44,5.22 0.58,5.77 -0.06,1.04 -0.77,0.56 -2.43,4.51 0.62,2.51 0.22,3.73 -4.13,6.35 -3.49,3.09 -1.76,3.01 -0.48,2 -1.12,1.47 -0.41,3.45 -1.11,1.56 0.69,6.14 0.65,1.8 -2.93,1.48 -1.96,0.27 -2.75,3.14 0,0 -1.22,-0.88 0.05,-1.56 -1.94,-4.62 -0.38,-3.54 -0.74,-1.73 0.58,-5.49 -1.04,-2.02 -2.15,-2.6 -4.32,-3.84 -2.5,-3.15 -1.52,-1.12 -1.42,-0.43 -1.64,0.38 -2.83,4.01 -2.72,1.99 -2.71,-2.45 -2.91,-4.7 -2.52,-6.73 0.82,-1.58 4.14,-4.78 3.8,-3.22 5.08,-5.48 8.63,-11.52 6.12,-5.22 0.44,-2.08 -0.38,-5.78 5.99,-11.44 1,-3.62 -0.26,-1.81 -2.02,-3.84 -4.14,-1.47 -2.66,-2.94 -0.34,-3.84 0.46,-2.17 -5.26,-9.82 -2.08,-1.29 -4.65,-1.08 -1.46,-1.92 -5.45,-10.18 0,0 6.2,-0.91 3.37,-1.43 9.4,-5.66 5.75,-4 1.1,-2.33 -0.52,-3.7 0.68,-10.23 0,0 6.34,0.97 2.7,-0.19 4.57,-1.32 1.74,-1.07 1.7,-1.9 3.73,-5.55 6.2,-7.06 2.51,-0.87 6.29,-0.49 5.9,-2.22 2.44,-2.62 0.82,-2.66 3.32,-0.14 2.35,-1.14 2.22,-3.7 2.1,-2.16 2.51,-1.47 8.52,0.79 2.87,1.03 2.58,1.55 2.84,3.11 2.43,1.15 2.38,1.02 4.39,-0.01 1.14,-1.22 1.48,-7.76 2.71,-5.68 1.22,-3.64 0.88,-4.1 0.28,-8.01 3.09,-0.43 0.62,0.74 3.75,1.14 3.86,-0.29 5.62,-1.74 0,0 z"/><path id="g-akwa-ibom" d="m 302.91165,585.31874 0,0.01 0,0 -0.02,-0.02 0,0 0.02,0.01 z m 7.57,-0.7 0.97,0.5 0.92,-0.19 0.88,-0.14 0.33,0.28 -3.58,0.75 -0.49,-0.59 0.97,-0.61 z m 40.31,-7.56 0.88,2.09 -0.76,0.82 -1.07,0.22 -0.22,-1.24 0.56,-0.1 0.35,-0.9 0.26,-0.89 z m -51.56,-11.07 -0.12,-1.85 -1.79,-3.36 0.67,-1.63 -0.02,-1.17 -0.59,-0.67 -0.22,-1.47 0.47,-0.65 -0.09,-0.77 2.52,-1.94 1.18,-2.89 -0.66,-2.49 0.02,-2.41 1.21,-5.81 -1.07,-1.94 0.07,-0.75 1.1,-0.98 6.09,0.16 0.73,-0.9 0.7,-2.44 -2.23,0.16 -0.32,-0.45 1.84,-5.1 -0.53,-3.51 0.29,-0.91 2.42,-0.14 3.4,0.91 1.19,1.47 0.58,2.11 2.75,2.14 2.54,0.84 2.69,2.61 0,0 -0.85,0.1 -1.15,2.45 0.66,1.79 0.84,0.31 0.78,1.94 4.77,-0.56 4.96,2.68 0.4,2.1 -0.61,6.1 1.63,5.13 3.41,4.91 3.19,2.8 3.77,4.33 3.67,2.81 0.59,1.01 0,0 -0.43,2.16 0.79,0.44 0.03,2.5 -0.5,0.45 -0.41,-0.67 -0.07,0.58 1.19,1.17 -0.6,1.8 -0.74,0.19 0.1,1.03 -1.03,1.15 0.24,0.17 -1.05,2.38 -5.23,-0.63 -5.74,-0.07 -10.71,0.55 -12.05,1.68 -0.52,-0.46 -1.82,0.36 -0.93,-0.48 -0.88,0.36 -0.95,-0.09 -0.02,0.03 0.5,0.81 0.27,0.43 -3.32,1.32 -0.98,-1.7 -1.17,-0.65 -0.86,-0.19 -0.96,-1.06 0.38,-0.91 -0.09,-0.12 -0.53,0.5 -0.5,-0.38 0,0 -0.61,-1.17 0.04,-0.64 0.51,-0.32 -0.58,-4.55 0.96,-4.27 -0.63,-2.3 -1.98,-3.47 z"/><path id="g-anambra" d="m 262.67165,444.90874 0.44,0.4 0.09,3.62 3.83,-0.13 2.44,1.41 2.05,0.08 3.73,1.7 0.36,0.79 -1.25,3.45 -0.75,1.08 -1.69,1.14 -1.85,2.48 0.24,0.96 -0.62,0.83 -0.43,2.35 0.39,0.54 3.85,1.16 1.42,1.8 1.34,3.64 1.31,1.85 -0.3,0.96 -0.82,0.29 0.41,1.37 -0.5,1.62 0.72,0.74 1.89,-1.13 0.61,0.13 0.59,2.58 1.33,0.63 -0.35,2.15 1.88,3.79 0.18,1.51 0.76,0.98 2.39,1.4 1.66,-0.96 1.08,0.09 1.12,0.74 -0.04,0.54 0.83,0.17 0,0 -4.4,2.31 -1.36,1.3 -1.27,2.22 0,0 -5.32,1.42 -5.38,-1.25 -6.31,1.16 -1.78,1.04 -0.93,3.55 -2.37,4.61 -2.68,0.27 -4.51,-1.92 -1.62,0.8 -3,3.83 -2.09,0.83 0,0 -2.4,-0.21 -1.11,-1.28 0,0 1.01,-1.17 1.92,-3.9 0.34,-2.64 1.77,-4.69 2.5,-4.55 0.38,-6.01 1.28,-3.65 -1.23,-3.77 -1.48,-7.29 0.08,-1.37 -1.13,-1.13 -2.13,-9.57 0,0 -0.07,-0.29 0,0 1.67,-0.77 3.59,0.66 1.43,-0.89 1.84,-2.51 0.06,-2.73 1.24,-4.12 2.24,-2.31 1.54,-0.86 z"/><path id="g-bauchi" d="m 491.94165,87.518745 7.74,6.19 1.14,2.93 0.77,7.079995 -0.19,1.81 3.16,4.66 0.21,6.74 0.33,2.7 0.95,2.71 0.2,3.87 8.35,20.91 -0.23,4.92 -1.05,2.72 -0.99,6.78 1.63,1.53 3.04,0.37 0,0 -0.8,0.24 -2.71,3.76 -6.04,3.28 -2.57,3.7 -2.01,1.75 -1.49,0.76 -3.91,0.88 -1.44,1.36 -1.38,2.03 -0.97,4.94 -2.61,7.43 -3.61,5.07 -0.2,1.38 7.38,2.99 1.14,1.71 0.87,7.15 0.88,1.15 7.2,2.62 2.08,4.94 -0.48,8.63 0.4,2.86 -0.83,1.76 -3.9,0.63 -1.99,0.92 -1.31,1.91 0.33,1.62 4.29,4.38 2.5,1.41 9.15,7.09 1.23,3.79 0.61,6.19 2.58,5.28 1.69,2.12 -0.13,0.95 -0.58,0.16 0,0 -3.99,-0.03 -6.44,-1.09 -10.59,4.85 -5.85,-0.78 -4.59,2.65 0,0 -6.36,-3.43 -6.18,-4.04 -11.07,-4.74 -9.26,-4.93 -2.57,-0.51 -7.6,-3.95 -3.03,1.78 -0.3,1.44 3.17,4.06 0.27,1.74 -0.5,1.67 -4.76,1.3 -2.89,5.21 -4.39,1.41 -10.04,0.59 -5.47,-1.48 -4.8,-0.27 -1.51,-0.53 -1.56,-1.34 -1.65,-4.07 -0.9,-1.16 -0.79,-0.71 -3.92,-1.42 -0.6,-0.85 0.09,-1.69 2.38,-4.47 0.23,-1.17 -0.26,-5.94 -0.97,-3.13 -1.8,-1.92 -1.06,-0.21 -10.97,2.19 0.04,-12.38 -0.78,-4.8 -2.61,-4.16 -2.78,-0.88 -3.18,-0.08 -1.53,0.49 0,0 -2.53,-2.71 -2.79,-1.75 -0.27,-0.73 2.35,-4.2 0.53,-3.96 0,0 0.99,-0.56 2.59,-4.09 1.33,-3.85 -0.08,-2 -0.77,-1.67 -3.86,-4.33 -0.45,-1.99 -0.4,-6.89 0.45,-3.5 1.6,-4.57 1.02,-0.43 2.7,0.16 2.04,-0.51 2.74,-3.21 2.65,-4.11 4.74,-4.17 0.67,-1.1 2.48,-1.57 1.69,-0.3 1.14,1.07 1.14,0.09 5.52,-2.17 0,0 1,-0.19 6,1.1 7.43,2.41 3.35,-1.46 2.3,0.73 1.78,3.67 3.13,0.21 7.7,-0.48 3.57,-0.91 1.14,0.3 2.67,4.9 0.54,2.15 -0.83,7.85 0.81,2.05 1.35,1.36 5.7,1.19 5.6,-1.39 1.56,0.17 1.86,1.36 2.46,0.62 1.86,-0.57 -1.11,-3.43 0.04,-1.8 1.53,-1.91 2.53,-1.36 4.04,-0.99 1.44,-0.78 1.85,-1.39 1.1,-2.72 -1.04,-1.46 -8.87,-0.56 -5.72,-1.27 -6.39,-0.77 -2.99,-1.85 -5.3,-7.42 -1.05,-2.5 -0.47,-2.57 -3.84,0.94 -1.18,-1.11 -0.55,-1.74 2.51,-5 -0.52,-4.32 -1.46,-4.42 -1.81,-0.5 -2.75,0.27 -2.12,1.03 -2.61,0.04 -1.35,-0.63 0.49,-4.26 3.22,-4.54 6.16,-0.46 5.47,-3.04 10.94,-3.73 6.23,-2.51 1.19,-0.94 -0.03,-2.25 -0.57,-1.88 6.71,-20.589995 4.54,-1.95 3.48,-0.55 0.99,0.82 0.83,1.64 0.12,1.39 z"/><path id="g-benue" d="m 309.66165,367.75874 9.13,2.48 8.51,1.25 8.71,3.55 4.92,2.82 5.25,0.99 1.07,-0.14 3.32,2.8 5.33,2.23 1.14,-1.1 0.09,-1.36 -4.7,-11.64 -0.08,-2.52 1.02,-2.86 1.24,-1.41 3.95,-2.2 1.38,-0.28 2.59,-0.18 2.68,0.44 10.09,3.72 6.86,1.55 4.88,0.41 3.96,-0.22 0.01,-0.7 11.79,8.93 0,0 -3.79,5.97 1.9,0.57 6.12,-2.63 7.47,-0.95 8.18,0.48 7.48,1.77 5.14,4.9 4.44,5.65 8.37,7.57 -0.14,0.65 1.17,1.36 -0.26,1.04 0.56,1.78 -0.59,3.23 -2.38,5.89 0.29,5.92 -0.92,1.43 -3.09,1.94 -3.44,3.25 -3.31,6.16 -2.11,11.5 0.61,0.73 -0.33,1.08 -0.03,8.76 -1.9,8.19 0,0 -0.72,0.3 -2.12,-0.73 -0.78,1.42 0.1,2 -2.82,1.74 -1.79,0.22 -2.78,-0.44 0,0 -0.65,-1.55 -4.88,-6.63 -5.53,-5.73 -1.49,-0.72 -3.09,-0.22 -9.57,2.24 -4.38,-0.44 -1.21,-0.89 0.66,-4.77 -0.56,-1.64 -8.64,-5.38 -5.43,-1.69 -2.11,-0.07 -2.31,0.59 -2.11,0.67 -1.52,1.2 0.77,4.5 -3.14,1.92 -3.13,0.83 -3.84,-0.14 -2.06,-0.67 -1.92,0.45 -1.36,1.75 -2.36,1.96 -2.99,0.49 0,0 -1.7,-2.27 -0.84,-4.26 -1.76,-1.3 -1.02,2.31 -3.41,0.37 -1.77,2.88 -1.92,0.93 -2.95,-0.25 -3.45,0.4 -1.25,8.23 -0.99,2.05 -1.41,0.59 -1.78,-0.74 -4.01,-3.68 -0.65,-1.54 0.17,-0.91 0,0 2.28,-6.42 -0.9,-5.62 -1.42,-2.14 -1.52,-1.15 -2.81,-0.35 -2.21,2.11 -2.1,0.73 -2.92,-1.52 -3.58,-2.76 -2.89,-3.35 -2.74,-6.51 0.13,-0.53 0,0 0.41,-0.5 0.84,0.58 3.37,3.29 0.82,-0.1 1.35,1.05 1.76,0 0.34,-4.42 0.96,-1.44 6.44,-3.12 3.3,-3.11 1.94,-5.83 0.42,-3.93 0.47,-1.29 1.23,-1.21 0.36,-1.81 -1.48,-0.47 -3.31,0.32 -1.27,-1.05 -1.24,-5.53 -0.57,-6.81 -0.01,-6.9 -0.73,-1.85 -2.7,-2.61 -1.88,-3.22 -0.54,-5.87 z"/><path id="g-borno" d="m 662.15165,11.078745 0.7,5.65 -0.83,3 3.49,6.26 -0.2,2.52 -0.46,0.49 0.28,-2.17 -1.04,1.33 -0.22,1.92 2.38,2.55 2.46,0.61 -0.65,0.67 0.28,0.54 0.78,0.19 4.46,7.53 2.83,3.08 1.05,0.22 1.72,0.96 1.63,1.2 3.87,0.75 0.26,0.86 -0.58,-0.01 -0.56,1.1 -0.2,-1.04 -0.66,0.58 -0.74,-0.04 1.44,1.6 0.27,1.76 3.88,-1.16 2.31,-2.61 2.47,-2.02 1.6,-0.67 -1.08,1.76 0.15,0.45 0.65,-0.19 0.57,2.34 -0.33,0.22 -0.67,-1.38 -0.85,0.48 -0.57,1.23 -2.02,0.57 0.67,1.88 -1.19,1.13 -1.86,3.73 0.41,0.77 1.37,-0.45 -0.07,2.44 -0.58,1.15 0.85,0.04 -0.34,1.36 -1.15,1.54 0.4,0.57 1.57,-0.43 0.29,0.55 -2.63,1.39 1.97,0.5 -0.15,0.89 1.2,0.05 -0.75,0.85 -1.32,0.33 0.12,0.42 1.24,-0.23 0.12,0.6 -0.48,0.44 -0.23,-0.37 -1.01,0.23 0.24,0.75 0.74,-0.12 -0.85,1.67 1.51,0.21 0.22,1.34 -0.57,0.74 0.26,1.25 0.97,0.22 0.53,1.21 -0.24,1.15 1.95,0.55 0.34,1.46 0.61,0.52 1.61,-0.95 0.46,0.2 0.71,1.91 1.22,0.71 0.31,1.08 2.16,0.77 -0.03,1.1 0.67,1 -0.37,1.19 0.71,0.64 1.11,0.55 1.41,-0.5 2,0.26 -0.27,1.04 0.83,0.06 0.39,-0.69 1.81,-0.07 1.47,-0.81 2.46,-0.08 0.17,1.22 1.07,0.09 -0.12,0.91 -1.25,0.32 0.22,0.53 -0.38,0.64 0.95,0.28 2.25,2.61 3.42,-0.53 1.03,-0.05 0.43,0.81 1.72,-0.87 2.93,0.87 3.5,-0.35 0.68,0.31 0.85,0.12 1.61,0.34 0.79,1.2 1.27,0.34 0.34,0.87 -0.67,0.02 0.08,1.119995 2.17,1.01 0.7,1.37 -0.72,1.39 2.99,0.77 0.76,1.5 -0.54,0.46 1.13,0.54 0.78,0.12 0.12,-0.49 0.97,-0.08 0.51,-0.51 1.33,2.51 -1.37,1.29 -0.32,1.8 -0.74,0.87 0.68,2 -1.72,1.16 -0.06,1.57 2.2,3.78 -1.21,1.74 0.23,1.35 -2.32,2.77 0.01,1.5 0.29,3.79 -0.7,1.23 -2.81,2.15 -0.06,0.55 1.26,1.72 2.01,1.13 2.16,2.18 0.44,2.16 -0.62,4.68 -1.26,0.93 -6.36,2.57 -3.88,0.9 -1.7,3.09 -8.09,3.17 -3.28,2.07 -1.93,2.65 -4.46,1.94 -2.32,0.04 -2.72,-2.37 -2.52,-0.44 -1.07,-0.83 -1.07,0.16 -0.61,0.76 -0.58,2.32 -2.08,2.36 -0.78,2.68 -0.72,1.05 -1.46,0.96 0.24,1.49 -0.65,0.21 -1.08,1.68 -2.32,2.04 -1.21,2.91 -3.24,1.61 -2.42,0.54 -0.77,0.75 -0.19,1.74 0,0 -5.62,1.74 -3.86,0.29 -3.75,-1.14 -0.62,-0.74 -3.09,0.43 -0.28,8.01 -0.88,4.1 -1.22,3.64 -2.71,5.68 -1.48,7.76 -1.14,1.22 -4.39,0.01 -2.38,-1.02 -2.43,-1.15 -2.84,-3.11 -2.58,-1.55 -2.87,-1.03 -8.52,-0.79 -2.51,1.47 -2.1,2.16 -2.22,3.7 -2.35,1.14 -3.32,0.14 -0.82,2.66 -2.44,2.62 -5.9,2.22 -6.29,0.49 -2.51,0.87 -6.2,7.06 -3.73,5.55 -1.7,1.9 -1.74,1.07 -4.57,1.32 -2.7,0.19 -6.34,-0.97 0,0 -3.91,-2.2 -1.81,-1.6 -3.13,-6.17 -5.66,-2.34 -1.83,-1.82 -2.43,-3.51 -0.81,-2.83 5.18,-7.56 0.62,-3.02 -1.35,-3.3 0,0 3.04,-0.69 3.41,-4.53 -0.28,-8.39 0.61,-2.77 1.72,-2.83 2.66,-1.92 11.21,-3.02 6.11,-3.65 2.09,-3.08 0.24,-2.94 -0.76,-4.15 -0.04,-2.97 0.9,-2.86 2.89,-3.35 3.3,-5.9 4.54,-4.43 0.99,-2.11 -0.84,-3.33 -3.13,-3.75 -4.91,0.21 -0.64,-0.36 -0.15,-1.94 4.72,-9.14 -1.69,-7.44 0.13,-3.5 2.54,-16.29 0.05,-5.789995 -1.72,-3.83 0.55,-2.2 7.06,-6.31 2.37,-3.08 1.84,-4.21 -0.48,-3.74 -4.8,-3.84 -1.45,-1.82 -1.23,-3.85 1.49,-8.02 0.08,-4.21 0,0 1.45,-0.12 4.38,0.88 0.03,-1.19 0.59,-0.41 0.07,-0.74 0.19,-1.71 1.48,-1.33 1.14,0.24 1.35,-0.73 -0.34,-1.16 0.73,-1.08 -0.23,-0.32 -0.89,-0.19 0.4,-1.13 0.77,-1.33 0.8,-1.78 0.64,-0.6 2.28,0.35 1.38,-0.87 0.96,0.09 0.61,0.74 0.96,-1.11 0.23,-1.44 1.34,-0.23 1.47,-0.29 0.29,-0.46 -0.34,-0.4 0.98,-1.17 2.11,-0.48 0.62,-1.24 1.37,-0.78 0.16,-0.79 0.58,-0.74 0.4,-0.74 -0.02,-0.86 1.1,-0.43 0.43,-1.02 -0.81,-0.31 0.57,-0.61 1.23,0.63 -0.29,-1.57 1.1,0.12 0.06,0.47 0.85,0.29 1.1,-0.14 1.87,-1.67 1.02,-0.37 0.32,0.38 1.98,-0.1 1.39,-1.33 1.02,0.49 0.05,-1.08 1.08,-0.36 1.02,0.09 -0.89,1.17 1.47,0.79 0.92,-1.31 1.35,1.04 -0.2,-1.31 1.48,-0.51 -0.31,2.08 0.92,0.12 0.45,-0.97 1.15,-0.25 0.92,1.39 0.96,-2.53 1.66,-0.84 0.02,-0.44 -0.55,-0.19 0.19,-0.71 1.19,0.2 0.64,-0.8 -0.64,-0.17 -0.4,-1.02 1.68,-1.6 -0.06,-0.58 1.49,-0.67 -0.05,-0.93 1.05,-1.06 1.24,-0.24 0.39,-1.06 z"/><path id="g-bayelsa" d="m 251.22165,579.30874 -0.21,-0.62 -0.68,0.1 -3.96,-2.6 -1.2,-4.38 -1.38,-1.87 -1.99,-0.02 -6.54,2.54 -1.04,-0.26 -0.35,-1.94 0.42,-1.46 -3.31,-1.44 -0.5,-0.83 0.07,-4.34 1.9,-2.67 0.76,-2.05 0.03,-1.27 -1.29,0.16 -0.84,-0.78 1.33,-4.44 4.49,-7.84 2.77,0.17 0.55,-0.5 0.75,-2.49 1.54,-0.79 -0.23,-1.81 1.58,-1.07 0.95,-1.48 -0.03,-1.94 -0.63,-1.54 -0.76,-0.58 -1.92,-0.83 -2.94,0.49 -1.04,-0.28 0.77,2.47 -1.2,0.85 -5.08,2.19 -3.49,-0.44 -2.74,0.49 -2.01,4.1 -2.11,0.52 -0.79,-0.6 -1.47,-0.08 -0.36,0.95 0.26,2.31 -2.83,1.56 -1.62,0.56 -3.01,-0.24 -1.23,1.99 -2.31,0.62 -1.89,-0.67 -0.99,-1.66 -2.11,-1.28 -0.75,0.5 -1.48,3.07 -3.3,1.64 -2.62,-0.42 -7.48,4.1 -0.94,-0.37 -2.32,0.4 -1,-1.1 -2.69,-1.6 -3.05,-0.71 -2.9,-1.66 -2.1,-2.1 -0.56,0.72 -0.72,-0.57 -1.43,0.53 -0.36,-0.5 -1.63,0.84 2.36,4.61 1.91,5.81 -0.34,0.79 0.95,1.52 0.35,1.86 4.06,6.77 0.19,1.44 0.94,0.55 0.01,0.17 0.05,1.1 7.5,10.38 1.19,0.62 -0.02,0.75 2.77,1.35 -0.27,0.41 1.05,0.75 0.12,0.65 2.56,1.59 0.19,-0.39 0.31,0.34 -0.22,0.24 0.02,0.34 2.61,2.16 0.48,-0.02 -0.14,-0.77 -0.45,-0.21 1.58,-0.46 -0.76,0.7 0.33,0.72 -0.26,0.27 0.07,0.51 2.32,1.7 5.07,2.36 0.19,-2 -0.79,-0.51 -0.55,-1.25 0.34,0.12 0.29,0.89 0.79,0.22 -0.12,-0.7 0.41,0.03 -0.02,0.7 0.52,0.17 0.26,0.77 -0.62,1.18 0.26,0.43 -0.34,1.3 0.4,0.29 5.18,1.32 0.19,-2.23 0.65,-0.58 0.38,3.84 8.34,-0.7 -0.64,-2.4 1.03,-3.05 0.65,-1.1 -0.29,-1.37 -1.91,-1.15 0.48,-0.05 1.19,0.27 0.96,1.58 0.6,-1.13 -0.55,-0.79 0.09,-2.14 -0.84,-1.35 0.31,-0.74 0.17,1.03 0.69,0.55 0.03,0.38 0.74,2.02 -0.1,3.1 2.72,-2.47 -0.58,-0.63 0.1,-1.94 1.91,-0.6 0.5,-0.63 0.69,1.61 0.12,1.29 -0.48,1.03 0.6,1.32 0.05,1.61 1.34,0.26 1.08,1.51 0.48,-0.05 -0.19,0.33 0.22,0.43 2.17,-0.48 0.19,0.34 -0.62,0.65 1.53,0.79 8.46,-0.91 0.02,-0.48 -0.4,-0.51 -0.07,-0.77 -0.1,-0.34 0.67,-0.86 0.6,-0.58 -0.52,2.04 0.22,0.39 2.03,1.76 0.96,-0.98 3.53,-0.38 -0.5,-2.47 -0.09,-0.38 -0.38,-1.13 -1.15,-0.75 -0.19,-0.99 0.02,-0.19 0.29,-1.06 -0.53,-2.25 -0.41,-0.55 0.35,-0.36 0.76,0.9 1.25,4.2 0.38,-0.58 -0.65,-5.23 1.7,-3.39 0.26,-1.83 z m -78.3,-19.41 0,0 0.01,0.01 -0.01,-0.01 z m 59.51,37.48 -8.22,0.99 -2.8,-0.1 -0.22,-0.7 1.36,-2.52 0.15,-0.02 0.45,0.04 0.14,-1.3 1.98,-2.19 0.12,-0.31 0.43,-0.89 0.45,-0.19 -0.59,-0.77 -0.18,-1.3 0.55,-0.35 1.03,-0.19 0.9,1.34 -0.5,1.33 0.78,1.62 -0.22,1.57 1.63,0.44 0.65,0.92 2.11,2.58 z"/><path id="g-cross-river" d="m 348.48165,451.12874 2.99,-0.49 2.36,-1.96 1.36,-1.75 1.92,-0.45 2.06,0.67 3.84,0.14 3.13,-0.83 3.14,-1.92 -0.77,-4.5 1.52,-1.2 2.11,-0.67 2.31,-0.59 2.11,0.07 5.43,1.69 8.64,5.38 0.56,1.64 -0.66,4.77 1.21,0.89 4.38,0.44 9.57,-2.24 3.09,0.22 1.49,0.72 5.53,5.73 4.88,6.63 0.65,1.55 0,0 -2.17,8.34 -5.15,-2.21 -0.78,1.84 -0.02,1.98 -0.58,0.73 -1.08,0.94 -2.8,4.86 -3.23,0.94 -1.63,1.19 -1.2,1.18 -0.95,2.5 -0.99,0.97 -8.72,7.77 -3.81,2.73 -1.12,0.33 -1.64,2.3 -1.69,0.87 -1.3,1.48 0.4,0.86 1.36,1.04 -1.05,1.48 0.4,0.83 -0.45,0.96 -1.47,1.87 -0.57,-0.58 0.05,1.5 5.1,5.64 0.31,1.76 -2.4,4.05 -0.64,2.4 -1.12,1.36 0.21,3.89 -1.81,5.88 0.15,6.56 -2.54,4.2 -1.89,0.77 -0.08,0.84 -1.34,1.04 -1.22,3.3 -1.25,1.04 0.97,1.02 -0.9,0.35 -0.98,1.24 0.05,0.57 -1.01,0.38 0.09,1.76 -1.97,0.75 -1.02,1.25 -0.02,0.96 1.2,1.14 0.34,1.53 -2.42,1.46 -1.09,-0.24 -0.68,-0.72 -1.03,0.82 -0.64,1.52 -0.75,0.53 -0.16,1.47 0.67,0.07 0.6,-1.75 0.26,2.51 -0.36,0.56 -0.43,-0.67 -0.6,0.14 0.58,1.44 -1.48,0.27 0.06,0.76 -1.78,0.29 -1.47,-0.6 0.51,-1.77 1.07,-0.12 -1.27,-1.61 -0.8,1.22 -1.16,0.48 -2.07,-0.46 -0.65,-1.15 0.77,-0.7 0.21,-0.16 -0.31,-0.91 -1.36,0.41 -1.13,-0.63 -2.38,2.18 0,0 -0.59,-1.01 -3.67,-2.81 -3.78,-4.34 -3.18,-2.8 -3.41,-4.91 -1.63,-5.13 0.61,-6.1 -0.39,-2.1 -4.96,-2.68 -4.77,0.56 -0.79,-1.94 -0.83,-0.31 -0.66,-1.79 1.15,-2.45 0.85,-0.1 0,0 3.42,0.76 0.6,-1.21 -0.76,-2.55 -1.71,-2 -0.73,-1.68 -1.37,-4.63 -0.15,-3.78 0.59,-3.72 -1.08,-1.29 0,0 0.38,-2.39 2.34,-3.11 -0.36,-2.66 1.46,-1.26 0.34,-1.35 1.98,-2.29 0.08,-2.42 -1.14,-1.8 0.19,-0.98 2.27,-1.08 2.62,-0.18 2.69,4.5 1.34,-2.08 2.16,-0.77 2.2,-1.71 0.28,-1.31 1.88,-0.29 2.18,1.26 0.84,-0.91 0.68,-2.3 0.1,-2.59 0.8,-1.47 6.92,-8.39 0.02,-1.4 -1.86,-2.6 -0.01,-1.6 1.65,-1.63 2.19,-0.37 0.83,-1.7 -0.24,-1.05 -1.38,-1 -0.41,-1.5 -0.52,-0.37 0.1,-1.94 -1.28,-1.12 -0.5,-1.71 -2.7,-1.87 -1.99,-2.62 z"/><path id="g-delta" d="m 252.45165,479.95874 -1.48,-7.29 0.08,-1.37 -1.13,-1.13 -2.13,-9.57 -1.88,2.04 -4.1,-0.38 -3.73,0.81 -8.19,5.12 -7.35,3.1 -4.03,4.53 -0.64,0.05 -2.58,-3.94 -1.01,-0.42 -1.67,-0.31 -1.78,1.58 -0.89,2.03 -0.15,2.37 0.4,0.75 1.46,0.81 0.54,4.82 2.03,3.59 1.96,2.42 1.88,1.46 2.23,0.81 0.29,1.75 -0.7,3.24 -1.55,1.91 -1.63,1.66 -3.08,2.03 -2.29,3.07 -2.78,1.99 -1.81,0.6 -5.23,1.04 -2.13,-0.56 0.7,-1.8 -1.6,-1.61 2.04,-4.03 -0.47,-0.83 -3.91,-2.35 -2,-2.83 -4.67,-2.62 -3.17,-1.25 -1.64,-1.34 -5.12,1.85 -1.85,2.38 -1.77,-0.4 -2.27,-1.98 -1.38,-0.29 -3.17,0.67 -2.98,-0.72 -0.99,0.31 -0.63,0.3 -0.06,1.03 0.89,1.57 -0.52,1.06 -4.1,3.22 -1.66,0.07 -0.05,-2.47 -0.66,-2.55 0.7,-2.93 -0.15,-1.43 -1.66,-1.67 -5.43,-2.8 -6.9,16.74 2.48,4.48 1.39,0.88 0.58,-1.6 1.31,-1.25 7.76,-4.22 1.26,-0.22 1.85,-1.28 1.13,-0.54 0.36,0.51 -0.02,0.17 -2,0.95 -1.01,1.6 -0.07,0.26 -0.83,-0.53 -2.25,0.98 -3.18,2.51 -0.34,0.75 -1.98,-0.45 -1.05,0.82 -0.79,3.14 0.26,1.54 2.63,4.5 3.18,3.14 1.12,-0.53 3.01,-1.34 2.97,0.41 0.74,-3.16 1.15,-2.15 -0.02,-0.38 0.4,-0.3 0,0.01 0.38,0.12 -0.23,0.14 -0.24,1.9 -1.12,2.27 1,2.13 1.91,0.63 1.63,-0.27 1.58,-3.18 1.6,0.1 0.19,-0.25 0,0.01 2.99,1.54 1.12,0.67 0.19,0.48 -1.19,-0.34 0.27,0.77 0.1,1.32 -1.33,-0.35 0.97,-0.67 -0.33,-1.34 -1.12,-0.72 -3.13,-0.29 -0.6,0.14 0.09,1.63 -0.55,1.13 -2.34,1.97 1,-1.58 -1.79,0.15 -2.1,-0.55 -4.44,-0.67 -1.96,0.19 -0.12,0.84 -1.62,1.08 -1.26,1.67 2.77,3.96 3.04,2.61 6.04,2.63 5.09,0.29 0.02,-0.65 -1.19,-1.39 -0.95,-2.9 -0.26,-0.45 0.07,-0.74 0.47,-0.12 -0.19,0.82 1,2.2 0.83,-0.6 0.36,0 -0.07,0.22 -0.95,1.08 0.26,0.5 2.65,1.12 0.57,-0.21 1.65,-4.8 0.84,-1.46 0.96,-0.62 -0.64,-0.33 3.2,0.12 0.48,0.15 1.05,-0.46 0.46,-1.13 0.74,-0.38 1.12,0.17 0.95,0.91 0.61,-0.66 0.09,0.23 -0.12,0.75 -0.89,0.04 -1.38,-0.94 -1.01,1.68 -1.58,0.79 -1.81,-0.12 0.22,0.86 -0.96,-0.98 -1.32,0.36 -0.55,3.02 0.27,1.32 0.58,1.08 0.45,0.72 3.36,1.09 -0.3,0.8 -1.55,-1.12 -0.65,0.36 -0.03,0.7 -0.07,0.22 -0.49,0.13 0.32,-1.47 -0.31,-0.12 -0.43,-0.34 -0.45,-0.46 -0.45,0.48 -0.74,0.5 -0.36,0.53 -0.79,0.12 -1.12,0.57 0.91,0.46 2.05,-0.1 -2.97,0.96 -0.4,0.63 -1,-1.61 -0.6,0.05 -0.28,-0.02 -2.53,0.15 -1.17,0.63 -0.07,-0.39 -0.69,-0.07 -0.41,-0.31 -0.67,0.22 -0.83,-0.43 0.05,2.44 1.91,7.63 -0.24,1.66 2.08,2.26 2.05,-0.88 2.65,-0.17 -0.89,-1.35 -0.09,-1.12 0.15,-0.24 0.5,-2.38 0.29,-0.03 -0.15,0.6 0.15,0.41 -0.52,2.69 0.88,0.55 -0.1,1.53 -0.8,0.31 2.1,2.1 2.9,1.66 3.05,0.71 2.69,1.6 1,1.1 2.32,-0.4 0.94,0.37 7.48,-4.1 2.62,0.42 3.3,-1.64 1.48,-3.07 0.75,-0.5 2.11,1.28 0.99,1.66 1.89,0.67 2.31,-0.62 1.23,-1.99 3.01,0.24 1.62,-0.56 2.83,-1.56 -0.26,-2.31 0.36,-0.95 1.47,0.08 0.79,0.6 2.11,-0.52 2.01,-4.1 2.74,-0.49 3.49,0.44 5.08,-2.19 1.2,-0.85 -0.77,-2.47 -0.57,-1.04 0.21,-0.44 3.52,-1.81 0.19,-5.3 0.7,-1.48 2.05,-1.42 0.89,-1.75 0.82,-3.18 -1.09,-3.54 0.23,-0.35 1.01,-1.17 1.92,-3.9 0.34,-2.63 1.76,-4.69 2.5,-4.55 0.38,-6.01 1.27,-3.65 -1.18,-3.74 z"/><path id="g-ebonyi" d="m 319.74165,453.93874 -0.17,0.91 0.65,1.54 4.01,3.68 1.78,0.74 1.41,-0.59 0.99,-2.05 1.25,-8.23 3.45,-0.4 2.95,0.25 1.92,-0.93 1.77,-2.88 3.41,-0.37 1.02,-2.31 1.76,1.3 0.84,4.26 1.7,2.27 0,0 0.49,2.89 1.99,2.62 2.7,1.87 0.5,1.71 1.28,1.12 -0.1,1.94 0.52,0.37 0.41,1.5 1.38,1 0.24,1.05 -0.83,1.7 -2.19,0.37 -1.65,1.63 0.01,1.6 1.86,2.6 -0.02,1.4 -6.92,8.39 -0.8,1.47 -0.1,2.59 -0.68,2.3 -0.84,0.91 -2.18,-1.26 -1.88,0.29 -0.28,1.31 -2.2,1.71 -2.16,0.77 -1.34,2.08 -2.69,-4.5 -2.62,0.18 -2.27,1.08 -0.19,0.98 1.14,1.8 -0.08,2.42 -1.98,2.29 -0.34,1.35 -1.46,1.26 0.36,2.66 -2.34,3.11 -0.38,2.39 0,0 -1.34,-0.21 -3.21,-2.33 -0.7,-1.04 -0.22,-2.19 -1.24,-1.86 -14.09,-0.86 -0.94,-1.03 -0.05,-0.73 0.55,-2.86 -0.07,-4.36 0,0 3.63,-1.01 1.99,1.7 0.77,0.09 2.11,2.51 0.73,0.07 0.65,-1.44 -0.8,-2.92 -0.15,-2.64 2.67,-2.73 0.8,-1.73 -0.99,-6.64 -0.62,-2.55 -1.08,-1.07 0.02,-1.23 2.74,-6.11 0.01,-5.82 -0.65,-1.15 -0.38,-3.29 -1.48,-4.9 6.45,0.55 z"/><path id="g-edo" d="m 208.35165,395.48874 0.77,0.64 1.75,-0.37 0.7,0.36 0.28,0.68 -0.38,0.89 0.46,0.65 2.18,-0.25 0.27,0.8 -0.96,1.85 -0.23,1.93 0.28,1.05 1.08,0.78 2.13,0.53 5.94,-2.93 1.56,2.1 0.65,-0.07 1.26,1.41 0.55,-0.06 1.96,2.23 2.26,-0.19 0.74,-0.51 2.56,0.15 1.06,2.01 0.07,1.22 0.85,0.61 0.48,1.74 0.74,0.56 -0.24,0.51 0.66,1.63 3.75,-0.84 0.43,0.38 1.46,-0.99 1.87,-0.41 1.75,1.41 0.55,2.12 1.45,1.08 0.79,2.01 0.15,3.41 -0.31,1.92 -1.62,3.94 0.06,4.16 -1.91,4.82 -2.16,3.55 1.28,2.15 -0.93,5.52 0.89,2.6 1.41,2.01 1.03,6.03 0,0 0.07,0.29 0,0 -1.88,2.03 -4.09,-0.38 -3.73,0.81 -8.19,5.11 -7.35,3.1 -4.03,4.53 -0.65,0.04 -2.58,-3.94 -1.01,-0.41 -1.66,-0.32 -1.79,1.59 -0.89,2.02 -0.15,2.37 0.4,0.75 1.46,0.81 0.54,4.82 2.03,3.58 1.96,2.42 1.88,1.46 2.23,0.81 0.28,1.74 -0.69,3.24 -1.55,1.91 -1.62,1.66 -3.08,2.03 -2.3,3.07 -2.77,1.99 -1.81,0.6 -5.24,1.04 -2.13,-0.57 0.7,-1.8 -1.6,-1.61 2.03,-4.03 -0.47,-0.83 -3.9,-2.35 -2,-2.83 -4.68,-2.62 -3.16,-1.25 -1.64,-1.34 -5.12,1.85 -1.85,2.38 -1.77,-0.4 -2.27,-1.98 -1.38,-0.29 -3.17,0.67 -2.97,-0.72 -0.99,0.31 -0.64,0.3 -0.06,1.03 0.89,1.57 -0.52,1.06 -4.09,3.23 -1.66,0.07 -0.05,-2.47 -0.66,-2.55 0.71,-2.93 -0.15,-1.43 -1.66,-1.67 -5.43,-2.79 0,0 0.39,-1.16 -1.23,-2.26 -1.33,-1.04 -1.56,-0.09 -1.65,-2.94 -1.94,-1.36 -0.7,-0.06 -0.44,-0.91 0.25,-0.59 -0.28,0.44 0.8,-0.7 0.96,-3.63 0.58,-0.61 2.95,-0.87 0.84,-3.74 1.74,-1.71 0.84,-1.96 0.35,-1.72 -0.57,-1.45 -1.4,-2.28 -1.23,-0.64 0,-2.84 0.81,-0.98 -0.1,-2.22 0.49,-0.96 1.75,-1.62 0.45,-1.03 1.73,-0.8 0.79,-2.27 0.96,-0.69 0.09,-1.95 0.45,-0.78 2.2,-1.01 2.13,0.4 2.28,-0.38 1.68,0.36 6.64,0.11 3.29,-0.38 1.64,0.34 1.74,2.08 -2.01,2.26 2.1,5.46 0.74,-0.03 3.77,-3.16 1.34,0.12 1.19,1.48 0.81,0.35 2.68,-1.02 1.51,-3.39 0.95,-4.96 0.25,-0.25 1.19,0.51 0.01,-1.63 0.88,-0.52 -0.15,-0.81 -1.18,-1.28 0.61,-4.64 1.24,-1.66 1.52,-0.73 0.37,-0.85 -0.32,-0.84 3.23,-6.89 -0.15,-1.39 0.47,-1.04 1.76,-1.83 2.15,-1.05 1.43,-3.54 -0.43,-0.28 -0.77,-2.48 0.87,-2.89 -2.01,-0.82 -0.4,-0.84 0.18,-1.39 1.41,-1.72 1.56,0.14 0.89,-0.6 z"/><path id="g-ekiti" d="m 148.66165,367.10874 0.41,-0.17 0.61,1.67 1.03,0.49 4.48,-1.25 0.95,0.37 1.47,2.06 0.95,0.49 2.33,-0.23 2.3,0.62 1.95,-0.58 1.29,0.55 1.04,-2.16 -0.29,-0.63 0.82,-2.22 4.11,-1.34 5.76,-0.09 0,0 -1.09,0.42 -0.03,4.28 0.55,0.45 2.48,-1.42 3.67,-0.64 2.31,0.27 0.56,0.7 -0.28,1.37 -1.34,0.64 -2.29,3.01 -0.08,1.56 1.32,3.75 1.32,0.96 1.28,0.03 1.85,1.69 6.82,2.39 0,0 -1.52,2.4 -0.82,0.3 -1.5,-1.25 -1.86,0.39 -0.85,2.06 -2.18,1.45 -2.4,2.48 -1.13,2.14 -1.71,8.1 -1.7,3.92 -3.05,4.43 -5.53,3.49 -2.27,-0.59 -1.09,-2.68 0.16,-0.86 -1.04,-3.19 -1.42,-2.22 -1.55,-0.52 -6.97,0.31 -7.78,-0.44 -4.55,1.45 0,0 -0.83,-1.7 -0.84,-3.79 -2.85,-6.11 -0.69,-4.78 1.19,-3.99 -0.81,-2.81 0.12,-1.4 1.9,-4.25 1.62,-1.5 2.18,-0.94 1.99,-1.64 z"/><path id="g-enugu" d="m 262.67165,444.90874 2.73,-5.01 0.91,0.25 0.18,2.28 0.74,0.05 1.33,2.01 0.69,0.34 1.24,-0.33 4.97,-5.39 5.98,-3.86 6.18,-7.42 2.44,-0.91 2.14,-2.1 3.31,-0.76 2.44,0.75 1.11,1.62 0,0 -0.13,0.53 2.74,6.51 2.89,3.35 3.58,2.76 2.92,1.52 2.1,-0.73 2.21,-2.11 2.81,0.35 1.52,1.15 1.42,2.14 0.9,5.62 -2.28,6.42 0,0 -1.79,0.36 -6.45,-0.55 1.48,4.9 0.38,3.29 0.65,1.15 -0.01,5.82 -2.74,6.11 -0.02,1.23 1.08,1.07 0.62,2.55 0.99,6.64 -0.8,1.73 -2.67,2.73 0.15,2.64 0.8,2.92 -0.65,1.44 -0.73,-0.07 -2.11,-2.51 -0.77,-0.09 -1.99,-1.7 -3.63,1.01 0,0 -0.33,-1.46 -2.05,-1.34 -2.71,-0.27 -4.83,0.89 -0.6,-0.77 0,0 -0.83,-0.17 0.04,-0.54 -1.12,-0.74 -1.08,-0.09 -1.66,0.96 -2.39,-1.4 -0.76,-0.98 -0.18,-1.51 -1.88,-3.79 0.35,-2.15 -1.33,-0.63 -0.59,-2.58 -0.61,-0.13 -1.89,1.13 -0.72,-0.74 0.5,-1.62 -0.41,-1.37 0.82,-0.29 0.3,-0.96 -1.31,-1.85 -1.34,-3.64 -1.42,-1.8 -3.85,-1.16 -0.39,-0.54 0.43,-2.35 0.62,-0.83 -0.24,-0.96 1.85,-2.48 1.69,-1.14 0.75,-1.08 1.25,-3.45 -0.36,-0.79 -3.73,-1.7 -2.05,-0.08 -2.44,-1.41 -3.83,0.13 -0.09,-3.62 z"/><path id="g-fct" d="m 287.74165,288.29874 6.12,-0.63 3.2,0.32 1.52,0.85 1.13,-0.85 1.81,-3.04 1.06,-0.54 1.07,0.43 1.47,3.11 0.94,0.31 1.18,-0.79 0,0 -0.07,2.44 -0.42,0.62 -1.03,0.07 -0.53,0.61 -2.11,6.52 -0.08,5.62 0.51,2.19 -0.55,7 -1.98,5.27 -1.52,7.95 -0.79,0.36 -1.08,3.4 -1.04,1.64 -3.78,4.62 -6.96,3.64 -4.63,1.06 -2.91,1.2 -11.13,1.75 0,0 -1.4,0.46 -7.46,-0.15 0,0 -1.83,0.21 -1.42,-0.47 -1.95,-4.91 0.46,-1.37 -0.75,-30.21 0.36,-13.66 0.34,-0.38 2.68,-0.33 11.03,-0.47 1.76,0.63 9.19,8.1 0.94,-0.24 z"/><path id="g-gombe" d="m 517.00165,163.43874 0.91,-0.88 4.17,-1.51 4.04,0.17 2.98,1.01 2.18,1.29 8.49,6.26 4.75,6.4 3.42,3.58 -1,1.54 1.58,-1.02 3.68,3.38 0.67,4.87 -1.2,11.85 0.77,6.45 0.3,0.51 6.78,-0.01 0,0 1.35,3.3 -0.62,3.02 -5.18,7.56 0.81,2.83 2.43,3.51 1.83,1.82 5.66,2.34 3.13,6.17 1.81,1.6 3.91,2.2 0,0 -0.68,10.23 0.52,3.7 -1.1,2.33 -5.75,4 -9.4,5.66 -3.37,1.43 -6.2,0.91 0,0 -6.37,0.47 -12.46,-0.02 -5.9,0.6 -3.57,-0.71 0,0 0.58,-0.16 0.13,-0.95 -1.69,-2.12 -2.58,-5.28 -0.61,-6.19 -1.23,-3.79 -9.15,-7.09 -2.5,-1.41 -4.29,-4.38 -0.33,-1.62 1.31,-1.91 1.99,-0.92 3.9,-0.63 0.83,-1.76 -0.4,-2.86 0.48,-8.63 -2.08,-4.94 -7.2,-2.62 -0.88,-1.15 -0.87,-7.15 -1.14,-1.71 -7.38,-2.99 0.2,-1.38 3.61,-5.07 2.61,-7.43 0.97,-4.94 1.38,-2.03 1.44,-1.36 3.91,-0.88 1.49,-0.76 2.01,-1.75 2.57,-3.7 6.04,-3.28 2.71,-3.76 z"/><path id="g-imo" d="m 283.98165,497.48874 2.01,1.69 5.34,1.78 1.04,1.45 0.47,1.35 0.38,8.47 -1.23,0.77 1.51,2.44 -0.28,2.05 0.36,3.45 -0.43,2.01 -0.89,0.9 -1.18,3.04 -1.82,1.68 -2.1,3.87 -3.09,10.25 0,0 -2.57,0.95 -4.52,-1.13 -2.13,0.04 -4.15,1.06 -4.69,-1.11 -6.72,0.14 -2.14,-0.41 -2.16,-1.65 -1.72,-3.4 -1.84,-1.3 -0.26,-1.37 1.09,-2.76 0.52,-4.63 -0.45,-1.66 -2.12,-0.77 -3.46,0.67 -1.51,-0.44 2.75,-13.09 0,0 2.09,-0.83 3,-3.83 1.62,-0.8 4.51,1.92 2.68,-0.27 2.37,-4.61 0.93,-3.55 1.78,-1.04 6.31,-1.16 5.38,1.25 z"/><path id="g-jigawa" d="m 434.10165,67.298745 1.79,1.18 6,0.73 3.14,-1.8 2.1,-3.99 5.32,-2.59 3.16,-0.63 2.82,-1.37 6.33,-1.96 2.21,1.25 2.13,4.78 0.69,4.35 1.46,2.53 1.12,-0.72 5.86,-1.86 4.99,2.22 2.03,-0.61 1.85,0.88 2.21,3.4 1.76,11.53 0.87,2.9 0,0 -11.06,6.93 -0.12,-1.39 -0.83,-1.64 -0.99,-0.82 -3.48,0.55 -4.54,1.95 -6.71,20.589995 0.57,1.88 0.03,2.25 -1.19,0.94 -6.23,2.51 -10.94,3.73 -5.47,3.04 -6.16,0.46 -3.22,4.54 -0.49,4.26 1.35,0.63 2.61,-0.04 2.12,-1.03 2.75,-0.27 1.81,0.5 1.46,4.42 0.52,4.32 -2.51,5 0.55,1.74 1.18,1.11 3.84,-0.94 0.47,2.57 1.05,2.5 5.3,7.42 2.99,1.85 6.39,0.77 5.72,1.27 8.87,0.56 1.04,1.46 -1.1,2.72 -1.85,1.39 -1.44,0.78 -4.04,0.99 -2.53,1.36 -1.53,1.91 -0.04,1.8 1.11,3.43 -1.86,0.57 -2.46,-0.62 -1.86,-1.36 -1.56,-0.17 -5.6,1.39 -5.7,-1.19 -1.35,-1.36 -0.81,-2.05 0.83,-7.85 -0.54,-2.15 -2.67,-4.9 -1.14,-0.3 -3.57,0.91 -7.7,0.48 -3.13,-0.21 -1.78,-3.67 -2.3,-0.73 -3.35,1.46 -7.43,-2.41 -6,-1.1 -1,0.19 0,0 -0.08,-2.24 1.08,-3.72 7.12,-6.88 -0.89,-1.15 -2.09,-0.53 -2.83,-2.64 -1.48,-2.75 -0.5,-2 -1.09,-0.99 -5.06,0.15 -0.2,-1.96 0.5,-2.09 3.36,-4.69 0.19,-2.05 1.06,-1.84 -0.19,-2.46 -2.28,-7.18 -1.25,0.53 -1.47,1.75 -2.32,1.42 -1.82,0.18 -1.37,-0.25 -0.01,-2.57 -0.57,-1.44 -3.14,0.25 -1.9,1.19 0,-1.03 -1.65,-0.72 0.53,-1.72 1.18,-1.39 0.08,-5.61 -0.8,-2.94 -0.92,-0.81 -1.85,-0.56 -5.44,-0.56 -0.83,-0.42 -1.02,-1.389995 0.57,-2.01 -1.1,-3.08 -3.81,-2.12 -1.13,-1.38 -0.45,-5.92 -7.78,-2.02 -3.77,0.35 -3.99,1.93 -1.73,1.35 -0.62,2.6 -1.87,3.61 -1.07,-1.12 -0.1,-1.96 -3.51,-6.28 0,0 -1.24,-2.62 -0.83,-0.7 -4.94,-0.12 -2.86,-0.93 -0.59,-0.72 -0.07,-3.85 0.75,-3.4 -0.02,-2.69 0.46,-0.3 10.39,-1.38 5.37,0.99 9.22,-0.78 1.17,1.23 1.41,4.68 0.68,0.94 2.66,1.67 1.99,0.52 2.62,-1.51 0.64,1.56 1.49,0.7 3.68,-0.55 4.18,-1.74 3.19,-2.58 1.03,-2.63 0.58,-0.75 2,-0.88 0.01,-0.86 0,0 1.27,-0.39 10.06,0.44 9.02,1.42 5.24,-0.75 6.06,0.78 10.03,0.45 z"/><path id="g-kaduna" d="m 316.55165,159.39874 3.09,0.02 2.44,-0.67 4.18,-3.83 4.8,-2.84 1.65,0 4.08,-1.24 1.22,0.19 1.13,0.82 0.32,1.25 -2.11,4.02 0.53,2.57 1.04,1.18 3.53,1.83 3.75,1.23 3.51,4.13 1.53,0.55 2.78,-0.03 2.45,0.59 5.38,4.43 3.59,6.42 0.38,3.88 -1.01,2.44 -1.01,4.91 1.2,6.05 -0.2,1.73 -0.72,1.1 -3.55,0.96 -0.55,0.79 0.6,2.08 1.06,1.07 7.02,0.97 1.98,2.75 1.6,1.05 3,0.64 1.05,-0.29 0,0 -0.53,3.96 -2.35,4.2 0.27,0.73 2.79,1.75 2.53,2.71 0,0 -0.37,0.29 -0.21,2.9 -0.55,1.43 -1.32,1.56 -2.19,0.73 -1.9,1.4 -2.13,4.97 -0.22,2.71 1.36,2.82 0.75,3.52 -2.39,1.97 -0.34,1.1 0.18,1.97 -0.7,7.81 0.53,2.1 -0.42,1.07 -1.91,1.55 -0.4,3.08 -1.76,1.28 0.21,4.74 -1.05,1.4 0.1,1.16 3.26,5.28 2.57,3.08 1.71,1.21 1,2.09 0.12,3.41 -1.67,3.94 0,0 -1.09,0.57 -2.65,5.61 -3.31,5.4 -0.82,0.72 -1.61,0.42 -2.47,-0.13 -0.6,-1.9 -5.34,-5.91 -3.81,-0.24 -1.5,-1.25 -1.33,-0.22 -1.29,0.98 -0.89,1.9 -4.16,4.75 -2.35,1.6 -1.15,0.21 -1.34,-0.96 -0.4,-1.31 0.05,-9.7 -1.03,-1.61 -4.22,-2.44 -0.32,-3.25 -2.93,-2.67 -1.1,-0.39 -1.01,0.35 -1.65,2.12 -0.94,2.54 -2.31,2.1 -1.1,0 -1.75,-1.06 -1.34,0.25 -2.44,-1.79 -0.93,-0.14 -1.5,0.61 -0.7,-0.79 -0.6,-1.88 -0.75,-0.11 -1.34,1.02 0,0 -1.18,0.79 -0.94,-0.31 -1.47,-3.11 -1.07,-0.43 -1.06,0.54 -1.81,3.04 -1.13,0.85 -1.52,-0.85 -3.2,-0.32 -6.12,0.63 0,0 -1.23,-0.42 -2.46,0.6 1.38,-4.13 -3.39,-2.78 0.09,-2.32 0.56,-0.93 2.45,-1.29 0.79,-0.87 0.6,-2.79 3.09,-3.17 -0.58,-1.88 -3,-1.62 0.83,-3.02 -3.62,-1.36 -1.13,-0.77 -0.17,-0.91 0.29,-0.64 0.88,-0.42 3.23,-0.41 0.63,-1.51 -0.1,-3.09 -0.92,-3.88 -0.16,-5.06 -0.33,-1.01 -1.37,-0.67 -12.87,0.08 -6.67,-2.49 -1.71,-1.66 -1.03,-1.98 0.91,-1.24 2.17,-1.36 1.62,-1.68 0.85,-1.48 4.24,-2.6 1.02,-1.79 0.31,-1.98 -3.23,-1.75 -4.83,-1.66 1.35,-4.14 0.05,-2.57 -1.98,-3.8 -1.61,-0.44 -2.25,0.67 -1.39,-0.14 -0.28,-4.5 -0.48,-1.92 -0.61,-0.51 -4.73,-0.5 -1.18,1.2 0.67,2.39 -0.64,0.98 -3.97,-0.56 -7.63,2.86 -1.04,-2.66 -1.02,-1 -2.91,0.13 -2.1,0.61 -2.46,1.5 -5.59,4.5 -5.38,7.01 -1.41,0.89 -1.43,-0.6 -1.22,-3.52 -3.05,-2 -0.22,-1.37 0.33,-2.31 1.84,-1.8 -0.24,-3.81 0.74,-2 -0.14,-1.48 -1.44,-2.38 0.4,-4.79 3.04,-5.38 0,0 1.68,-0.12 1.28,-0.76 2.86,-4.16 5.27,-4.71 5.64,-0.95 7.94,0.57 4.71,-0.62 2.33,-1.51 3.04,-3.1 1.51,-3.23 0.64,-3.55 1.71,-3.41 0.85,-1.14 2.75,-1.77 2.34,-2.38 1.01,0.03 0,0 4.41,0.88 1.94,-0.18 1.36,0.9 0.79,1.74 -0.23,1.07 -2.89,2.69 -0.39,1.32 6.35,1.93 4.25,4.29 1.75,0.23 2.69,-1.52 1.38,-1.91 -1.81,-3.36 -0.12,-2.04 3.45,-1.09 1.95,0.11 2.77,1.1 1.4,-0.09 0.58,-0.54 -0.01,-1.39 1.2,-2.97 3.06,-2.59 1.39,-0.28 6.78,2.29 2.05,1.73 0.97,1.58 1.57,0.78 5.62,-2.24 0.84,-2.05 z"/><path id="g-kebbi" d="m 90.771651,42.718745 6.62,-0.14 1.86,0.74 4.629999,-1.58 0.76,0.31 1.65,2.12 3.19,1.82 1.06,1.1 9.56,3.12 2.95,2.07 3.06,0.68 1.82,-0.43 0.63,-0.56 2.49,-3.69 1.16,-0.31 1.08,0.88 0.4,1.25 -1.62,3.93 0.09,2.4 -1.42,2.98 -0.42,3.7 1.86,2.15 1.8,4.28 -0.18,3.32 -1.3,6.06 0.04,2.04 1.68,5.52 -0.24,8.02 -0.64,1.56 -1.02,0.04 -3.17,-2.04 -2.68,0.02 -3.95,1.18 -1.28,1.48 -1.01,3.779995 -0.14,9.94 0.79,13.05 -2.12,9.79 -2.61,5.63 -1.16,4.77 2.55,3.65 0.76,0.51 2.78,0.29 1.71,-1.35 2.4,-3 12,-5.45 1.69,-0.12 1.89,0.86 2.04,-0.72 0.77,1.75 0.94,0.07 1.62,-0.97 0,0 0.86,-0.48 1.82,0 4.11,2.25 6.34,-1.46 0.82,-2.32 1.06,-0.62 0.79,-0.15 0.91,0.64 2.09,0.31 3.61,-0.65 1.08,0.57 1.69,3.3 2.87,0.11 3.65,2.41 5.47,-0.76 3.79,0.5 2.49,-0.59 1.22,-0.81 4.85,0.62 4.35,1.77 1.41,2.15 -0.01,2.47 -2.05,6.49 0,1.2 5.38,2.71 1.93,3.01 1.38,7.58 0.21,5.48 0,0 -1.36,-1.1 -1.85,-0.36 -3.42,2.76 -1.28,2.2 -3.93,0.41 -12.1,5.08 -10.67,0.69 -1.64,-1.25 -0.36,-4.02 0.37,-4.81 -0.48,-1.78 -3.75,-2.47 -0.81,-1.26 -0.98,-6.51 -1.69,-1.6 -2.84,-0.71 -3.64,-0.04 -9.86,1.59 -7.87,1.83 -4.43,1.62 -4.85,2.59 -1.37,2.07 0.16,1.54 0.87,1.26 3.63,2.01 5.4,2.19 5.36,0.53 1.05,2.01 1.71,-0.03 0.78,0.74 1.12,6.56 -0.25,1.07 -2.18,1.45 -0.63,1.47 0.49,1.45 2.74,1.63 1.17,1.36 -0.07,2.07 -1.01,1.49 -3.8,0.97 -5.22,2.64 -5,-0.52 -1.55,0.42 -0.9,0.75 -0.04,9.59 -0.45,1.37 1.25,2.83 1.81,1.97 1.86,3.03 0.75,2.44 -0.28,1.53 -1.77,2.13 -2.64,1.57 -3.38,0.26 -7.42,2.5 -0.5,5.85 -0.56,0.48 -4.32,-0.46 -1.42,-0.99 -0.02,-2.28 1.03,-3.28 0.29,-3.94 -2.93,-2.66 -1.12,-2.41 0.18,-6.32 1.46,-3.26 1.84,-2 1.48,-1.01 3.92,-1.44 4.62,-4.43 2.43,-10.71 0.2,-4.05 -0.51,-0.74 -2.89,-1.06 -1.58,0.1 -8.4,-5.7 -5.24,-1.69 -2.94,0.07 -4.5,0.85 -6.189999,-0.36 -12.17,0.81 -1.86,-0.29 -3.49,-1.42 -11.04,-6.08 -2.89,-0.36 -0.89,0.52 0,0 -1.29,-0.01 -12.13,-10.28 4.33,-20.39 2.12,-4.71 4.89,-4.18 -0.82,-3.26 -2.42,-1.82 -0.57,-4.87 3.17,-3.84 -2.36,-8.76 0.39,-5.22 1.27,-4.3 -0.93,-15.849995 10.82,-9.33 7.73,-6.05 9.53,-14.62 2.08,-9.63 z"/><path id="g-kano" d="m 347.91165,83.288745 3.51,6.28 0.1,1.96 1.07,1.12 1.87,-3.61 0.62,-2.6 1.73,-1.35 3.99,-1.93 3.77,-0.35 7.78,2.02 0.45,5.92 1.13,1.38 3.81,2.12 1.1,3.08 -0.57,2.01 1.02,1.389995 0.83,0.42 5.44,0.56 1.85,0.56 0.92,0.81 0.8,2.94 -0.08,5.61 -1.18,1.39 -0.53,1.72 1.65,0.72 0,1.03 1.9,-1.19 3.14,-0.25 0.57,1.44 0.01,2.57 1.37,0.25 1.82,-0.18 2.32,-1.42 1.47,-1.75 1.25,-0.53 2.28,7.18 0.19,2.46 -1.06,1.84 -0.19,2.05 -3.36,4.69 -0.5,2.09 0.2,1.96 5.06,-0.15 1.09,0.99 0.5,2 1.48,2.75 2.83,2.64 2.09,0.53 0.89,1.15 -7.12,6.88 -1.08,3.72 0.08,2.24 0,0 -5.52,2.17 -1.14,-0.09 -1.14,-1.07 -1.69,0.3 -2.48,1.57 -0.67,1.1 -4.74,4.17 -2.65,4.11 -2.74,3.21 -2.04,0.51 -2.7,-0.16 -1.02,0.43 -1.6,4.57 -0.45,3.5 0.4,6.89 0.45,1.99 3.86,4.33 0.77,1.67 0.08,2 -1.33,3.85 -2.59,4.09 -0.99,0.56 0,0 -1.05,0.29 -3,-0.64 -1.6,-1.05 -1.98,-2.75 -7.02,-0.97 -1.06,-1.07 -0.6,-2.08 0.55,-0.79 3.55,-0.96 0.72,-1.1 0.2,-1.73 -1.2,-6.05 1.01,-4.91 1.01,-2.44 -0.38,-3.88 -3.59,-6.42 -5.38,-4.43 -2.45,-0.59 -2.78,0.03 -1.53,-0.55 -3.51,-4.13 -3.75,-1.23 -3.53,-1.83 -1.04,-1.18 -0.53,-2.57 2.11,-4.02 -0.32,-1.25 -1.13,-0.82 -1.22,-0.19 -4.08,1.24 -1.65,0 -4.8,2.84 -4.18,3.83 -2.44,0.67 -3.09,-0.02 0,0 -3.6,-2.68 -1.11,-2.26 -0.78,-3.61 1.52,-2.67 0.07,-2.21 1.82,-1.63 3.75,-1.03 2.45,-1.7 2.71,-0.07 0.95,-0.58 -3.14,-7.8 0.67,-4.06 -2.09,-4.58 0.86,-6.33 -0.7,-12.32 0.27,-2.89 2.18,-2.28 4.25,-2.369995 7.64,-2.38 3.68,-1.93 0.78,-0.85 1.13,-4.39 2.14,-4.61 1.28,-0.52 z"/><path id="g-kogi" d="m 219.65165,323.91874 2.2,0.57 2.77,1.58 3.52,3.25 2.77,4.32 2.55,8.25 3.71,2.3 2.71,2.69 5.47,7.27 2.72,2.54 1.63,0.25 0.33,-0.35 0.62,-2.89 1.24,-2.53 0.19,-0.26 0.99,0.88 0.46,-0.09 0.06,-2.97 3.57,-1.74 1.12,-3.25 0,0 7.46,0.15 1.4,-0.46 0,0 -0.6,2.64 -1.55,2.66 0,0.86 0.82,1.69 2.19,2.66 0.54,6.17 -1.17,4.71 -0.04,4.69 -1.61,1.67 -0.85,2.12 -0.17,3.74 0.69,0.56 4.26,-2.95 9.26,-4.07 12.4,-3.37 7.07,-0.7 3.58,0.68 7.7,0.57 0,0 -0.32,2.84 0.54,5.87 1.88,3.22 2.7,2.61 0.73,1.85 0.01,6.9 0.57,6.81 1.24,5.53 1.27,1.05 3.31,-0.32 1.48,0.47 -0.36,1.81 -1.23,1.21 -0.47,1.29 -0.42,3.93 -1.94,5.83 -3.3,3.11 -6.44,3.12 -0.96,1.44 -0.34,4.42 -1.76,0 -1.35,-1.05 -0.82,0.1 -3.37,-3.29 -0.84,-0.58 -0.41,0.5 0,0 -1.11,-1.62 -2.44,-0.75 -3.31,0.76 -2.14,2.1 -2.44,0.91 -6.18,7.42 -5.98,3.86 -4.97,5.39 -1.24,0.33 -0.69,-0.34 -1.33,-2.01 -0.74,-0.05 -0.18,-2.28 -0.91,-0.25 -2.73,5.01 0,0 0,0 0,0 -1.34,1.87 -1.54,0.86 -2.24,2.31 -1.24,4.12 -0.06,2.73 -1.84,2.51 -1.43,0.89 -3.59,-0.66 -1.67,0.77 0,0 -1.03,-6.03 -1.41,-2.01 -0.89,-2.6 0.93,-5.52 -1.28,-2.15 2.16,-3.55 1.91,-4.82 -0.06,-4.16 1.62,-3.94 0.31,-1.92 -0.15,-3.41 -0.79,-2.01 -1.45,-1.08 -0.55,-2.12 -1.75,-1.41 -1.87,0.41 -1.46,0.99 -0.43,-0.38 -3.75,0.84 -0.66,-1.63 0.24,-0.51 -0.74,-0.56 -0.48,-1.74 -0.85,-0.61 -0.07,-1.22 -1.06,-2.01 -2.56,-0.15 -0.74,0.51 -2.26,0.19 -1.96,-2.23 -0.55,0.06 -1.26,-1.41 -0.65,0.07 -1.56,-2.1 -5.94,2.93 -2.13,-0.53 -1.08,-0.78 -0.28,-1.05 0.23,-1.93 0.96,-1.85 -0.27,-0.8 -2.18,0.25 -0.46,-0.65 0.38,-0.89 -0.28,-0.68 -0.7,-0.36 -1.75,0.37 -0.77,-0.64 0,0 -0.23,-0.78 -4.74,-4.17 -2.04,-2.7 0.71,-4.14 -2.51,-0.43 -4.62,0.88 0,0 -6.82,-2.39 -1.85,-1.69 -1.28,-0.03 -1.32,-0.96 -1.32,-3.75 0.08,-1.56 2.29,-3.01 1.34,-0.64 0.28,-1.37 -0.56,-0.7 -2.31,-0.27 -3.67,0.64 -2.48,1.42 -0.55,-0.45 0.03,-4.28 1.09,-0.42 0,0 0.75,-1.44 -0.82,-2.41 -4.76,-2.58 -0.13,-0.59 -2.42,-1.81 -0.07,-0.67 -2.41,-2.45 -1.92,-3.7 0.17,-0.99 2.14,-2.43 2.29,-3.91 3.71,-4.04 3.6,-2.29 1.77,2.62 2.17,1.76 7.04,3.01 1.84,0.08 2.76,1.08 3.71,-0.21 2.13,0.69 3.92,-0.12 6.3,1.52 3.03,-0.5 1.57,-3.76 0.64,-6.49 2.31,-7.79 z"/><path id="g-katsina" d="m 322.66165,35.138745 9.16,1.35 5.19,1.38 3.58,1.94 2.92,2.5 2.73,0.73 9.89,9.64 3.29,-0.88 2.92,0.38 3.03,1.55 2.29,1.75 1.85,2.11 1.04,2.44 2.96,1.37 5.26,1.27 12.11,3.92 0,0 -0.01,0.86 -2,0.88 -0.58,0.75 -1.03,2.63 -3.19,2.58 -4.18,1.74 -3.68,0.55 -1.49,-0.7 -0.64,-1.56 -2.62,1.51 -1.99,-0.52 -2.66,-1.67 -0.68,-0.94 -1.41,-4.68 -1.17,-1.23 -9.22,0.78 -5.37,-0.99 -10.39,1.38 -0.46,0.3 0.02,2.69 -0.75,3.4 0.07,3.85 0.59,0.72 2.86,0.93 4.94,0.12 0.83,0.7 1.24,2.62 0,0 -4.63,0.36 -1.28,0.52 -2.14,4.61 -1.13,4.39 -0.78,0.85 -3.68,1.93 -7.64,2.38 -4.25,2.369995 -2.18,2.28 -0.27,2.89 0.7,12.32 -0.86,6.33 2.09,4.58 -0.67,4.06 3.14,7.8 -0.95,0.58 -2.71,0.07 -2.45,1.7 -3.75,1.03 -1.82,1.63 -0.07,2.21 -1.52,2.67 0.78,3.61 1.11,2.26 3.6,2.68 0,0 -0.99,1.1 -0.84,2.05 -5.62,2.24 -1.57,-0.78 -0.97,-1.58 -2.05,-1.73 -6.78,-2.29 -1.39,0.28 -3.06,2.59 -1.2,2.97 0.01,1.39 -0.58,0.54 -1.4,0.09 -2.77,-1.1 -1.95,-0.11 -3.45,1.09 0.12,2.04 1.81,3.36 -1.38,1.91 -2.69,1.52 -1.75,-0.23 -4.25,-4.29 -6.35,-1.93 0.39,-1.32 2.89,-2.69 0.23,-1.07 -0.79,-1.74 -1.36,-0.9 -1.94,0.18 -4.41,-0.88 0,0 0.02,-2.33 1.25,-6.1 -0.9,-3.69 -1.91,-1.9 -0.16,-1.07 0.45,-3.76 1.56,-4.14 0.65,-4 1.5,-0.84 6.61,-0.13 1.28,0.87 4.88,-3.97 0.55,-3.2 3.34,0.81 1.89,-1.62 -0.5,-1.95 -1.16,-1.43 -2.68,-2.29 -2.53,-1.16 -1.26,-1.21 1.82,-3.63 1.09,-5.16 -0.95,-2.47 0.13,-1.68 -0.69,-3.05 -2.5,-5.199995 0.4,-3.57 -1.31,-3.21 -0.39,-4.75 -1,-5.17 0.07,-6.05 -0.99,-6.17 1.44,-10.82 0,0 4.86,-1.57 5.28,-5.36 8.7,0.78 3.58,-0.74 23.4,-14.15 1.28,-0.33 z"/><path id="g-kwara" d="m 62.361651,236.35874 5.38,-0.92 11.32,-0.35 3.62,0.93 13.98,15.86 1.99,3.1 5.609999,6.48 2.29,1.58 1.7,-0.18 1.04,0.48 0.27,2.94 -0.73,4.65 0.06,5.38 0.88,3.68 1.3,0.39 7.57,-0.79 0.84,0.74 0.43,1.62 -0.19,3.43 0.35,1.4 0.66,1.02 3.21,2.41 3.04,0.39 1.07,0.55 0.9,2.11 0.74,5.45 1.89,1.32 2,-0.01 9.16,-3.56 2.41,-0.16 6.35,3.01 1.42,1.1 6.35,7.23 2.25,0.69 3.96,-1.16 4.52,0.81 3.73,1.61 0.64,-0.27 11.77,7.32 5.19,3.67 0.93,1.49 1.46,0.71 1.84,0.6 4.92,0.32 3.39,-0.91 7.52,-0.31 8.26,1.71 0,0 -2.46,3.35 -2.31,7.79 -0.64,6.49 -1.57,3.76 -3.03,0.5 -6.3,-1.52 -3.92,0.12 -2.13,-0.69 -3.71,0.21 -2.76,-1.08 -1.84,-0.08 -7.04,-3.01 -2.17,-1.76 -1.77,-2.62 -3.6,2.29 -3.71,4.04 -2.29,3.91 -2.14,2.43 -0.17,0.99 1.92,3.7 2.41,2.45 0.07,0.67 2.42,1.81 0.13,0.59 4.76,2.58 0.82,2.41 -0.75,1.44 0,0 -5.76,0.09 -4.11,1.34 -0.82,2.22 0.29,0.63 -1.04,2.16 -1.29,-0.55 -1.95,0.58 -2.3,-0.62 -2.33,0.23 -0.95,-0.49 -1.47,-2.06 -0.95,-0.37 -4.48,1.25 -1.03,-0.49 -0.61,-1.67 -0.41,0.17 0,0 -0.39,-0.54 -1.67,0.8 -3.49,0.13 -1.48,-3.17 -2.18,-0.58 -4.74,1.7 -2.65,-0.38 0.08,0.88 -0.18,-0.85 -0.36,0.09 -3.55,1.61 -2.6,0.31 -8.27,-0.22 0,0 -0.49,-0.66 -1.45,-0.07 -0.71,-0.94 -1.9,-4.81 -0.39,-2.77 -0.78,-0.66 -0.03,-0.8 -3.46,-2.25 -2.95,-4.24 -1.22,-3.44 -0.09,-2.1 -0.79,-2.77 -1.97,-2.63 -2.999999,-7.11 -1.66,-1.91 -1.32,-5.29 -0.81,-1.58 1.03,-4.5 2.08,-1.55 0.35,-1.6 0.57,-0.59 3.159999,-2.09 2.34,-3.16 -0.16,-1.3 -1.31,-0.78 -2.829999,1.8 -2.21,0.08 -3.83,-1.08 -1.1,0.13 -2.4,-1.54 -5.7,-1.74 -3.25,-2.42 -1.69,-2.04 -0.54,-2.48 -4.08,-2.46 -2.04,0.09 -3.82,2.08 -1.69,3.71 -0.02,2.65 -0.45,1.11 -4.42,3.43 -6.64,2.92 -5.79,3.3 -2.49,1.94 -1.13,0.26 -3.01,2.21 -7,3.26 -0.93,0.15 -0.53,-0.75 -0.45,0.11 -0.91,-1.13 -0.69,-0.19 -2.57,0.27 -6.93,5.53 -1.66,0.66 -3.91,3.44 -0.19,0.99 -1.5,0.79 -4.08,0.72 -3.17,0.02 -3.19,2.78 0,0 0.56,-1.78 -0.59,-1.36 -0.01,-3.54 -0.71,-0.9 0.24,-1.44 0.55,-1.39 -0.39,-2.71 -0.97,-1.79 0.74,-1.4 1.43,-0.91 -0.4,-3.34 0.69,-0.23 0.34,-1.72 -0.2,-0.62 0.02,-0.88 0.69,-1.64 0.43,-1.56 -0.41,-0.76 -0.27,-0.77 -0.35,-0.78 0.13,-1.17 0.25,-1.73 0.16,-0.69 5.37,0.18 0.71,-0.16 1.05,-1.18 3.55,-0.56 0.66,0.82 1.24,0.45 1.49,-0.1 4.95,-1.73 0.25,-1.76 1.95,-3.88 0.17,-3.74 1.91,-1.88 -0.34,-5.82 -1.28,-4.01 0.31,-1.42 1.16,-1.88 2.47,-1.38 0.82,-1.83 2.59,-3.62 0.85,-3.1 1.04,-0.59 2.14,0.25 2.09,-1.73 0.1,-1.22 -1.34,-2.56 -0.32,-1.93 0.37,-1.34 1.11,-1.22 6.75,-2.7 3.39,0.24 1.14,-0.3 2.02,-2.06 0.12,-1.3 2.36,-2.59 0.57,-2.41 0.25,-4.97 0.85,-1.1 2.08,-0.86 z"/><path id="g-lagos" d="m 3.411651,463.64874 1.25,0.4 3.41,-0.43 1.94,0.89 3.46,-2.44 0,-1.61 0.41,-0.11 3.55,0.53 13.71,-0.19 1.06,-1.01 0.77,-3.95 2.08,-1.65 0.09,-2.35 1.36,-2.51 1.85,0.25 3.41,1.43 1.2,0.8 0.81,1.43 4.57,-0.48 -0.51,-1.45 1.59,-1.06 37.58,0.39 1.07,0.21 0.54,0.9 -2.73,2.88 -0.23,0.94 0.73,1.24 0.04,1.46 2.19,1.09 3.22,-2.16 3.45,-0.41 1.06,1.48 0.12,0.95 -1.12,1.06 -2.8,1.31 -0.56,1.03 0.22,0.7 0.92,0.74 2.77,0.77 1.13,1.31 0.58,0.14 1.12,-0.58 5.269999,0.65 0.35,1.25 -0.36,2.36 0,0 -9.529999,-1.15 -2.19,-0.67 -12.02,-1.84 -8.59,-0.46 -9.91,0.94 -15.11,0.16 -0.57,0.31 -0.19,1.32 -0.53,-0.1 0.24,0.34 -5.42,-0.82 -6.02,0.01 -21.6,0.73 -9.49,1.1 -0.36,-3.11 z"/><path id="g-nassarawa" d="m 307.24165,287.46874 1.34,-1.02 0.75,0.11 0.6,1.88 0.7,0.79 1.5,-0.61 0.93,0.14 2.44,1.79 1.34,-0.25 1.75,1.06 1.1,0 2.31,-2.1 0.94,-2.54 1.65,-2.12 1.01,-0.35 1.1,0.39 2.93,2.67 0.32,3.25 4.22,2.44 1.03,1.61 -0.05,9.7 0.4,1.31 1.34,0.96 1.15,-0.21 2.35,-1.6 4.16,-4.75 0.89,-1.9 1.29,-0.98 1.33,0.22 1.5,1.25 3.81,0.24 5.34,5.91 0.6,1.9 2.47,0.13 1.61,-0.42 0.82,-0.72 3.31,-5.4 2.65,-5.61 1.09,-0.57 0,0 1.69,1.65 2.42,0.11 2.08,0.85 0.63,4.48 1.93,3.41 2.16,0.98 5.32,0.56 3.7,0 2.77,-1.35 1.04,0.56 2.01,2.21 -0.79,2.93 -2.7,4.01 -2.11,1.98 -1.41,0.2 -1.46,1.05 -1.55,2.86 -1.55,1.36 -0.32,2.25 0.64,1.72 2.09,2.43 0.32,1.24 -0.3,5.41 1.44,2.07 5.15,2.71 3.66,1.3 8.19,-0.15 9.76,-2.79 10.36,4.33 2.52,2.07 1.46,2.68 0,0 -2.58,3.68 -2.74,0.82 -4.51,-0.95 -0.33,-0.41 -1.52,0.23 -1,-1.07 -1.73,-0.9 -1.86,0 -1.28,0.86 -1.33,2.14 -0.73,2.86 1.71,1.36 2.03,2.51 0.35,2.88 -0.54,0.65 1,2.68 -0.11,1.19 -11.23,7.21 -1.21,1.39 0,0 -11.79,-8.93 -0.01,0.7 -3.96,0.22 -4.88,-0.41 -6.86,-1.55 -10.09,-3.72 -2.68,-0.44 -2.59,0.18 -1.38,0.28 -3.95,2.2 -1.24,1.41 -1.02,2.86 0.08,2.52 4.7,11.64 -0.09,1.36 -1.14,1.1 -5.33,-2.23 -3.32,-2.8 -1.07,0.14 -5.25,-0.99 -4.92,-2.82 -8.71,-3.55 -8.51,-1.25 -9.13,-2.48 0,0 -7.7,-0.57 -3.58,-0.68 -7.07,0.7 -12.4,3.37 -9.26,4.07 -4.26,2.95 -0.69,-0.56 0.17,-3.74 0.85,-2.12 1.61,-1.67 0.04,-4.69 1.17,-4.71 -0.54,-6.17 -2.19,-2.66 -0.82,-1.69 0,-0.86 1.55,-2.66 0.6,-2.64 0,0 11.13,-1.75 2.91,-1.2 4.63,-1.06 6.96,-3.64 3.78,-4.62 1.04,-1.64 1.08,-3.4 0.79,-0.36 1.52,-7.95 1.98,-5.27 0.55,-7 -0.51,-2.19 0.08,-5.62 2.11,-6.52 0.53,-0.61 1.03,-0.07 0.42,-0.62 z"/><path id="g-niger" d="m 65.001651,173.89874 0.89,-0.52 2.89,0.36 11.04,6.08 3.49,1.42 1.86,0.29 12.17,-0.81 6.189999,0.36 4.5,-0.85 2.94,-0.07 5.24,1.69 8.4,5.7 1.58,-0.1 2.89,1.06 0.51,0.74 -0.2,4.05 -2.43,10.71 -4.62,4.43 -3.92,1.44 -1.48,1.01 -1.84,2 -1.46,3.26 -0.18,6.32 1.12,2.41 2.93,2.66 -0.29,3.94 -1.03,3.28 0.02,2.28 1.42,0.99 4.32,0.46 0.56,-0.48 0.5,-5.85 7.42,-2.5 3.38,-0.26 2.64,-1.57 1.77,-2.13 0.28,-1.53 -0.75,-2.44 -1.86,-3.03 -1.81,-1.97 -1.25,-2.83 0.45,-1.37 0.04,-9.59 0.9,-0.75 1.55,-0.42 5,0.52 5.22,-2.64 3.8,-0.97 1.01,-1.49 0.07,-2.07 -1.17,-1.36 -2.74,-1.63 -0.49,-1.45 0.63,-1.47 2.18,-1.45 0.25,-1.07 -1.12,-6.56 -0.78,-0.74 -1.71,0.03 -1.05,-2.01 -5.36,-0.53 -5.4,-2.19 -3.63,-2.01 -0.87,-1.26 -0.16,-1.54 1.37,-2.07 4.85,-2.59 4.43,-1.62 7.87,-1.83 9.86,-1.59 3.64,0.04 2.84,0.71 1.69,1.6 0.98,6.51 0.81,1.26 3.75,2.47 0.48,1.78 -0.37,4.81 0.36,4.02 1.64,1.25 10.67,-0.69 12.1,-5.08 3.93,-0.41 1.28,-2.2 3.42,-2.76 1.85,0.36 1.36,1.1 0,0 3.32,4.4 3.8,6.64 1.59,4.09 -0.07,0.84 0,0 -3.04,5.38 -0.4,4.79 1.44,2.38 0.14,1.48 -0.74,2 0.24,3.81 -1.84,1.8 -0.33,2.31 0.22,1.37 3.05,2 1.22,3.52 1.43,0.6 1.41,-0.89 5.38,-7.01 5.59,-4.5 2.46,-1.5 2.1,-0.61 2.91,-0.13 1.02,1 1.04,2.66 7.63,-2.86 3.97,0.56 0.64,-0.98 -0.67,-2.39 1.18,-1.2 4.73,0.5 0.61,0.51 0.48,1.92 0.28,4.5 1.39,0.14 2.25,-0.67 1.61,0.44 1.98,3.8 -0.05,2.57 -1.35,4.14 4.83,1.66 3.23,1.75 -0.31,1.98 -1.02,1.79 -4.24,2.6 -0.85,1.48 -1.62,1.68 -2.17,1.36 -0.91,1.24 1.03,1.98 1.71,1.66 6.67,2.49 12.87,-0.08 1.37,0.67 0.33,1.01 0.16,5.06 0.92,3.88 0.1,3.09 -0.63,1.51 -3.23,0.41 -0.88,0.42 -0.29,0.64 0.17,0.91 1.13,0.77 3.62,1.36 -0.83,3.02 3,1.62 0.58,1.88 -3.09,3.17 -0.6,2.79 -0.79,0.87 -2.45,1.29 -0.56,0.93 -0.09,2.32 3.39,2.78 -1.38,4.13 2.46,-0.6 1.23,0.42 0,0 -8.65,12.34 -0.94,0.24 -9.19,-8.1 -1.76,-0.63 -11.03,0.47 -2.68,0.33 -0.34,0.38 -0.36,13.66 0.75,30.21 -0.46,1.37 1.95,4.91 1.42,0.47 1.83,-0.21 0,0 -1.12,3.25 -3.57,1.74 -0.06,2.97 -0.46,0.09 -0.99,-0.88 -0.19,0.26 -1.24,2.53 -0.62,2.89 -0.33,0.35 -1.63,-0.25 -2.72,-2.54 -5.47,-7.27 -2.71,-2.69 -3.71,-2.3 -2.55,-8.25 -2.77,-4.32 -3.52,-3.25 -2.77,-1.58 -2.2,-0.57 0,0 -8.26,-1.71 -7.52,0.31 -3.39,0.91 -4.92,-0.32 -1.84,-0.6 -1.46,-0.71 -0.93,-1.49 -5.19,-3.67 -11.77,-7.32 -0.64,0.27 -3.73,-1.61 -4.52,-0.81 -3.96,1.16 -2.25,-0.69 -6.35,-7.23 -1.42,-1.1 -6.35,-3.01 -2.41,0.16 -9.16,3.56 -2,0.01 -1.89,-1.32 -0.74,-5.45 -0.9,-2.11 -1.07,-0.55 -3.04,-0.39 -3.21,-2.41 -0.66,-1.02 -0.35,-1.4 0.19,-3.43 -0.43,-1.62 -0.84,-0.74 -7.57,0.79 -1.3,-0.39 -0.88,-3.68 -0.06,-5.38 0.73,-4.65 -0.27,-2.94 -1.04,-0.48 -1.7,0.18 -2.29,-1.58 -5.609999,-6.48 -1.99,-3.1 -13.98,-15.86 -3.62,-0.93 -11.32,0.35 -5.38,0.92 0,0 0.49,-3.02 -1.96,-0.7 -2.1,-2.02 -1.75,-3.54 3.08,-6.97 -0.14,-1.69 0.89,-1.14 2.58,-1.33 6.08,3.19 1,-3.12 0.25,-2.99 2.82,-6.43 -0.66,-6.2 -2.69,-1.9 -2.97,-5.6 1.21,-4.6 0.13,-2.04 -1.23,-5.05 -2.13,-0.82 0.42,-1.95 -0.28,-1.95 0.51,-1.95 z"/><path id="g-ogun" d="m 0.96165097,375.38874 5.97000003,-4.29 3.49,-0.21 1.9,0.93 1.24,1.79 0.41,1.43 0.15,6.48 0.56,2.36 1.31,2.17 0.84,0.13 0.94,-5.56 0.57,-1.25 0.47,-0.45 1.37,0 0.88,0.61 0.54,1.75 -0.16,3.09 -1.74,5.98 -0.41,-0.24 -0.51,0.57 0.52,3.66 2.12,2.51 3.05,2.47 1.02,3.04 3.2,4.51 3.01,2.36 2.34,1.13 4.05,0.28 1.74,-0.49 2.78,-3.97 1.14,-4.24 1.62,-1.48 2.6,0.29 1.75,4.34 1.59,1.13 1.02,-0.26 1.13,-1.11 2.47,-0.6 6.2,0.22 1.17,1.89 0.33,5.66 0.41,0.71 2.98,1.22 0.64,1.1 -0.1,2.22 1.1,2.7 0.41,2.87 -3.97,4.01 -0.33,1.13 0.37,0.28 6.09,-0.25 2.7,-0.58 3.04,0.13 3.18,-1.24 1.51,-1.37 5.89,-0.88 0,0 2.74,-1.08 1.4,-1.11 0.94,0.39 0.52,0.84 0.59,4.28 1.97,-0.01 3.85,-1.98 3.389999,0.59 2.97,7.11 3.06,-1.96 1.1,-0.02 1.15,0.69 2.12,-0.92 4.16,-0.26 0.31,0.13 -0.3,1.01 0,0 -0.75,5.5 -1.06,3.26 -2.35,2.1 -2.06,0.97 -3.63,3.28 -2.98,4.92 0.03,3.41 2.01,1.97 4.81,0.81 1.83,-0.13 1.42,-1.06 1.65,-2.27 1.76,-0.51 0.65,0.78 -0.02,4.47 0.85,3.57 -0.72,1.81 -2.44,0.66 -0.77,1.14 -1.12,0.68 -2.4,0.11 -1.32,1.34 0.98,0.43 2.79,-0.25 3.3,1.74 0.21,1.08 -0.82,1.72 -4.01,-0.28 0,0 -5,-2.24 -4.38,-0.93 0,0 0.36,-2.36 -0.35,-1.25 -5.269999,-0.65 -1.12,0.58 -0.58,-0.14 -1.13,-1.31 -2.77,-0.77 -0.92,-0.74 -0.22,-0.7 0.56,-1.03 2.8,-1.31 1.12,-1.06 -0.12,-0.95 -1.06,-1.48 -3.45,0.41 -3.22,2.16 -2.19,-1.09 -0.04,-1.46 -0.73,-1.24 0.23,-0.94 2.73,-2.88 -0.54,-0.9 -1.07,-0.21 -37.58,-0.39 -1.59,1.06 0.51,1.45 -4.57,0.48 -0.81,-1.43 -1.2,-0.8 -3.41,-1.43 -1.85,-0.25 -1.36,2.51 -0.09,2.35 -2.08,1.65 -0.77,3.95 -1.06,1.01 -13.71,0.19 -3.55,-0.53 -0.41,0.11 0,1.61 -3.46,2.44 -1.94,-0.89 -3.41,0.43 -1.25,-0.4 0,0 0.42,-3.28 1.13,-1.18 0.63,-1.54 -1.34,-3.74 1.3,-2.16 2.11,-1.8 0.2,-2.74 -0.21,-0.96 -2.14,-0.28 -0.78,-0.39 -0.41,-0.86 -0.17,-1.82 1.2,-1.9 -0.34,-1.07 0.48,-3.46 -0.22,-0.98 -1.3,-0.14 -0.54,-0.61 0.15,-2.86 1.4,-1.61 3.06,-1.78 -2.46,-2.23 -0.48,-0.96 1.87,-2.2 0.59,-1.92 -0.66,-4.66 -1.53,-1.66 -0.12,-9.69 2.37,-0.08 0.82,-0.48 0.04,-0.72 -0.42,-3.5 -2.68,-2.04 -0.22,-1.76 -0.98,-1.52 -0.3,-4.2 0.25,-8.96 -0.3,-0.95 -0.82,-0.35 -0.97,-2.58 -1.69000003,-2.17 z"/><path id="g-ondo" d="m 194.92165,384.14874 4.62,-0.88 2.51,0.43 -0.71,4.14 2.04,2.7 4.74,4.17 0.23,0.78 0,0 -2.45,3.49 -0.9,0.6 -1.56,-0.14 -1.41,1.72 -0.18,1.38 0.4,0.84 2.02,0.82 -0.88,2.89 0.77,2.49 0.42,0.28 -1.43,3.54 -2.15,1.05 -1.76,1.83 -0.47,1.04 0.15,1.39 -3.23,6.89 0.32,0.83 -0.37,0.85 -1.51,0.73 -1.24,1.67 -0.62,4.63 1.18,1.28 0.16,0.82 -0.88,0.51 -0.01,1.63 -1.19,-0.51 -0.25,0.25 -0.95,4.96 -1.51,3.39 -2.68,1.03 -0.81,-0.36 -1.19,-1.48 -1.34,-0.12 -3.77,3.16 -0.74,0.03 -2.1,-5.46 2.01,-2.25 -1.74,-2.09 -1.64,-0.34 -3.29,0.39 -6.64,-0.11 -1.68,-0.36 -2.28,0.38 -2.12,-0.39 -2.2,1.01 -0.46,0.78 -0.09,1.96 -0.95,0.68 -0.79,2.27 -1.73,0.8 -0.45,1.04 -1.76,1.61 -0.49,0.96 0.09,2.22 -0.8,0.99 0,2.84 1.23,0.64 1.39,2.28 0.58,1.45 -0.36,1.72 -0.83,1.96 -1.74,1.71 -0.85,3.74 -2.94,0.86 -0.58,0.62 -0.96,3.62 -0.8,0.7 0.28,-0.44 -0.25,0.6 0.44,0.91 0.7,0.05 1.94,1.36 1.65,2.94 1.56,0.1 1.33,1.04 1.24,2.26 -0.39,1.16 0,0 -6.9,16.74 0,0 -4.86,-5.94 -9.17,-9.24 -14.82,-11.96 -2.7,-1.66 0,0 4,0.28 0.83,-1.73 -0.21,-1.07 -3.3,-1.74 -2.79,0.25 -0.98,-0.43 1.32,-1.35 2.4,-0.1 1.11,-0.68 0.78,-1.14 2.44,-0.66 0.72,-1.82 -0.84,-3.57 0.01,-4.47 -0.64,-0.78 -1.77,0.51 -1.65,2.27 -1.42,1.06 -1.83,0.13 -4.8,-0.81 -2.01,-1.96 -0.03,-3.41 2.98,-4.92 3.63,-3.28 2.06,-0.96 2.35,-2.1 1.07,-3.25 0.74,-5.51 0,0 2.67,-1.42 2.15,-4.97 4.29,-3.44 2.32,-0.02 2.51,1.24 2.91,2.22 1.81,0.03 0.64,-1.26 -0.23,-1.63 0.41,-2.11 -0.46,-3.98 1.56,-6.54 0.84,-0.57 5.86,-1.59 -0.62,-2.4 0,0 4.55,-1.45 7.78,0.43 6.97,-0.31 1.55,0.53 1.42,2.21 1.03,3.19 -0.16,0.86 1.09,2.69 2.28,0.59 5.53,-3.5 3.04,-4.43 1.71,-3.92 1.7,-8.1 1.13,-2.14 2.4,-2.48 2.18,-1.45 0.85,-2.06 1.86,-0.38 1.5,1.24 0.82,-0.3 1.49,-2.44 z"/><path id="g-osun" d="m 117.18165,366.88874 8.27,0.22 2.6,-0.31 3.55,-1.61 0.36,-0.09 0.18,0.85 -0.08,-0.88 2.65,0.38 4.74,-1.7 2.18,0.58 1.48,3.17 3.49,-0.13 1.67,-0.8 0.39,0.54 0,0 -1.52,5.3 -1.99,1.64 -2.18,0.94 -1.62,1.5 -1.9,4.25 -0.12,1.4 0.81,2.81 -1.19,3.99 0.69,4.78 2.85,6.11 0.84,3.79 0.83,1.7 0,0 0.62,2.41 -5.86,1.58 -0.84,0.58 -1.56,6.54 0.46,3.98 -0.4,2.11 0.23,1.63 -0.64,1.26 -1.81,-0.03 -2.91,-2.22 -2.51,-1.24 -2.32,0.01 -4.28,3.45 -2.15,4.96 -2.67,1.43 0,0 0.3,-1.01 -0.31,-0.13 -4.16,0.26 -2.12,0.92 -1.15,-0.69 -1.1,0.02 -3.06,1.96 -2.97,-7.11 -3.389999,-0.59 -3.85,1.98 -1.97,0.01 -0.59,-4.28 -0.52,-0.84 -0.94,-0.39 -1.4,1.11 -2.74,1.08 0,0 2.34,-9.84 0.43,-5.29 1.67,-8.72 -0.87,-0.49 -3.05,-4.88 -3.11,-2.33 -0.27,-0.93 -0.14,-0.88 1.15,-1.09 0.78,-1.76 0.87,-9.27 0.6,-0.28 4.3,1.34 2.32,-0.75 0.78,-0.99 0.13,-2.3 1.06,-0.57 2.81,-3.32 3.009999,1.84 3.59,5.56 2.13,-0.93 0.65,-1.43 2.05,-1.16 0.98,-1.39 0.28,0.39 1.83,-1.51 2.29,-0.76 0.25,0.38 0.99,-1.34 0.31,-1.28 z"/><path id="g-oyo" d="m 5.381651,335.88874 3.19,-2.78 3.17,-0.02 4.08,-0.72 1.5,-0.79 0.19,-0.99 3.91,-3.44 1.66,-0.66 6.93,-5.53 2.57,-0.27 0.69,0.19 0.91,1.13 0.45,-0.11 0.53,0.75 0.93,-0.15 7,-3.26 3.01,-2.21 1.13,-0.26 2.49,-1.94 5.79,-3.3 6.64,-2.92 4.42,-3.43 0.45,-1.11 0.02,-2.65 1.69,-3.71 3.82,-2.08 2.04,-0.09 4.08,2.46 0.54,2.48 1.69,2.04 3.25,2.42 5.7,1.74 2.4,1.54 1.1,-0.13 3.83,1.08 2.21,-0.08 2.829999,-1.8 1.31,0.78 0.16,1.3 -2.34,3.16 -3.159999,2.09 -0.57,0.59 -0.35,1.6 -2.08,1.55 -1.03,4.5 0.81,1.58 1.32,5.29 1.66,1.91 2.999999,7.11 1.97,2.63 0.79,2.77 0.09,2.1 1.22,3.44 2.95,4.24 3.46,2.25 0.03,0.8 0.78,0.66 0.39,2.77 1.9,4.81 0.71,0.94 1.45,0.07 0.49,0.66 0,0 0.53,3.2 -0.31,1.28 -0.99,1.34 -0.25,-0.38 -2.29,0.76 -1.83,1.51 -0.28,-0.39 -0.98,1.39 -2.05,1.16 -0.65,1.43 -2.13,0.93 -3.59,-5.56 -3.009999,-1.84 -2.81,3.32 -1.06,0.57 -0.13,2.3 -0.78,0.99 -2.32,0.75 -4.3,-1.34 -0.6,0.28 -0.87,9.27 -0.78,1.76 -1.15,1.09 0.14,0.88 0.27,0.93 3.11,2.33 3.05,4.88 0.87,0.49 -1.67,8.72 -0.43,5.29 -2.34,9.84 0,0 -5.89,0.88 -1.51,1.37 -3.18,1.24 -3.04,-0.13 -2.7,0.58 -6.09,0.25 -0.37,-0.28 0.33,-1.13 3.97,-4.01 -0.41,-2.87 -1.1,-2.7 0.1,-2.22 -0.64,-1.1 -2.98,-1.22 -0.41,-0.71 -0.33,-5.66 -1.17,-1.89 -6.2,-0.22 -2.47,0.6 -1.13,1.11 -1.02,0.26 -1.59,-1.13 -1.75,-4.34 -2.6,-0.29 -1.62,1.48 -1.14,4.24 -2.78,3.97 -1.74,0.49 -4.05,-0.28 -2.34,-1.13 -3.01,-2.36 -3.2,-4.51 -1.02,-3.04 -3.05,-2.47 -2.12,-2.51 -0.52,-3.66 0.51,-0.57 0.41,0.24 1.74,-5.98 0.16,-3.09 -0.54,-1.75 -0.88,-0.61 -1.37,0 -0.47,0.45 -0.57,1.25 -0.94,5.56 -0.84,-0.13 -1.31,-2.17 -0.56,-2.36 -0.15,-6.48 -0.41,-1.43 -1.24,-1.79 -1.9,-0.93 -3.49,0.21 -5.97000003,4.29 0,0 1.07000003,-2.08 0.73,-4.3 1.33,-4.15 -0.3,-1.12 0.37,-2.7 1.13,-2.26 0.36,-2.89 -2.44,-3.06 -1.17,-3.99 0.08,-2.02 1.05,-1.87 -0.44,-2.05 0.48,-0.7 1.25,-0.3 1.37,-2.88 -0.43,-0.44 0.73,-0.97 0.01,-1.07 z"/><path id="g-plateau" d="m 379.00165,223.49874 1.53,-0.49 3.18,0.08 2.78,0.88 2.61,4.16 0.78,4.8 -0.04,12.38 10.97,-2.19 1.06,0.21 1.8,1.92 0.97,3.13 0.26,5.94 -0.23,1.17 -2.38,4.47 -0.09,1.69 0.6,0.85 3.92,1.42 0.79,0.71 0.9,1.16 1.65,4.07 1.56,1.34 1.51,0.53 4.8,0.27 5.47,1.48 10.04,-0.59 4.39,-1.41 2.89,-5.21 4.76,-1.3 0.5,-1.67 -0.27,-1.74 -3.17,-4.06 0.3,-1.44 3.03,-1.78 7.6,3.95 2.57,0.51 9.26,4.93 11.07,4.74 6.18,4.04 6.36,3.43 0,0 1.56,3.94 0.21,2.15 -0.51,4.08 0.76,5.96 2.3,3.86 1.05,6.02 -0.55,1.33 0.3,2.25 0.43,0 0.21,5.54 -1.78,3.08 -12.18,5.86 -1.9,-0.11 -9.52,2.1 -2.49,1.44 -2.06,4.19 -4.74,5.72 -7.11,3.76 -7.68,7.65 -2.43,1.19 -4.41,1.01 -4.11,0.54 -3.85,-0.25 0,0 -1.46,-2.68 -2.52,-2.07 -10.36,-4.33 -9.76,2.79 -8.19,0.15 -3.66,-1.3 -5.15,-2.71 -1.44,-2.07 0.3,-5.41 -0.32,-1.24 -2.09,-2.43 -0.64,-1.72 0.32,-2.25 1.55,-1.36 1.55,-2.86 1.46,-1.05 1.41,-0.2 2.11,-1.98 2.7,-4.01 0.79,-2.93 -2.01,-2.21 -1.04,-0.56 -2.77,1.35 -3.7,0 -5.32,-0.56 -2.16,-0.98 -1.93,-3.41 -0.63,-4.48 -2.08,-0.85 -2.42,-0.11 -1.69,-1.65 0,0 1.67,-3.94 -0.12,-3.41 -1,-2.09 -1.71,-1.21 -2.57,-3.08 -3.26,-5.28 -0.1,-1.16 1.05,-1.4 -0.21,-4.74 1.76,-1.28 0.4,-3.08 1.91,-1.55 0.42,-1.07 -0.53,-2.1 0.7,-7.81 -0.18,-1.97 0.34,-1.1 2.39,-1.97 -0.75,-3.52 -1.36,-2.82 0.22,-2.71 2.13,-4.97 1.9,-1.4 2.19,-0.73 1.32,-1.56 0.55,-1.43 0.21,-2.9 z"/><path id="g-rivers" d="m 277.72165,584.56874 -1.46,1.39 0.02,0.77 -0.62,-0.24 0.22,-1.42 1.44,-0.82 0.4,0.32 z m -3.14,-1.84 -1.72,-0.98 -0.55,0.15 -0.55,0.15 -0.21,-0.69 0.86,-0.79 -0.31,-0.67 0.31,-0.65 -0.07,-1.05 -0.57,-0.81 -0.91,-0.17 -0.22,0.16 -0.71,-1.7 -0.27,-0.17 0.14,-0.46 -0.86,-0.86 -0.27,0.36 -0.96,0.15 -0.19,0.82 0.57,1.03 0.5,1.05 0.41,2.04 -0.48,-0.23 -0.45,0.63 1.07,3.48 -0.14,1.27 1.17,4.04 -0.24,0.22 0.77,0.46 2.06,-0.43 0.4,-0.45 0.13,-0.58 1.75,0.49 0.03,-2.23 0.67,-1.56 -1.16,-2.02 z m -3.8,-10.26 0.41,0.46 2.18,0.09 0.19,-0.91 -0.41,-0.31 -1.69,0.3 -0.68,0.37 z m 1.27,-2.46 0.36,1.13 0.52,0.19 -0.29,-1.9 -0.59,0.58 z m 7.2,9.74 -1.44,-2.86 -1,-0.7 -1.63,-0.81 -0.27,-0.12 -0.84,0.65 0.65,0.09 1.31,1.13 0.14,0.21 -0.23,0.46 0.52,0.93 0.12,1.92 1.29,1.2 0.91,0.17 0.67,-1.41 -0.2,-0.86 z m 5.92,6.12 -2.08,-2.62 -1.31,1.63 0.79,0.79 0.81,-0.24 0.38,0.91 0.76,0 0.22,0.62 1.17,-0.5 1.08,1.08 1.86,-1.49 -0.62,-0.55 -3.06,0.37 z m -19.91,-6.61 -1.12,0.53 -0.28,1.32 1.14,0.4 1.44,1.08 1.03,2.28 -0.29,-3.36 -0.36,-0.15 0.26,-1.49 -1.82,-0.61 z m 18.13,2.56 -2.37,-1.62 -1.55,-2.35 -0.03,-0.27 -0.48,-1.7 -0.48,0.43 -0.4,-0.36 0.43,-0.67 -0.03,-1.49 -0.12,-0.07 -0.57,1.85 -2.25,-0.7 -0.53,-0.1 -0.88,-1.08 -0.07,-1.52 -0.36,-0.29 -0.07,-0.46 -0.26,-0.17 -0.15,-0.65 0.5,-0.79 -0.98,-1.22 -0.81,0.53 -0.34,0.89 0.65,1.54 -2.06,0.77 -0.41,0.36 -0.93,0.38 -0.52,0.05 -1,0.77 -0.46,0.62 -0.09,-1.51 -0.58,0.74 -0.22,0.51 1,1.65 0.55,2.45 -1.31,0.45 -0.53,0.21 -1.38,-1.61 -0.71,-1.9 -1.45,-2.41 -1.5,-0.51 0.56,-1.55 -0.68,-2.22 0.98,-0.81 0.35,-0.48 -0.53,-0.67 -1.81,-0.24 -1.81,-1.11 -0.28,1.59 -0.89,0.57 -0.33,-0.77 -1.27,-0.14 -0.34,-0.34 -0.64,0.19 -0.77,0.03 -0.62,-0.87 -0.19,-0.14 -0.55,0.41 0.19,0.99 -0.14,0.33 0.46,0.31 1.27,1.27 -0.12,1.53 0.98,4.64 3.22,3.31 0.02,1.18 -1.81,1.46 -0.1,0.58 1.82,6.56 0.55,3.32 2.41,2.48 -0.29,0.33 -7.24,0.69 -2.24,-0.75 -0.09,-2.71 -0.24,-2.54 0.14,-0.46 -0.03,-0.17 -0.46,-2.71 -0.19,-0.75 1.94,-3.67 -0.19,-2.67 -0.67,0.15 -0.68,0.1 -3.96,-2.6 -1.2,-4.38 -1.38,-1.87 -1.99,-0.02 -6.54,2.54 -1.04,-0.26 -0.35,-1.94 0.42,-1.46 -3.31,-1.44 -0.5,-0.83 0.07,-4.34 1.9,-2.67 0.76,-2.05 0.03,-1.27 -1.29,0.16 -0.84,-0.78 1.33,-4.44 4.49,-7.84 2.77,0.17 0.55,-0.5 0.75,-2.49 1.54,-0.79 -0.23,-1.81 1.58,-1.07 0.95,-1.48 -0.03,-1.94 -0.63,-1.54 -0.76,-0.58 -1.92,-0.83 -2.94,0.49 -1.04,-0.28 -0.57,-1.04 0.21,-0.44 3.52,-1.81 0.19,-5.3 0.7,-1.48 2.05,-1.42 0.89,-1.75 0.82,-3.18 -1.09,-3.54 0.23,-0.35 1.11,1.28 2.4,0.21 -2.75,13.08 1.51,0.44 3.47,-0.67 2.12,0.78 0.44,1.66 -0.52,4.62 -1.09,2.76 0.26,1.37 1.84,1.3 1.72,3.41 2.16,1.65 2.14,0.41 6.72,-0.14 4.7,1.12 4.15,-1.07 2.13,-0.03 4.51,1.13 2.57,-0.95 0.55,0.05 0.66,1.72 0.06,2.78 -2.4,4.19 -3.41,4.33 -1.37,3.71 -0.16,1.09 0.6,1.11 1.45,1.41 1.8,0.27 3.13,-0.59 1.11,-0.64 2.79,-0.12 3.28,1.22 1.81,-0.42 2.94,1.4 2.35,1.79 1.95,3.49 0.63,2.3 -0.96,4.27 0.58,4.55 -0.51,0.32 -0.04,0.64 0.61,1.17 -1.22,0.77 -0.84,-0.72 -0.17,-0.98 -1.22,-0.27 -0.55,-0.26 -0.26,0.46 -1.39,1.18 -0.58,-0.24 -0.26,-0.36 -0.38,-0.02 -0.71,0.39 -1.5,-2.36 -1.27,0.96 -0.93,-0.36 -1.6,-0.5 -0.65,-1.03 -0.67,0.19 -0.74,-0.86 -0.62,0.51 -0.19,0.79 -0.89,0.33 0.34,1.08 0.27,1.03 0.24,0.6 0.78,0.6 0.77,-0.24 0.57,0.08 0.86,-0.31 -0.17,1.75 -1.77,0.17 -1.44,0.53 -0.74,-1.2 -0.1,-0.33 -1.05,-1.17 -0.15,-0.94 0.11,-0.22 z m 21.52,4.31 -0.69,-0.39 -0.43,-0.03 -0.88,-0.36 -0.02,-0.02 -0.4,-0.36 -0.42,0.46 -0.32,-0.13 0.35,-0.54 -0.88,-1.49 -0.9,0.53 -1.04,-0.9 -0.36,-0.34 -0.17,-0.51 -1.39,0.01 -0.26,0.28 -1.23,0.87 -1.33,-0.05 -0.46,0.04 -0.43,-0.23 -0.63,-0.63 -0.53,-0.31 -0.09,-0.81 -1.24,0.34 -1.03,0.02 0.02,-0.42 -1.25,-0.34 -0.91,-0.46 -1.34,-0.09 -0.48,0.24 -0.23,0.58 -0.02,0.79 1.72,0 0.09,0.08 1.17,1.07 0.23,0.67 0.36,1.37 0.84,0.31 0.16,-0.4 0.34,0.28 1.07,0.03 0.06,0.22 -1.84,0.74 -0.43,0.15 -0.69,2.4 5.47,0.77 4.18,-0.92 5.93,-0.14 -0.19,-1.22 0.52,-1.16 z m -48.68,-18.07 0.79,-0.17 0.92,-0.79 0.08,-1.12 1.29,0.9 1.6,0.63 -0.96,1.17 0.43,1.85 0.27,0.32 -0.03,0.58 -0.6,0.94 0.22,0.64 1.01,0.31 1.26,1.35 2.07,4.36 -0.93,0.61 -0.42,0.84 0.15,0.91 3.15,1.85 0.6,2.9 0.88,1.32 -0.12,1.39 0.48,1.61 1.48,1.13 -1.12,1.39 -0.96,0.36 -0.86,-0.5 -0.6,0.41 -6.38,-1.39 -0.81,-2.54 0.53,-0.62 -0.6,0.02 -1.36,-3.89 -0.81,-1.9 0.1,-2.06 1.63,-1.56 -0.17,-1.35 -1.81,-1.66 -1.69,-1.15 -0.76,-4.06 -0.29,-0.58 0.02,-1.82 -0.77,-1.08 1.24,-0.74 0.88,0.63 0.67,0 0.3,0.56 z"/><path id="g-sokoto" d="m 178.43165,0.2287449 12.88,5.68 20.53,7.2500001 4,2.35 4.64,-1.49 3.65,-0.02 8.54,4.12 15.88,15.56 5.98,10.42 0,0 -3.03,2.6 -7.1,4 -9.51,-1.28 -1.9,-0.66 -1.7,-2.05 -2.27,-0.68 -4.97,-0.19 -0.59,5.48 -0.73,1.89 -0.5,0.22 -2.7,-1.44 -2.79,0 -4.85,1.56 -2.11,1.82 -0.11,0.7 0.78,5.14 0.07,8.44 -1.35,1 -4.04,1.64 -10.02,0.79 -6.09,0.95 -5.83,8.58 -1.88,1.87 -3.07,1.91 0.06,2.88 1.43,4.64 0.65,4.25 -0.74,3.029995 -2.46,1.7 -6.11,0.53 -1.28,-0.29 -4.8,0.64 -2.64,-0.31 -4.47,0.33 -9.33,-1.67 -0.92,0.6 -0.93,4.51 0.1,18.21 -0.66,13.78 0,0 -1.62,0.97 -0.94,-0.07 -0.77,-1.75 -2.04,0.72 -1.89,-0.86 -1.69,0.12 -12,5.45 -2.4,3 -1.71,1.35 -2.78,-0.29 -0.76,-0.51 -2.55,-3.65 1.16,-4.77 2.61,-5.63 2.12,-9.79 -0.79,-13.05 0.14,-9.94 1.01,-3.779995 1.28,-1.48 3.95,-1.18 2.68,-0.02 3.17,2.04 1.02,-0.04 0.64,-1.56 0.24,-8.02 -1.68,-5.52 -0.04,-2.04 1.3,-6.06 0.18,-3.32 -1.8,-4.28 -1.86,-2.15 0.42,-3.7 1.42,-2.98 -0.09,-2.4 1.62,-3.93 -0.4,-1.25 -1.08,-0.88 -1.16,0.31 -2.49,3.69 -0.63,0.56 -1.82,0.43 -3.06,-0.68 -2.95,-2.07 -9.56,-3.12 -1.06,-1.1 -3.19,-1.82 -1.65,-2.12 -0.76,-0.31 -4.629999,1.58 -1.86,-0.74 -6.62,0.14 0,0 0.09,-16.44 4.14,-0.02 16.559999,-14.58 25.12,-5.0100001 2.41,2.14 5.71,0.48 6.45,-0.72 4.85,0.56 5.33,-0.16 5.25,-6.26"/><path id="g-taraba" d="m 488.91165,275.87874 4.59,-2.65 5.85,0.78 10.59,-4.85 6.44,1.09 3.99,0.03 0,0 3.57,0.71 5.9,-0.6 12.46,0.02 6.37,-0.47 0,0 5.45,10.18 1.46,1.92 4.65,1.08 2.08,1.29 5.26,9.82 -0.46,2.17 0.34,3.84 2.66,2.94 4.14,1.47 2.02,3.84 0.26,1.81 -1,3.62 -5.99,11.44 0.38,5.78 -0.44,2.08 -6.12,5.22 -8.63,11.52 -5.08,5.48 -3.8,3.22 -4.14,4.78 -0.82,1.58 2.52,6.73 2.91,4.7 2.71,2.45 2.72,-1.99 2.83,-4.01 1.64,-0.38 1.42,0.43 1.52,1.12 2.5,3.15 4.32,3.84 2.15,2.6 1.04,2.02 -0.58,5.49 0.74,1.73 0.38,3.54 1.94,4.62 -0.05,1.56 1.22,0.88 0,0 -4.94,5.48 -1.09,1.94 -0.89,2.92 0.38,5.92 0.92,3.32 1.33,2.12 -0.18,1.29 -0.98,0.73 -4.04,-0.35 -0.68,0.46 -2.06,0.06 -0.18,1.64 -1.72,0.75 -1.54,1.93 -1.91,0.43 -1.09,4.21 -2.12,0.65 -1.37,2.72 0.06,0.5 0.94,-0.05 0.46,0.44 0.09,1.77 0.88,0.11 0.19,0.89 -0.99,0.43 -0.62,1.15 0.94,1.52 -0.08,1.04 -1.92,1.11 -0.22,3.22 -1.46,1.44 -0.57,1.91 -1.81,0.78 -1.77,-0.83 -0.6,0.54 -1.24,0.15 -0.46,0.64 0.46,0.88 -0.18,1.73 -0.44,0.5 -3.75,0.68 -0.42,0.22 -0.2,1.37 -1.37,-0.18 -3.03,-2.03 -2.25,1.01 -0.67,-0.7 -3.01,-0.66 -1.42,-1.22 -0.58,0.05 -1.22,1.41 -2.03,-0.08 0.24,-8.73 -2.03,-2.16 -2.24,-0.11 -2.36,2.14 -2.84,-0.48 -1.86,-0.85 -1.43,-3.38 -1.18,-2.19 -1.22,-0.81 -1.17,-0.07 -1.31,-2.11 -0.12,-0.73 1.66,-4.79 -2.66,-1.84 -1.49,-0.2 -0.6,0.74 -1.69,-2.15 -1.03,-0.08 -1.5,-1.61 -0.77,-0.07 -0.36,-1.52 -1.25,-0.63 -0.4,0.46 -1.47,-0.36 -1.85,-1.58 0.52,-1.93 -0.4,-2.09 -1.65,-1.31 -0.76,4.76 0.08,2.89 -1.39,6.02 -0.88,1 -1.67,0.57 -0.34,0.87 -0.64,0.11 -0.94,-0.97 -15.69,1.52 -2.64,-3.08 0.62,-1.75 -0.85,-2.06 -0.19,-1.18 0.07,-0.81 -0.89,-0.32 -8.2,7.4 -0.64,1.12 -2.44,1.72 -1.12,1.84 -4.62,4.63 -1.34,-0.72 -2.2,-0.1 -1.6,-0.22 -0.8,-0.61 -0.9,2.13 0.3,0.79 -0.76,0.97 -0.38,1.8 0.36,2.03 -0.28,1.07 -0.6,0.37 -1.02,2.82 -1.35,5.37 -0.5,0.39 -0.68,-0.34 -1.32,0.37 -1.03,-1.32 -0.44,0.46 0,0 1.9,-8.19 0.03,-8.76 0.33,-1.08 -0.61,-0.73 2.11,-11.5 3.31,-6.16 3.44,-3.25 3.09,-1.94 0.92,-1.43 -0.29,-5.92 2.38,-5.89 0.59,-3.23 -0.56,-1.78 0.26,-1.04 -1.17,-1.36 0.14,-0.65 -8.37,-7.57 -4.44,-5.65 -5.14,-4.9 -7.48,-1.77 -8.18,-0.48 -7.47,0.95 -6.12,2.63 -1.9,-0.57 3.79,-5.97 0,0 1.21,-1.39 11.23,-7.21 0.11,-1.19 -1,-2.68 0.54,-0.65 -0.35,-2.88 -2.03,-2.51 -1.71,-1.36 0.73,-2.86 1.33,-2.14 1.28,-0.86 1.86,0 1.73,0.9 1,1.07 1.52,-0.23 0.33,0.41 4.51,0.95 2.74,-0.82 2.58,-3.68 0,0 3.85,0.25 4.11,-0.54 4.41,-1.01 2.43,-1.19 7.68,-7.65 7.11,-3.76 4.74,-5.72 2.06,-4.19 2.49,-1.44 9.52,-2.1 1.9,0.11 12.18,-5.86 1.78,-3.08 -0.21,-5.54 -0.43,0 -0.3,-2.25 0.55,-1.33 -1.05,-6.02 -2.3,-3.86 -0.76,-5.96 0.51,-4.08 -0.21,-2.15 z"/><path id="g-yobe" d="m 526.42165,32.448745 12.45,0.19 9.56,1.2 10.76,4.18 11.69,2.55 2.73,1.51 6.09,5.17 4.78,3 1.58,0.14 0.3,-0.82 1,-0.28 1.65,0.65 0.62,-0.52 -0.55,-1.18 1.49,0.16 1.7,0.94 1.66,-0.42 0.83,0.71 0.63,1.07 1.04,-0.62 2.85,0.61 0.74,0.5 0.93,0.12 0.99,-0.01 0,0 -0.08,4.21 -1.49,8.02 1.23,3.85 1.45,1.82 4.8,3.84 0.48,3.74 -1.84,4.21 -2.37,3.08 -7.06,6.31 -0.55,2.2 1.72,3.83 -0.05,5.789995 -2.54,16.29 -0.13,3.5 1.69,7.44 -4.72,9.14 0.15,1.94 0.64,0.36 4.91,-0.21 3.13,3.75 0.84,3.33 -0.99,2.11 -4.54,4.43 -3.3,5.9 -2.89,3.35 -0.9,2.86 0.04,2.97 0.76,4.15 -0.24,2.94 -2.09,3.08 -6.11,3.65 -11.21,3.02 -2.66,1.92 -1.72,2.83 -0.61,2.77 0.28,8.39 -3.41,4.53 -3.04,0.69 0,0 -6.78,0.01 -0.3,-0.51 -0.77,-6.45 1.2,-11.85 -0.67,-4.87 -3.68,-3.38 -1.58,1.02 1,-1.54 -3.42,-3.58 -4.75,-6.4 -8.49,-6.26 -2.18,-1.29 -2.98,-1.01 -4.04,-0.17 -4.17,1.51 -0.91,0.88 0,0 -3.04,-0.37 -1.63,-1.53 0.99,-6.78 1.05,-2.72 0.23,-4.92 -8.35,-20.91 -0.2,-3.87 -0.95,-2.71 -0.33,-2.7 -0.21,-6.74 -3.16,-4.66 0.19,-1.81 -0.77,-7.079995 -1.14,-2.93 -7.74,-6.19 0,0 -0.87,-2.9 -1.76,-11.53 -2.21,-3.4 -1.85,-0.88 -2.03,0.61 -4.99,-2.22 -5.86,1.86 -1.12,0.72 -1.46,-2.53 -0.69,-4.35 -2.13,-4.78 -2.21,-1.25 -6.33,1.96 -2.82,1.37 -3.16,0.63 -5.32,2.59 -2.1,3.99 -3.14,1.8 -6,-0.73 -1.79,-1.18 0,0 7.38,-7.5 3.25,-4.6 4.08,-3.51 5.19,-5.85 3.98,-2.54 9.05,-4.06 16.06,-0.94 12.55,-4.7 19.58,-1.07 z"/><path id="g-zamfara" d="m 258.59165,50.268745 5.45,6.52 5.08,-0.11 3.34,-0.61 0,0 -1.44,10.82 0.99,6.17 -0.07,6.05 1,5.17 0.39,4.75 1.31,3.21 -0.4,3.57 2.5,5.199995 0.69,3.05 -0.13,1.68 0.95,2.47 -1.09,5.16 -1.82,3.63 1.26,1.21 2.53,1.16 2.68,2.29 1.16,1.43 0.5,1.95 -1.89,1.62 -3.34,-0.81 -0.55,3.2 -4.88,3.97 -1.28,-0.87 -6.61,0.13 -1.5,0.84 -0.65,4 -1.56,4.14 -0.45,3.76 0.16,1.07 1.91,1.9 0.9,3.69 -1.25,6.1 -0.02,2.33 0,0 -1.01,-0.03 -2.34,2.38 -2.75,1.77 -0.85,1.14 -1.71,3.41 -0.64,3.55 -1.51,3.23 -3.04,3.1 -2.33,1.51 -4.71,0.62 -7.94,-0.57 -5.64,0.95 -5.27,4.71 -2.86,4.16 -1.28,0.76 -1.68,0.12 0,0 0.07,-0.84 -1.59,-4.09 -3.8,-6.64 -3.32,-4.4 0,0 -0.21,-5.48 -1.38,-7.58 -1.93,-3.01 -5.38,-2.71 0,-1.2 2.05,-6.49 0.01,-2.47 -1.41,-2.15 -4.35,-1.77 -4.85,-0.62 -1.22,0.81 -2.49,0.59 -3.79,-0.5 -5.47,0.76 -3.65,-2.41 -2.87,-0.11 -1.69,-3.3 -1.08,-0.57 -3.61,0.65 -2.09,-0.31 -0.91,-0.64 -0.79,0.15 -1.06,0.62 -0.82,2.32 -6.34,1.46 -4.11,-2.25 -1.82,0 -0.86,0.48 0,0 0.66,-13.78 -0.1,-18.21 0.93,-4.51 0.92,-0.6 9.33,1.67 4.47,-0.33 2.64,0.31 4.8,-0.64 1.28,0.29 6.11,-0.53 2.46,-1.7 0.74,-3.029995 -0.65,-4.25 -1.43,-4.64 -0.06,-2.88 3.07,-1.91 1.88,-1.87 5.83,-8.58 6.09,-0.95 10.02,-0.79 4.04,-1.64 1.35,-1 -0.07,-8.44 -0.78,-5.14 0.11,-0.7 2.11,-1.82 4.85,-1.56 2.79,0 2.7,1.44 0.5,-0.22 0.73,-1.89 0.59,-5.48 4.97,0.19 2.27,0.68 1.7,2.05 1.9,0.66 9.51,1.28 7.1,-4 3.03,-2.6 0,0 z"/></defs></svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>S. A. Ibrahim</b><span>IM portfolio</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#products">Products</a>
+      <a href="#experience" class="opt2">Experience</a>
+      <a href="#toolkit" class="opt">Toolkit</a>
+      <a href="#education" class="opt">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch colour theme"></button>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="id-row">
+          <img class="portrait" src="data:image/webp;base64,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" alt="Portrait of Safianu Ado Ibrahim" width="104" height="104">
+          <div class="geo">
+            <span><i class="pin"></i><b>Abuja, Nigeria</b></span>
+            <span>9.08° N · 7.40° E</span>
+            <span>FCT · NG015</span>
+            <span class="profile-location-note">Country Office and emergency duty station experience across Northeast and Northwest Nigeria</span>
+          </div>
+        </div>
+        <p class="eyebrow">Information Management Officer · UNICEF Nigeria</p>
+        <h1 class="name">Safianu Ado Ibrahim</h1>
+        <p class="role">Data analytics and information management for humanitarian response</p>
+        <p class="lede">Over six years with UNICEF, WHO, Oxfam and iMMAP in conflict-affected and access-constrained parts of Northeast and Northwest Nigeria. I design Power BI dashboards, SQL Server databases, automated data pipelines and reconciliation controls that turn fragmented operational data into clear information for management decisions.</p>
+        <div class="now">
+          <span class="dot" aria-hidden="true"></span>
+          <p><b>Now:</b> Information Management Officer, Emergency Section, UNICEF Nigeria Country Office, since October 2025. Technical Lead of the Northwest Nigeria IM Coordination Forum.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#products">Browse the 13 products</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+        <ul class="specs" aria-label="Specialisms">
+          <li>Power BI</li><li>SQL</li><li>Logistics tracking</li><li>GIS</li><li>Process automation</li>
+        </ul>
+      </div>
+
+      <figure class="atlas" aria-labelledby="atlas-title">
+        <div class="atlas-head">
+          <div>
+            <h2 id="atlas-title">Field footprint</h2>
+            <p>Select a state to see the work done there.</p>
+          </div>
+          <span class="tag">Admin 1 · 36 states + FCT</span>
+        </div>
+        <div class="atlas-map">
+          <svg id="map" viewBox="-6 -6 756 612" role="group" aria-label="Map of Nigeria by state, shaded by type of work">
+            <g id="map-states"></g>
+            <use id="hl" class="hl" href="#g-borno"></use>
+            <g id="map-labels"></g>
+            <text class="compass" x="728" y="580" text-anchor="end">N ↑</text>
+          </svg>
+          <span class="map-credit">Map: MapSVG, CC BY 4.0</span>
+        </div>
+        <ul class="legend" id="legend"></ul>
+        <div class="panel" id="panel" aria-live="polite"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="figures" aria-label="Headline figures">
+    <div class="wrap">
+      <div class="fig-grid">
+        <div class="fig"><span class="v">6+</span><span class="l">years in humanitarian data and information management</span></div>
+        <div class="fig"><span class="v"><small>USD</small>1.5M+</span><span class="l">of prepositioned emergency supplies made visible in Power BI</span></div>
+        <div class="fig"><span class="v">30,000+</span><span class="l">household records reconciled across Yobe and Jigawa</span></div>
+        <div class="fig"><span class="v">250+</span><span class="l">M&amp;E, data and IM officers trained</span></div>
+        <div class="fig"><span class="v">7</span><span class="l">UNICEF field offices' HAC results merged into one dataset</span></div>
+        <div class="fig"><span class="v"><small>USD</small>14M</span><span class="l">donor proposal supported with monitoring frameworks and tools</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Product register</p>
+          <h2>Interactive dashboards and web tools</h2>
+        </div>
+        <p class="sub">Built for UNICEF, sector coordination groups, state governments and NGOs. Each card's map shows where the product's data comes from. Cards open the live dashboard in a new tab.</p>
+      </div>
+
+      <div class="controls">
+        <div class="chips" id="chips" role="group" aria-label="Filter by theme"></div>
+        <div class="ctl-right">
+          <div class="seg" id="seg" role="group" aria-label="Filter by platform">
+            <button type="button" data-p="all" aria-pressed="true">All</button>
+            <button type="button" data-p="Power BI" aria-pressed="false">Power BI</button>
+            <button type="button" data-p="Web app" aria-pressed="false">Web apps</button>
+          </div>
+          <label class="search">
+            <span class="sr-only">Search products</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="q" type="search" placeholder="Search, e.g. Borno, 5W" autocomplete="off">
+          </label>
+        </div>
+      </div>
+      <p class="result-line" id="result-line" aria-live="polite"></p>
+
+      <div id="grp-recent">
+        <div class="group-head"><span class="eyebrow">Recent · UNICEF Nigeria and state partners, 2025–26</span><span class="rule"></span><span class="n" id="n-recent"></span></div>
+        <div class="grid-recent" id="grid-recent"></div>
+      </div>
+      <div id="grp-earlier">
+        <div class="group-head"><span class="eyebrow">Earlier work · sectors, governments and NGOs</span><span class="rule"></span><span class="n" id="n-earlier"></span></div>
+        <div class="grid-earlier" id="grid-earlier"></div>
+      </div>
+      <div class="empty" id="empty" hidden>
+        <p>No products match those filters.</p>
+        <button class="btn" type="button" id="clear">Clear filters</button>
+      </div>
+
+      <div class="res-head">
+        <h3>Maps, reports and training material</h3>
+        <p>Static products, shared as Google Drive folders.</p>
+      </div>
+      <div class="res-grid" id="res-grid"></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Experience</p>
+          <h2>Six roles since 2020</h2>
+        </div>
+        <p class="sub">Each bar is drawn to scale by month. Select a role to read what it involved.</p>
+      </div>
+      <div class="gantt" id="gantt" role="tablist" aria-label="Roles"></div>
+      <article class="detail" id="detail" role="tabpanel" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <section class="block" id="toolkit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Toolkit</p>
+          <h2>From data collection to decision</h2>
+        </div>
+        <p class="sub">The tools I use at each stage of the data-to-product cycle, in the order the work flows.</p>
+      </div>
+      <ol class="pipe" id="pipe"></ol>
+      <div class="comp">
+        <p class="eyebrow">Core competencies</p>
+        <ul class="comp-list" id="comp"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Education &amp; certifications</p>
+          <h2>Training behind the work</h2>
+        </div>
+        <p class="sub">Degrees in public health, environmental management and zoology, plus field security and humanitarian IM certifications.</p>
+      </div>
+      <div class="edu">
+        <div>
+          <h3>Education</h3>
+          <div id="edu-list"></div>
+        </div>
+        <div>
+          <h3>Certifications &amp; recognition</h3>
+          <div id="cert-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact contact-compact">
+        <div class="contact-intro">
+          <h2>How can I support your work?</h2>
+          <p>I help teams turn data into practical insights and better operational decisions across information management, data analytics, GIS and logistics data.</p>
+        </div>
+        <div class="contact-options">
+          <a class="contact-option" href="mailto:safianuadoibrahim@gmail.com?subject=Collaboration%20opportunity">
+            <span><strong>Collaborate</strong><small>Projects, dashboards, mapping and information systems</small></span>
+            <span class="option-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="contact-option" href="mailto:safianuadoibrahim@gmail.com?subject=Technical%20support%20request">
+            <span><strong>Request technical support</strong><small>Data analysis, GIS, reporting and logistics data</small></span>
+            <span class="option-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="contact-option" href="mailto:safianuadoibrahim@gmail.com?subject=Professional%20opportunity">
+            <span><strong>Discuss a role</strong><small>Humanitarian, development or data-focused opportunities</small></span>
+            <span class="option-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="contact-links-row" aria-label="Direct contact and portfolio links">
+          <div class="email-contact-card">
+            <span class="email-card-icon" aria-hidden="true">✉</span>
+            <div class="email-card-copy">
+              <span class="email-card-label">Email me</span>
+              <a id="email-address" href="mailto:safianuadoibrahim@gmail.com">safianuadoibrahim@gmail.com</a>
+            </div>
+            <button class="email-copy-btn" type="button" data-copy="#email-address" aria-label="Copy email address"><span aria-hidden="true">▢</span> Copy email</button>
+          </div>
+          <a class="catalogue-link" href="https://drive.google.com/drive/folders/1KJ0uopn6Fy_iVqlrLf28b08awqow4l4E?usp=drive_link" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> View IM product catalogue</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Safianu Ado Ibrahim</span>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+
+/* ---------------- states (admin 1) ---------------- */
+var STATES={
+ "abia":["Abia","NG001"],"adamawa":["Adamawa","NG002"],"akwa-ibom":["Akwa Ibom","NG003"],"anambra":["Anambra","NG004"],
+ "bauchi":["Bauchi","NG005"],"bayelsa":["Bayelsa","NG006"],"benue":["Benue","NG007"],"borno":["Borno","NG008"],
+ "cross-river":["Cross River","NG009"],"delta":["Delta","NG010"],"ebonyi":["Ebonyi","NG011"],"edo":["Edo","NG012"],
+ "ekiti":["Ekiti","NG013"],"enugu":["Enugu","NG014"],"fct":["Federal Capital Territory","NG015"],"gombe":["Gombe","NG016"],
+ "imo":["Imo","NG017"],"jigawa":["Jigawa","NG018"],"kaduna":["Kaduna","NG019"],"kano":["Kano","NG020"],
+ "katsina":["Katsina","NG021"],"kebbi":["Kebbi","NG022"],"kogi":["Kogi","NG023"],"kwara":["Kwara","NG024"],
+ "lagos":["Lagos","NG025"],"nassarawa":["Nasarawa","NG026"],"niger":["Niger","NG027"],"ogun":["Ogun","NG028"],
+ "ondo":["Ondo","NG029"],"osun":["Osun","NG030"],"oyo":["Oyo","NG031"],"plateau":["Plateau","NG032"],
+ "rivers":["Rivers","NG033"],"sokoto":["Sokoto","NG034"],"taraba":["Taraba","NG035"],"yobe":["Yobe","NG036"],"zamfara":["Zamfara","NG037"]
+};
+var ALL=Object.keys(STATES);
+var BAY=["borno","adamawa","yobe"];
+var NW=["jigawa","kaduna","kano","katsina","kebbi","sokoto","zamfara"];
+
+var TIERS={
+ field:{label:"Field operations",cls:"tier-field"},
+ region:{label:"Northwest regional",cls:"tier-region"},
+ base:{label:"Abuja base",cls:"tier-base"},
+ national:{label:"National products",cls:"tier-national"}
+};
+var tierOf=function(id){
+  if(id==="fct") return "base";
+  if(["borno","adamawa","yobe","sokoto","katsina","kebbi","zamfara","benue"].indexOf(id)>-1) return "field";
+  if(["jigawa","kaduna","kano"].indexOf(id)>-1) return "region";
+  return "national";
+};
+
+var NE_ITEMS=[
+ "Health Sector COVID-19 monitoring, weekly reports and HeRAMS analysis",
+ "Market Price Index for the Cash Working Group",
+ "Early Recovery & Livelihoods 5Ws response dashboard",
+ "Child Protection AoR 5W reporting and response monitoring"
+];
+var NW_ITEMS=[
+ "Northwest IM Coordination Forum, as Technical Lead",
+ "Conflict and accessibility mapping for operational planning"
+];
+var NHF="NHF WASH and Nutrition results tracking against targets";
+var RECON="HOPE vs State Social Registry reconciliation (30,000+ households)";
+var WORK={
+ borno:["Borno State Agency project dashboard and SQL Server backend","CIMCORD planning and tracking of humanitarian cargo to hard-to-reach areas",NHF].concat(NE_ITEMS),
+ yobe:["Yobe State Government INGO quarterly report dashboard",RECON,NHF].concat(NE_ITEMS),
+ adamawa:NE_ITEMS.slice(),
+ sokoto:[NHF].concat(NW_ITEMS),
+ katsina:["2025 Quranic/Islamiyya Schools and Street Children Census dashboard",NHF].concat(NW_ITEMS),
+ kebbi:NW_ITEMS.slice(),
+ zamfara:NW_ITEMS.slice(),
+ benue:["Conflict mapping to support situational awareness and preparedness","Data and information management training for Benue State Emergency Management Agency, Bureau of Statistics, Ministry of Humanitarian Affairs, Planning Commission and CBOs"],
+ jigawa:[RECON].concat(NW_ITEMS),
+ kano:NW_ITEMS.slice(),kaduna:NW_ITEMS.slice(),
+ fct:["Home base: UNICEF Nigeria Country Office, Abuja","HAC results from seven field offices merged into one master dataset","Monitoring system for the national birth registration campaign"]
+};
+var NATIONAL="Emergency preparedness supply dashboard, National Malaria Elimination Programme dashboard and INGO Forum project matrix";
+
+/* ---------------- products ---------------- */
+var PRODUCTS=[
+ {id:"supply",recent:true,title:"Emergency Preparedness Supply Dashboard",client:"UNICEF Nigeria Country Office · Emergency Section",
+  desc:"Tracks emergency stock across warehouses nationwide: stock balance, distribution trend, grant, commodity, implementing partner, state and map views. Gives visibility of over USD 1.5M in prepositioned supplies.",
+  platform:"Power BI",access:"org",themes:["emergency"],states:"all",cov:"Nationwide warehouses",
+  url:"https://app.powerbi.com/groups/028ad465-8a6b-4980-b418-7942119c057a/reports/d73e8a9f-f54a-42fd-af26-755623b127fd/d5fc9f5b352ad5544b2c?experience=power-bi"},
+ {id:"nhf",recent:true,title:"NHF Grant Implementation Tracker",client:"UNICEF Nigeria · Nigeria Humanitarian Fund",
+  desc:"Monitors project progress, results achievement and reporting compliance for Nigeria Humanitarian Fund grants.",
+  platform:"Web app",access:"public",themes:["grants"],states:["borno","yobe","sokoto","katsina"],cov:"Borno, Yobe, Sokoto, Katsina",
+  url:"https://safian-adoibrahim.github.io/NHF-Tracker/"},
+ {id:"sec",recent:true,title:"Security Incidents Analysis Tracker",client:"UNICEF Nigeria · Emergency Section",
+  desc:"A data-mining template and analytical dashboard that shows incident trends, locations and operational risks, supporting programme decisions in access-constrained locations.",
+  platform:"Web app",pill:"ArcGIS",access:"public",themes:["emergency"],states:[],cov:"Access-constrained areas",
+  url:"https://experience.arcgis.com/experience/b69b0b17027f4431bf4d517594932f54/"},
+ {id:"kbs",recent:true,title:"Quranic/Islamiyya Schools & Street Children Census 2025",client:"Katsina State Bureau of Statistics",
+  desc:"Census dashboard built from a large KoboToolbox dataset, with aggregation in R and Chart.js and Leaflet for the charts and maps.",
+  platform:"Web app",access:"public",themes:["surveys"],states:["katsina"],cov:"Katsina",
+  url:"https://safian-adoibrahim.github.io/kbs-dashboard/"},
+ {id:"ingo",title:"INGO Forum Project Matrix",client:"INGO Forum, Nigeria",
+  desc:"Projects implemented by international NGOs in Nigeria: number of projects and organisations, budgets, thematic areas and locations.",
+  platform:"Power BI",access:"public",themes:["coord"],states:"all",cov:"Nationwide",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiNGYzMzVkOTEtN2IwNC00NmU2LWI0YjktODdiZWNhNDZmZWQ1IiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSectiond4052e84529b0d4b048b"},
+ {id:"cpaor",title:"Child Protection AoR Response Dashboard",client:"Child Protection Area of Responsibility",
+  desc:"Monitors partners' response in Northeast Nigeria: key subsector figures, LGA coverage, and people reached by population type, service type and month.",
+  platform:"Power BI",access:"public",themes:["coord"],states:BAY,cov:"Borno, Adamawa, Yobe",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiYjk5YTIxZTItZGIyZS00NmM2LTgxNDItZGQ4MTFiY2Y3NTkwIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSection5aef375c1153ec70bac1"},
+ {id:"bsa",title:"Humanitarian Project Information Dashboard",client:"Borno State Agency (BSA)",
+  desc:"Tracks humanitarian and development projects in Borno State by thematic area and location, and shows where implementation gaps exist.",
+  platform:"Power BI",access:"public",themes:["gov"],states:["borno"],cov:"Borno",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiNDIzMDk0YTgtMzc4YS00MDIyLTg4M2YtZTM3ZmQ4ZTAwNWVjIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSection"},
+ {id:"mpi",title:"Market Price Index Dashboard",client:"Cash Working Group",
+  desc:"Monitors changes in the prices of basic food, fuel and hygiene items in Borno, Adamawa and Yobe.",
+  platform:"Power BI",access:"public",themes:["surveys"],states:BAY,cov:"Borno, Adamawa, Yobe",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiZGFjYmYzMDUtZWViNC00NDBkLWE4NTEtOGU0NjlmMzU4YjFiIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSection2e5116d592f50302d0cc"},
+ {id:"erl",title:"Early Recovery & Livelihoods 5Ws Dashboard",client:"Early Recovery and Livelihoods Sector",
+  desc:"Monitors partners' activities and project implementation across Borno, Adamawa and Yobe.",
+  platform:"Power BI",access:"public",themes:["coord"],states:BAY,cov:"Borno, Adamawa, Yobe",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiYmYzNDM3NjMtOTI4Zi00ZjBmLTljMzItNWMwMjc5NWQzNDdkIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSection9017b20e3098cc470503"},
+ {id:"yobe",title:"INGO Quarterly Report Dashboard",client:"Yobe State Government",
+  desc:"Monitors projects implemented each quarter by international NGOs across sectors and LGAs (admin 2) in Yobe State.",
+  platform:"Power BI",access:"public",themes:["gov"],states:["yobe"],cov:"Yobe",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiZTFkZWY4NzItNDUzYi00NDUzLTg0ZWUtMjk4NzI5YTNlZDcyIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSection"},
+ {id:"covid",title:"Health Sector COVID-19 Dashboard",client:"Health Sector, Northeast Nigeria",
+  desc:"Built at the height of the pandemic to monitor COVID-19 cases and infection metrics in Borno, Adamawa and Yobe.",
+  platform:"Power BI",access:"public",themes:["health"],states:BAY,cov:"Borno, Adamawa, Yobe",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiMTE3NGEzYzMtOWZiMS00NTUxLWIwYWUtMjA2ODcyYmQwOTFkIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9&pageName=ReportSection618283ac416c39624480"},
+ {id:"malaria",title:"National Malaria Elimination Programme Dashboard",client:"Global Fund project",
+  desc:"Progress, achievements and gaps in programme implementation across all 36 states and the FCT.",
+  platform:"Power BI",access:"public",themes:["health","grants"],states:"all",cov:"36 states + FCT",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiZWU0ZGJmNzctNDc5Ny00MTNlLTlkY2MtODdlYmUxYzNkZWI1IiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9"},
+ {id:"kap",title:"MDM Knowledge, Attitudes & Practices Dashboard",client:"MDM (international NGO)",
+  desc:"Presents KAP survey results from communities where MDM runs humanitarian activities in northeast Nigeria.",
+  platform:"Power BI",access:"public",themes:["health","surveys"],states:BAY,cov:"Northeast Nigeria",
+  url:"https://app.powerbi.com/view?r=eyJrIjoiYTQ5NmE0OTItZTczZS00ZmVkLTg5MWUtYjkxNTFhOTBjZWYwIiwidCI6ImY2ZjcwZjFiLTJhMmQtNGYzMC04NTJhLTY0YjhjZTBjMTlkNyIsImMiOjF9"}
+];
+var THEMES=[
+ ["all","All"],["emergency","Emergency & access"],["coord","Coordination & 5Ws"],["gov","Government"],
+ ["health","Health"],["grants","Grants & results"],["surveys","Surveys & statistics"]
+];
+var RESOURCES=[
+ {t:"Full product catalogue",d:"Every IM product in one folder.",u:"https://drive.google.com/drive/folders/1KJ0uopn6Fy_iVqlrLf28b08awqow4l4E?usp=drive_link"},
+ {t:"Operational presence maps",d:"Who-does-what-where maps for sectors and partners.",u:"https://drive.google.com/drive/folders/1CiPPPf6lZXRdjj0EKuD_W0ofzzVxEiJS?usp=sharing"},
+ {t:"Static dashboards",d:"Snapshot dashboards for briefs and print.",u:"https://drive.google.com/drive/folders/14zerQOQDOs8bei0WPOYdAp_AElZDUCGs?usp=drive_link"},
+ {t:"Reports and bulletins",d:"Sector bulletins and analytical reports.",u:"https://drive.google.com/drive/folders/17cdRCageLsorJ8XA-JIg4hQFaT6TUIsA?usp=sharing"},
+ {t:"Training slides",d:"Data management, KoboToolbox, GIS and analysis courses.",u:"https://drive.google.com/drive/folders/1y3d21Cn8FckbQq8W-bc8gZG3LO7Q-R4R?usp=sharing"}
+];
+
+/* ---------------- roles ---------------- */
+var ROLES=[
+ {id:"unicef-emg",short:"UNICEF Nigeria",unit:"Emergency Section",title:"Information Management Officer",org:"UNICEF Nigeria Country Office · Emergency Section",start:[2025,10],end:null,
+  bullets:[
+   "Built the Nigeria Country Office Emergency Preparedness Dashboard in Power BI, tracking supplies across warehouses nationwide and giving visibility of over USD 1.5M in prepositioned stock.",
+   "Led the consolidation, validation and reconciliation of HAC workplan results from seven field offices in three zones into one master dataset and dashboard.",
+   "Maintain the NHF results dashboard tracking WASH and Nutrition reach against targets in Borno, Yobe, Sokoto and Katsina, by population group, sex and age.",
+   "Reconciled more than 30,000 household records across UNICEF HOPE and State Social Registry data in Yobe and Jigawa, finding 226 households assisted by both.",
+   "Digitized road networks and assessed road access to plan the prepositioning of emergency supplies in hard-to-reach areas.",
+   "Technical Lead for the Northwest Nigeria IM Coordination Forum, harmonizing data definitions, partner reporting and data quality across the region.",
+   "Led development and rollout of the Humanitarian Performance Monitoring (HPM) tool, including facilitator training and the dashboard.",
+   "Built a security incident data-mining template and dashboard showing incident trends, locations and operational risks.",
+   "Developed conflict and accessibility maps for Kebbi, Katsina, Zamfara and Sokoto to support operational planning and emergency preparedness.",
+   "Developed conflict mapping for Benue State and delivered data and information management training for the State Emergency Management Agency, Bureau of Statistics, Ministry of Humanitarian Affairs, Planning Commission and CBOs.",
+   "Supported state and local governments in the Northwest with capacity building, simulation exercises and government-endorsed SOPs.",
+   "Developed monitoring frameworks and data collection tools that contributed to a successful USD 14 million donor proposal.",
+   "Supported the MSNA through KoboToolbox survey design and analysis, delivered MIRA training, and manage NHF grant reporting on OCHA's OneGMS."
+  ]},
+ {id:"unicef-cp",short:"UNICEF Nigeria",unit:"Child Protection AoR",title:"Information Management Officer",org:"UNICEF Nigeria · Child Protection AoR and CP Programme Section",start:[2023,11],end:[2025,3],
+  bullets:[
+   "Double-hatted as IMO for the Child Protection AoR and UNICEF's Child Protection programme in Northeast Nigeria.",
+   "Contributed to the HNRP: People in Need analysis, severity classification, population targeting and geographic prioritization.",
+   "Consolidated and validated partner 5W reporting and submitted monthly CP AoR inputs to OCHA's Response Plan Monitoring platform.",
+   "CPIMS+ focal point, applying data protection, role-based access and information-sharing protocols to sensitive child data.",
+   "Assessed capacity and trained over 65 M&E, data and IM officers on data management, ActivityInfo, KoboToolbox, GIS and quality assurance.",
+   "Led dashboards and analytical products across child protection thematic areas.",
+   "Deployed to the Country Office to build the monitoring system and analysis for the national birth registration campaign."
+  ]},
+ {id:"oxfam",short:"Oxfam UK",unit:"CALP Network, remote",title:"International Consultant, Data Analysis & Power BI",org:"Oxfam UK · Support to the CALP Network (remote)",start:[2023,7],end:[2023,10],
+  bullets:[
+   "Led the redesign of database structures for cash and voucher assistance monitoring and reporting.",
+   "Built Power BI dashboards to monitor programme performance.",
+   "Wrote user guides and trained staff on database management and dashboard use."
+  ]},
+ {id:"3i",short:"3iSolution",unit:"UNICEF RRM Project",title:"IMO, Project Manager / Technical Lead",org:"3iSolution (INGO) · UNICEF Rapid Response Mechanism Project",start:[2022,12],end:[2023,6],
+  bullets:[
+   "Built and automated a cloud data ecosystem on Azure Databricks powering an R Shiny platform with secure login and user administration.",
+   "Delivered an interactive geospatial web application supporting UNICEF programme implementation in Northeast Nigeria.",
+   "Led IM and M&E for the RRM Working Group, including an early warning system, rapid assessment tools and the monitoring framework.",
+   "Worked with partners and government agencies on the 2023 RRM preparedness response plan and monitoring tool.",
+   "Designed needs, baseline and impact assessments, validated partner data and produced operational presence maps.",
+   "Managed and guided four RRM project staff."
+  ]},
+ {id:"immap",short:"iMMAP",unit:"Humanitarian Information & Analysis Unit",title:"Information Management Officer",org:"iMMAP Inc. (INGO) · Humanitarian Information & Analysis Unit",start:[2021,1],end:[2022,12],
+  bullets:[
+   "Provided IM support to Protection, Child Protection, OCHA and Civil-Military Coordination (CIMCORD) in Northeast Nigeria.",
+   "Supported CIMCORD in planning and tracking humanitarian cargo movements to deep-field locations, liaising with the military.",
+   "Built an automated cargo movement request system that compiles partners' requests into one tracker, cutting response time.",
+   "Designed the SQL Server database schema used by a Borno State Government humanitarian agency, and trained its staff.",
+   "Led a multi-sector partner reporting system on Power Apps, SharePoint Lists, Power Automate and Power BI, replacing manual Excel consolidation.",
+   "Led a Harmonized Protection Monitoring Tool and Red Flag alert system to escalate protection risks quickly.",
+   "Produced reference, thematic and service maps, and a relocation tracking system for returning displaced people.",
+   "Developed a 5-day GIS training module on humanitarian mapping, spatial analysis and remote sensing."
+  ]},
+ {id:"who",short:"WHO",unit:"Health Sector, via iMMAP",title:"Information Management Officer",org:"WHO Health Sector · iMMAP Standby Partnership",start:[2020,5],end:[2020,12],
+  bullets:[
+   "Led static and dynamic Health Sector Power BI dashboards combining 5Ws and COVID-19 data to show service gaps and partner presence.",
+   "Analysed HeRAMS data on the availability and functionality of health services.",
+   "Consolidated daily COVID-19 data across the BAY states into weekly reports for partners, government and donors.",
+   "Mapped quarantine and isolation centres and LGA caseloads, and supported the Cholera Outbreak Task Force.",
+   "Produced monthly Health Sector bulletins for the BAY states."
+  ]}
+];
+
+var PIPE=[
+ {t:"Collect",d:"Survey design, field data and partner reporting.",tools:["KoboToolbox","ODK","Survey123","ONA","XLSForms","ActivityInfo","CPIMS+","HeRAMS","OCHA OneGMS"]},
+ {t:"Store & transform",d:"Databases, pipelines and cleaning.",tools:["SQL Server","MySQL","Databricks","Microsoft Fabric","MS Access","Power Query","Python","R"]},
+ {t:"Analyse & map",d:"Models, indicators and spatial analysis.",tools:["Power BI · DAX","Excel","SPSS","DEEP","ArcGIS","QGIS","GeoSight","GeoServer","Google Earth Engine"]},
+ {t:"Automate & publish",d:"Apps, workflows and web platforms.",tools:["Power Automate","Power Apps","SharePoint Lists","Kobo → Power BI","R Shiny","Leaflet.js","HTML5 / CSS3","Laravel","Drupal","WordPress"]},
+ {t:"Communicate & train",d:"Products, guidance and capacity building.",tools:["Illustrator","InDesign","CorelDraw","SOPs","User guides","Training"]}
+];
+var COMP=["Power BI & business intelligence","SQL & data transformation","Logistics & cargo movement tracking","KPIs, thresholds & escalation triggers","Data quality & reconciliation","Data pipelines & process automation","GIS, road access & gap analysis","Management briefs & ad hoc analysis","Civil-Military Coordination (CIMCORD)","IM frameworks & data governance","Training, SOPs & user guides","Partner & stakeholder coordination"];
+var EDU=[
+ {y:"2027",b:"M.Sc. Public Health",s:"University of Suffolk, United Kingdom",p:"In progress · expected Sept 2027",note:"Focus: health inequalities and IDPs in Northeast Nigeria"},
+ {y:"2016",b:"M.Sc. Environmental Management (Geography)",s:"University of Maiduguri"},
+ {y:"2008",b:"Proficiency Certificate in Management",s:"Nigerian Institute of Management"},
+ {y:"2007",b:"Diploma in Computer and Network Maintenance",s:"HIIT, Kano"},
+ {y:"2007",b:"B.Sc. Zoology",s:"University of Maiduguri"}
+];
+var CERTS=[
+ ["award","UNICEF award of excellence"],
+ ["cert","Global Child Protection Information Management for Cluster Coordination"],
+ ["cert","Humanitarian Information Management, iMMAP Inc."],
+ ["cert","HEAT Training, GardaWorld"],
+ ["cert","SSAFE Training"],
+ ["cert","Emergency First Aid (hands-only CPR), Highfield International"]
+];
+
+/* ---------------- helpers ---------------- */
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function $(id){return document.getElementById(id);}
+var toastT;
+function toast(msg){var t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show");},1800);}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+
+/* ---------------- theme ---------------- */
+var SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+var MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
+var root=document.documentElement;
+function isDark(){return root.getAttribute("data-theme")==="dark";}
+function paintThemeBtn(){var b=$("theme-btn");var d=isDark();b.innerHTML=d?SUN:MOON;b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme");}
+var saved=store("sai-theme");root.setAttribute("data-theme",saved==="dark"?"dark":"light");
+paintThemeBtn();
+$("theme-btn").addEventListener("click",function(){var n=isDark()?"light":"dark";root.setAttribute("data-theme",n);store("sai-theme",n);paintThemeBtn();});
+
+
+/* ---------------- atlas ---------------- */
+var LABELS={borno:[648,132],yobe:[541,104],adamawa:[606,288],sokoto:[166,58],katsina:[306,98],jigawa:[428,110]};
+var FCT=[277,315];
+var gStates=$("map-states"),gLab=$("map-labels"),hl=$("hl");
+var pinned="borno";
+function setHref(el,id){el.setAttribute("href","#g-"+id);try{el.setAttributeNS("http://www.w3.org/1999/xlink","xlink:href","#g-"+id);}catch(e){}}
+ALL.forEach(function(id){
+  var u=document.createElementNS(NS,"use");
+  setHref(u,id);
+  var t=tierOf(id);
+  u.setAttribute("class","st t-"+t);
+  u.setAttribute("data-id",id);
+  u.setAttribute("tabindex","0");
+  u.setAttribute("role","button");
+  u.setAttribute("aria-label",STATES[id][0]+", "+TIERS[t].label);
+  gStates.appendChild(u);
+});
+Object.keys(LABELS).forEach(function(id){
+  var t=document.createElementNS(NS,"text");
+  t.setAttribute("class","lbl");t.setAttribute("x",LABELS[id][0]);t.setAttribute("y",LABELS[id][1]+5);t.setAttribute("text-anchor","middle");
+  t.textContent=STATES[id][0];gLab.appendChild(t);
+});
+(function(){
+  var c=document.createElementNS(NS,"circle");c.setAttribute("cx",FCT[0]);c.setAttribute("cy",FCT[1]);c.setAttribute("r","5");
+  c.setAttribute("class","abuja");gLab.appendChild(c);
+  var t=document.createElementNS(NS,"text");t.setAttribute("class","lbl lbl-base");t.setAttribute("x",FCT[0]-34);t.setAttribute("y",FCT[1]+5);t.setAttribute("text-anchor","end");t.textContent="Abuja";gLab.appendChild(t);
+})();
+
+var counts={field:0,region:0,base:0,national:0};ALL.forEach(function(id){counts[tierOf(id)]++;});
+var swatch={field:"var(--map-field)",region:"var(--map-region)",base:"var(--signal)",national:"var(--map-national)"};
+$("legend").innerHTML=["field","region","base","national"].map(function(k){
+  return '<li><span class="sw" style="background:'+swatch[k]+'"></span>'+TIERS[k].label+' <span class="n">'+counts[k]+'</span></li>';
+}).join("");
+
+function showState(id){
+  setHref(hl,id);
+  var t=tierOf(id),items=WORK[id]||[],n=STATES[id];
+  var h='<div class="panel-head"><h3>'+esc(n[0])+'</h3><span class="pcode">'+n[1]+'</span><span class="tier '+TIERS[t].cls+'">'+TIERS[t].label+'</span></div>';
+  if(items.length){h+='<ul class="work">'+items.map(function(x){return "<li>"+esc(x)+"</li>";}).join("")+'</ul>';}
+  else{h+='<p class="natl" style="margin-top:10px">No state-specific products. This state is covered by the national-scale products below.</p>';}
+  h+='<p class="natl"><b>Also covered nationally:</b> '+NATIONAL+'.</p>';
+  if(id===pinned&&id==="borno"&&!showState.touched){h+='<p class="hint">Showing Borno. Hover or tap any state.</p>';}
+  $("panel").innerHTML=h;
+}
+gStates.addEventListener("pointerover",function(e){var u=e.target.closest("[data-id]");if(u){showState.touched=true;showState(u.getAttribute("data-id"));}});
+$("map").addEventListener("pointerleave",function(){showState(pinned);});
+gStates.addEventListener("click",function(e){var u=e.target.closest("[data-id]");if(u){pinned=u.getAttribute("data-id");showState.touched=true;showState(pinned);}});
+gStates.addEventListener("focusin",function(e){var u=e.target.closest("[data-id]");if(u){showState.touched=true;showState(u.getAttribute("data-id"));}});
+gStates.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){var u=e.target.closest("[data-id]");if(u){e.preventDefault();pinned=u.getAttribute("data-id");showState(pinned);}}});
+gStates.addEventListener("focusout",function(e){if(!gStates.contains(e.relatedTarget))showState(pinned);});
+showState(pinned);
+
+/* ---------------- products ---------------- */
+var state={theme:"all",plat:"all",q:""};
+function mini(states){
+  var set={};(states==="all"?ALL:states).forEach(function(s){set[s]=1;});
+  return '<svg class="mini" viewBox="-4 -4 752 608" aria-hidden="true" focusable="false">'+ALL.map(function(id){return '<use href="#g-'+id+'"'+(set[id]?' class="on"':'')+'/>';}).join("")+'</svg>';
+}
+var MINIS={};PRODUCTS.forEach(function(p){MINIS[p.id]=mini(p.states);});
+function card(p){
+  var org=p.access==="org";
+  return '<article class="card'+(p.recent?' feat':'')+'">'+
+   '<div class="card-top">'+MINIS[p.id]+
+    '<div><div class="pills"><span class="pill'+(p.platform==="Web app"?' pill-web':'')+'">'+(p.pill||p.platform)+'</span>'+
+    (org?'<span class="pill pill-org">Org sign-in</span>':'<span class="pill">Public link</span>')+'</div>'+
+    '<h3><a class="card-link" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a></h3>'+
+    '<p class="client">'+esc(p.client)+'</p></div></div>'+
+   '<p class="desc">'+esc(p.desc)+'</p>'+
+   '<div class="card-foot"><span class="cov">'+esc(p.cov)+'</span><span class="open" aria-hidden="true">'+(org?'Open (sign-in) ↗':'Open ↗')+'</span></div>'+
+  '</article>';
+}
+function matches(p){
+  if(state.theme!=="all"&&p.themes.indexOf(state.theme)<0)return false;
+  if(state.plat!=="all"&&p.platform!==state.plat)return false;
+  if(state.q){var hay=(p.title+" "+p.client+" "+p.desc+" "+p.cov+" "+p.platform+" "+(p.pill||"")).toLowerCase();
+    var terms=state.q.toLowerCase().split(/\s+/).filter(Boolean);for(var i=0;i<terms.length;i++){if(hay.indexOf(terms[i])<0)return false;}}
+  return true;
+}
+function renderChips(){
+  $("chips").innerHTML=THEMES.map(function(t){
+    var n=t[0]==="all"?PRODUCTS.length:PRODUCTS.filter(function(p){return p.themes.indexOf(t[0])>-1;}).length;
+    return '<button type="button" class="chip" data-t="'+t[0]+'" aria-pressed="'+(state.theme===t[0])+'">'+t[1]+' <span class="c">'+n+'</span></button>';
+  }).join("");
+}
+function renderProducts(){
+  var list=PRODUCTS.filter(matches);
+  var rec=list.filter(function(p){return p.recent;}),ear=list.filter(function(p){return !p.recent;});
+  $("grid-recent").innerHTML=rec.map(card).join("");
+  $("grid-earlier").innerHTML=ear.map(card).join("");
+  $("grp-recent").hidden=!rec.length;$("grp-earlier").hidden=!ear.length;
+  $("n-recent").textContent=rec.length+(rec.length===1?" product":" products");
+  $("n-earlier").textContent=ear.length+(ear.length===1?" product":" products");
+  $("empty").hidden=list.length>0;
+  var bi=list.filter(function(p){return p.platform==="Power BI";}).length;
+  $("result-line").textContent="Showing "+list.length+" of "+PRODUCTS.length+" · "+bi+" Power BI, "+(list.length-bi)+" web app"+(list.length-bi===1?"":"s");
+}
+$("chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;state.theme=b.getAttribute("data-t");renderChips();renderProducts();});
+$("seg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;state.plat=b.getAttribute("data-p");
+  Array.prototype.forEach.call($("seg").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",String(x===b));});renderProducts();});
+$("q").addEventListener("input",function(e){state.q=e.target.value.trim();renderProducts();});
+$("clear").addEventListener("click",function(){state={theme:"all",plat:"all",q:""};$("q").value="";
+  Array.prototype.forEach.call($("seg").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",String(x.getAttribute("data-p")==="all"));});renderChips();renderProducts();});
+renderChips();renderProducts();
+
+var FOLDER='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h4l2 2.5h9A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></svg>';
+$("res-grid").innerHTML=RESOURCES.map(function(r){
+  return '<a class="res" href="'+esc(r.u)+'" target="_blank" rel="noopener">'+FOLDER+'<b>'+esc(r.t)+'</b><span>'+esc(r.d)+'</span><em>Google Drive ↗</em></a>';
+}).join("");
+
+/* ---------------- experience ---------------- */
+var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var now=new Date();var nowY=now.getFullYear(),nowM=now.getMonth()+1;
+var Y0=2020,Y1=Math.max(2027,nowY+1),SPAN=(Y1-Y0)*12;
+function mi(y,m){return (y-Y0)*12+(m-1);}
+function endOf(r){return r.end?r.end:[nowY,nowM];}
+function dur(r){var e=endOf(r);var n=mi(e[0],e[1])-mi(r.start[0],r.start[1])+1;var y=Math.floor(n/12),m=n%12;
+  return (y?y+(y===1?" yr":" yrs"):"")+(y&&m?" ":"")+(m?m+" mo":"");}
+function fmt(d){return MONTHS[d[1]-1]+" "+d[0];}
+var selRole="unicef-emg",expanded=false;
+function renderGantt(){
+  var g=$("gantt");g.style.setProperty("--years",Y1-Y0);
+  var ticks="";for(var y=Y0;y<Y1;y++){var l=(y-Y0)/(Y1-Y0)*100;ticks+='<span class="'+(y===Y0?'first':'')+'" style="left:'+l+'%"><b class="yl" style="font-weight:400">'+y+'</b><b class="ys" style="font-weight:400">\u2019'+String(y).slice(2)+'</b></span>';}
+  var nowPct=(mi(nowY,nowM)+0.5)/SPAN*100;
+  var h='<div class="g-axis" aria-hidden="true"><span class="eyebrow">Role</span><div class="ticks">'+ticks+'</div></div>';
+  ROLES.forEach(function(r){
+    var s=mi(r.start[0],r.start[1]),e=endOf(r),en=mi(e[0],e[1])+1;
+    var left=s/SPAN*100,w=(en-s)/SPAN*100;
+    h+='<button type="button" class="g-row" role="tab" id="tab-'+r.id+'" data-r="'+r.id+'" aria-selected="'+(r.id===selRole)+'" aria-controls="detail">'+
+      '<span class="g-lab"><b>'+esc(r.short)+'</b><small>'+esc(r.unit)+'</small></span>'+
+      '<span class="track"><span class="bar'+(r.end?'':' ongoing')+'" style="left:'+left+'%;width:'+w+'%"></span>'+
+      (r.end?'':'<span class="now-line" style="left:'+nowPct+'%"></span>')+'</span>'+
+      '<span class="sr-only">'+fmt(r.start)+' to '+(r.end?fmt(r.end):'present')+'</span></button>';
+  });
+  h+='<div class="g-note" aria-hidden="true"><span>Jan '+Y0+' → Dec '+(Y1-1)+' · one column per year</span><span><i></i>Today</span></div>';
+  g.innerHTML=h;
+}
+function renderDetail(){
+  var r=ROLES.filter(function(x){return x.id===selRole;})[0];
+  var LIM=6,show=expanded?r.bullets:r.bullets.slice(0,LIM);
+  var h='<div class="d-head"><div><h3>'+esc(r.title)+'</h3><p class="d-org">'+esc(r.org)+'</p></div>'+
+    '<div class="d-meta"><span>'+fmt(r.start)+' – '+(r.end?fmt(r.end):'Present')+'</span><span'+(r.end?'':' class="live"')+'>'+dur(r)+(r.end?'':' · current')+'</span></div></div>'+
+    '<ul class="d-list">'+show.map(function(b){return '<li>'+esc(b)+'</li>';}).join("")+'</ul>';
+  if(r.bullets.length>LIM){h+='<button class="btn more" type="button" id="more">'+(expanded?'Show fewer':'Show all '+r.bullets.length+' highlights')+'</button>';}
+  var d=$("detail");d.innerHTML=h;d.setAttribute("aria-labelledby","tab-"+r.id);
+  var m=$("more");if(m)m.addEventListener("click",function(){expanded=!expanded;renderDetail();});
+}
+$("gantt").addEventListener("click",function(e){var b=e.target.closest(".g-row");if(!b)return;selRole=b.getAttribute("data-r");expanded=false;
+  Array.prototype.forEach.call($("gantt").querySelectorAll(".g-row"),function(x){x.setAttribute("aria-selected",String(x===b));});renderDetail();});
+$("gantt").addEventListener("keydown",function(e){if(e.key!=="ArrowDown"&&e.key!=="ArrowUp")return;var rows=Array.prototype.slice.call($("gantt").querySelectorAll(".g-row"));
+  var i=rows.indexOf(document.activeElement);if(i<0)return;e.preventDefault();var n=rows[(i+(e.key==="ArrowDown"?1:rows.length-1))%rows.length];n.focus();n.click();});
+renderGantt();renderDetail();
+
+/* ---------------- toolkit, education ---------------- */
+$("pipe").innerHTML=PIPE.map(function(s,i){
+  return '<li class="stage"><span class="step">0'+(i+1)+'</span><h3>'+esc(s.t)+'</h3><p>'+esc(s.d)+'</p><ul class="tools">'+s.tools.map(function(t){return '<li>'+esc(t)+'</li>';}).join("")+'</ul></li>';
+}).join("");
+$("comp").innerHTML=COMP.map(function(c){return '<li>'+esc(c)+'</li>';}).join("");
+$("edu-list").innerHTML=EDU.map(function(e){
+  return '<div class="e-row"><span class="e-yr">'+e.y+'</span><div><b>'+esc(e.b)+'</b><span>'+esc(e.s)+(e.note?'. '+esc(e.note)+'.':'')+'</span>'+(e.p?'<br><span class="prog">'+esc(e.p)+'</span>':'')+'</div></div>';
+}).join("");
+var ICON={
+ award:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>',
+ cert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+};
+$("cert-list").innerHTML=CERTS.map(function(c){return '<div class="c-row">'+ICON[c[0]]+'<span>'+esc(c[1])+'</span></div>';}).join("");
+
+/* ---------------- contact copy ---------------- */
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".copy");if(!b)return;
+  var el=$(b.getAttribute("data-copy"));var txt=el.textContent.trim();
+  function fallback(){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);toast("Selected. Press Ctrl+C or ⌘C to copy");}catch(err){}}
+  try{navigator.clipboard.writeText(txt).then(function(){toast("Copied "+txt);},fallback);}catch(err){fallback();}
+});
+
+/* ---------------- nav highlight ---------------- */
+if("IntersectionObserver" in window){
+  var links={};Array.prototype.forEach.call(document.querySelectorAll(".nav a"),function(a){links[a.getAttribute("href").slice(1)]=a;});
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){
+    Object.keys(links).forEach(function(k){links[k].removeAttribute("aria-current");});
+    if(links[en.target.id])links[en.target.id].setAttribute("aria-current","true");}});},{rootMargin:"-45% 0px -50% 0px"});
+  ["products","experience","toolkit","education","contact"].forEach(function(id){var s=$(id);if(s)io.observe(s);});
+}
+})();
+</script>
+
+
+<script>
+(function(){
+  var bar=document.getElementById("reading-progress-bar");
+  if(!bar)return;
+  function update(){var d=document.documentElement;var max=d.scrollHeight-d.clientHeight;var pct=max>0?(d.scrollTop/max)*100:0;bar.style.width=Math.min(100,Math.max(0,pct))+"%";}
+  window.addEventListener("scroll",update,{passive:true});window.addEventListener("resize",update);update();
+})();
+</script>
+</body>
+</html>
